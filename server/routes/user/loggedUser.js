@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const checkToken = require('../../utils/token/checkToken');
+const checkToken = require('../../services/token/checkToken');
 const jwtDecode = require('jwt-decode');
 
 const SignupUser = require('../../models/signupUser');

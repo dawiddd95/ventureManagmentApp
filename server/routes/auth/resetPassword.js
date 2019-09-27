@@ -3,10 +3,11 @@ const {validationResult} = require('express-validator')
 const bcrypt = require('bcrypt')
 const uuid = require('uuid')
 const SignupUser = require('../../models/signupUser');
-const {passwordValidationSchema} = require('../../utils/validations/password')
+const {passwordValidation} = require('../../services/validations/password')
 
 const router = express.Router();
 
+// GET
 router.get('/api/auth/reset-password', async (req, res) => {
    const {code, key} = req.headers; 
    const isValid = await SignupUser.findOne({ where: { code, key }})
@@ -15,7 +16,8 @@ router.get('/api/auth/reset-password', async (req, res) => {
    else res.json({success: true})      
 })
 
-router.post('/api/auth/reset-password', passwordValidationSchema, async (req, res) => {
+// POST
+router.post('/api/auth/reset-password', passwordValidation, async (req, res) => {
    const {password, code} = req.body; 
    const newKey = uuid.v4();
    const hash = bcrypt.hashSync(password, 10);

@@ -2,12 +2,12 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const {loginValidationSchema} = require('../../utils/validations/login')
+const {loginValidation} = require('../../services/validations/login')
 const SignupUser = require('../../models/signupUser');
 
 const router = express.Router()
 
-router.post('/api/auth/login', loginValidationSchema, async (req, res) => {
+router.post('/api/auth/login', loginValidation, async (req, res) => {
    const {email, password} = req.body;
 
    const user = await SignupUser.findOne({ where: {email, active: true} });

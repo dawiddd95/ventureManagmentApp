@@ -1,7 +1,7 @@
 const {check} = require('express-validator');
 
 module.exports = {
-   signupValidationSchema: [
+   signupValidation: [
       check('name')
          .not().isEmpty()
          .isLength({min: 3})

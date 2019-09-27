@@ -1,7 +1,7 @@
 const {check} = require('express-validator');
 
 module.exports = {
-   loginValidationSchema: [
+   loginValidation: [
       check('email', 'Must be correct email format')
          .not().isEmpty()
          .isEmail().normalizeEmail()
