@@ -8,14 +8,17 @@ const FetchUserBookings = () => {
    const dispatch = useDispatch();
    // loggedUser w finalnej wersji byłoby userBookings
    const loggedUser = useSelector(state => state.fetchLoggedUser);
+   // const userBookings = useSelector(state => state.fetchUserBookings);
 
    useEffect(() => {
+      // dispatch(thunkActions.fetchBookingsAction())
       dispatch(thunkActions.fetchLoggedUserAction())
    }, [])
 
    return (  
       <div>
          <Bookings 
+            //bookings={userBookings}
             bookings={loggedUser}
          />
       </div>

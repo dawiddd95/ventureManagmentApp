@@ -10,7 +10,7 @@ const AuthVerifyEmail = (props) => {
    React.useEffect(() => {
       axios.get('/auth/verify', {
          headers: {
-            id: parsed.id, 
+            code: parsed.code, 
             key: parsed.key
          }
       })

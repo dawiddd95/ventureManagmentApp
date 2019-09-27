@@ -10,7 +10,7 @@ const FetchResetPasswordLink = (props) => {
    React.useEffect(() => {
       axios.get('/api/auth/reset-password', {
          headers: {
-            id: parsed.id, 
+            code: parsed.code, 
             key: parsed.key
          }
       })

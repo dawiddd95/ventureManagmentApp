@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^4.1.1",
-    "dotenv": "^8.1.0"
+    "concurrently": "^4.1.1"
   }
 }

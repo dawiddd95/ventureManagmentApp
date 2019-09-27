@@ -14,7 +14,7 @@ const ResetPasswordFormContainer = ({location}) => {
 
    const handleOnSubmit = values => {
       const parsed = queryString.parse(location);
-      const formValues = {...values, id: parsed.id};
+      const formValues = {...values, code: parsed.code};
 
       axios.post('/api/auth/reset-password', formValues)
       .then(res => {

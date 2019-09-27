@@ -3,24 +3,24 @@ const router = express.Router();
 const checkToken = require('../../utils/token/checkToken');
 const jwtDecode = require('jwt-decode');
 
-const Users = require('../../models/userSignupSchema');
+const SignupUser = require('../../models/signupUser');
 
-router.get('/api/user/loggedUser', checkToken, (req, res) => {
+router.get('/api/user/loggedUser', checkToken, async (req, res) => {
    const authorization = req.headers.authorization;
    const split = authorization.split(' ');
    const token = split[1];
    const decodedToken = jwtDecode(token);
-   const id = decodedToken.id;
+   const tokenCode = decodedToken.code;
 
-   Users.findOne({id}, (err, data) => {
-      const loggedUser = {
-         name: data.name,
-         surname: data.surname,
-         email: data.email,
-      }
+   const user = await SignupUser.findOne({ where: { code: tokenCode }});
 
-      res.json({loggedUser})      
-   });
+   const loggedUser = {
+      name: user.name,
+      surname: user.surname,
+      email: user.email,
+   }
+
+   res.json({loggedUser})      
 })
 
 module.exports = router;
