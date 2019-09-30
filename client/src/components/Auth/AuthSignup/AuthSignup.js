@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './StyledAuthSignup';
-import SignupUserFormWrapper from '../SignupUserFormWrapper/SignupUserFormWrapper';
+import AuthSignupContent from '../AuthSignupContent/AuthSignupContent';
 
 const AuthSignup = () => {
    return (  
@@ -10,7 +10,7 @@ const AuthSignup = () => {
             <S.Header>
                Venture Managment App
             </S.Header>
-            <SignupUserFormWrapper />
+            <AuthSignupContent />
          </S.Content>
       </S.Wrapper>
    );

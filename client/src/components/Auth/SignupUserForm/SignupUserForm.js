@@ -40,9 +40,9 @@ const SignupUserForm = ({err, isLoading, handleOnInput}) => {
                   name='email' 
                   component='p' 
                />
-               <S.Error>
+               {/* <S.Error>
                   {err}
-               </S.Error>
+               </S.Error> */}
             </S.FieldWrapper>
             <S.FieldWrapper>
                <S.StyledField 

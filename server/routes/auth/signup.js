@@ -3,7 +3,7 @@ const {validationResult} = require('express-validator')
 const uuid = require('uuid')
 const bcrypt = require('bcrypt')
 
-const SignupUser = require('../../models/signupUser');
+const SignupUser = require('../../models/signupUser')
 const {signupValidation} = require('../../services/validations/signup')
 const {transporter} = require('../../services/emails/transporter')
 const {verifyEmail} = require('../../services/emails/emails')
@@ -21,11 +21,11 @@ router.post('/api/auth/signup', signupValidation, async (req, res) => {
    const emailSend = verifyEmail(email, link)
    
    const errors = validationResult(req)
-   if (!errors.isEmpty()) return res.status(422).jsonp(errors.array());
+   if (!errors.isEmpty()) return res.status(422).jsonp(errors.array())
 
    const emailExist = await SignupUser.findOne({ where: {email} })
    if (emailExist) return res.json({success: false, err: 'Email is already in usage', email: ''})
-
+ 
    const hashPassword = await bcrypt.hash(password, 10)
 
    const userData = {

@@ -7,7 +7,7 @@ import queryString from 'query-string';
 import ResetPasswordForm from '../ResetPasswordForm/ResetPasswordForm';
 import SuccessResetPassword from '../SuccessResetPassword/SuccessResetPassword';
 
-const ResetPasswordFormContainer = ({location}) => {
+const ResetPasswordFormWrapper = ({location}) => {
    const [state, setState] = React.useState({
      success: '', hide: true
    });
@@ -61,4 +61,4 @@ const ResetPasswordFormContainer = ({location}) => {
    );
 }
  
-export default ResetPasswordFormContainer;
+export default ResetPasswordFormWrapper;

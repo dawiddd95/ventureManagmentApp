@@ -14,7 +14,7 @@ router.post('/api/auth/forgot-password', emailValidation, async (req, res) => {
    const newKey = uuid.v4()
 
    const errors = validationResult(req);
-   if (!errors.isEmpty()) return res.status(422).jsonp(errors.array());
+   if (!errors.isEmpty()) return res.status(422).jsonp(errors.array())
    
    const user = await SignupUser.findOne({ where: { email }})
    if (user === null) res.json({success: false, text: `Sorry, we don't recognize your credentials`})

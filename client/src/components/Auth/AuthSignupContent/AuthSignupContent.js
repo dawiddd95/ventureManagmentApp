@@ -5,8 +5,9 @@ import axios from 'axios';
 
 import SignupUserForm from '../SignupUserForm/SignupUserForm';
 import SuccessSignup from '../SuccessSignup/SuccessSignup';
+import FadeRevealAnimation from '../../Animations/FadeRevealAnimation';
 
-const SignupUserFormContainer = () => {
+const AuthSignupContent = () => {
    const [state, setState] = React.useState({
       success: false, err: '', email: '', isLoading: false
    });
@@ -22,8 +23,15 @@ const SignupUserFormContainer = () => {
             success: state.success = success, 
             err: state.err = err,
             email: state.email = email,
-            isLoading: state.isLoading = false
+            isLoading: state.isLoading = false,
          });
+      })
+      .catch(() => {
+         setState({
+            ...state, 
+            err: state.err = 'Cannot sign up to application :( Please try again later.',
+            isLoading: state.isLoading = false,
+         })
       })
    }
 
@@ -36,6 +44,10 @@ const SignupUserFormContainer = () => {
 
    return ( 
       <div>
+         {state.success ? null : <FadeRevealAnimation 
+            text={state.err} 
+            success={false} 
+         />}
          {state.success ? <SuccessSignup email={state.email} /> : ( 
             <Formik
                render={props => <SignupUserForm {...props} 
@@ -83,4 +95,4 @@ const SignupUserFormContainer = () => {
    );
 }
  
-export default SignupUserFormContainer;
+export default AuthSignupContent
