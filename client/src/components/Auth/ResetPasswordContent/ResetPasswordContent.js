@@ -5,9 +5,9 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 import ResetPasswordForm from '../ResetPasswordForm/ResetPasswordForm';
-import SuccessResetPassword from '../SuccessResetPassword/SuccessResetPassword';
+import ResetPasswordSuccess from '../ResetPasswordSuccess/ResetPasswordSuccess';
 
-const ResetPasswordFormWrapper = ({location}) => {
+const ResetPasswordContent = ({location}) => {
    const [state, setState] = React.useState({
      success: '', hide: true
    });
@@ -24,6 +24,7 @@ const ResetPasswordFormWrapper = ({location}) => {
             success: state.success = success, 
          });
       })
+      .catch(err => console.log(err))
    }
 
    const handleOnClick = () => {
@@ -35,7 +36,7 @@ const ResetPasswordFormWrapper = ({location}) => {
 
    return (  
       <div>
-         {state.success ? <SuccessResetPassword /> : (
+         {state.success ? <ResetPasswordSuccess /> : (
             <Formik
                render={props => <ResetPasswordForm 
                   {...props} 
@@ -51,7 +52,7 @@ const ResetPasswordFormWrapper = ({location}) => {
                      .min(8, 'Minimum 8 characters')
                      .matches(/^(?=.*[A-Z])/, 'Must contain at least one uppercase character')
                      .matches(/^(?=.*[0-9])/, 'Must contain at least one numeric character')
-                     .matches(/^(?=.*[!@#\$%\^&])/, 'Must contain at least one special character')
+                     .matches(/^(?=.*[!@#$%^&*()])/, 'Must contain at least one special character')
                      .required('Password is required')
                })}
                onSubmit={values => handleOnSubmit(values)}
@@ -61,4 +62,4 @@ const ResetPasswordFormWrapper = ({location}) => {
    );
 }
  
-export default ResetPasswordFormWrapper;
+export default ResetPasswordContent;

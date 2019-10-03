@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './StyledLoginEmployeeForm';
 
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 
 const LoginEmployeeForm = ({err, state, handleOnInput}) => {
    return (  

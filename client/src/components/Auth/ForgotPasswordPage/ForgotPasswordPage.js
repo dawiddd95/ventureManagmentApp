@@ -1,7 +1,7 @@
 import React from 'react';
 
-import * as S from './StyledAuthForgotPassword';
-import ForgotPasswordFormWrapper from '../ForgotPasswordFormWrapper/ForgotPasswordFormWrapper';
+import * as S from './StyledForgotPasswordPage';
+import ForgotPasswordContent from '../ForgotPasswordContent/ForgotPasswordContent';
 
 const AuthForgotPassword = () => {
    return (  
@@ -10,7 +10,7 @@ const AuthForgotPassword = () => {
             <S.Header>
                Venture Managment App
             </S.Header>
-            <ForgotPasswordFormWrapper />
+            <ForgotPasswordContent />
             <S.StyledLink to='/auth/login'>
                Cancel
             </S.StyledLink>

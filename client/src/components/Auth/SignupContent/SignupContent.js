@@ -4,10 +4,10 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 import SignupUserForm from '../SignupUserForm/SignupUserForm';
-import SuccessSignup from '../SuccessSignup/SuccessSignup';
-import FadeRevealAnimation from '../../Animations/FadeRevealAnimation';
+import SignupSuccess from '../SignupSuccess/SignupSuccess';
+import FadeReveal from '../../Animations/FadeReveal/FadeReveal';
 
-const AuthSignupContent = () => {
+const SignupContent = () => {
    const [state, setState] = React.useState({
       success: false, err: '', email: '', isLoading: false
    });
@@ -44,11 +44,11 @@ const AuthSignupContent = () => {
 
    return ( 
       <div>
-         {state.success ? null : <FadeRevealAnimation 
+         {state.success ? null : <FadeReveal 
             text={state.err} 
             success={false} 
          />}
-         {state.success ? <SuccessSignup email={state.email} /> : ( 
+         {state.success ? <SignupSuccess email={state.email} /> : ( 
             <Formik
                render={props => <SignupUserForm {...props} 
                   err={state.err} 
@@ -81,7 +81,7 @@ const AuthSignupContent = () => {
                      .min(8, 'Minimum 8 characters')
                      .matches(/^(?=.*[A-Z])/, 'Must contain at least one uppercase character')
                      .matches(/^(?=.*[0-9])/, 'Must contain at least one numeric character')
-                     .matches(/^(?=.*[!@#\$%\^&])/, 'Must contain at least one special character')
+                     .matches(/^(?=.*[!@#$%^&*()])/, 'Must contain at least one special character')
                      .required('Password is required'),
                   confirmPassword: Yup
                      .string()
@@ -95,4 +95,4 @@ const AuthSignupContent = () => {
    );
 }
  
-export default AuthSignupContent
+export default SignupContent;

@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from './StyledSuccessResetPassword';
+import * as S from './StyledResetPasswordSuccess';
 
-const SuccessResetPassword = () => {
+const ResetPasswordSuccess = () => {
    return (  
       <S.Wrapper>
          <S.Box>
@@ -16,4 +16,4 @@ const SuccessResetPassword = () => {
    );
 }
  
-export default SuccessResetPassword;
+export default ResetPasswordSuccess;

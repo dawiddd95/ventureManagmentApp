@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 
 const Bookings = ({bookings}) => {
    const logout = () => {

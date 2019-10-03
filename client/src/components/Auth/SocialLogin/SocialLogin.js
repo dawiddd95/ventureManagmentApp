@@ -1,12 +1,12 @@
 import React from 'react';
 
-import * as S from './StyledAuthSocialLogin';
+import * as S from './StyledSocialLogin';
 import facebookIcon from '../../../assets/img/facebook.svg';
 import googleIcon from '../../../assets/img/google.svg';
 import twitterIcon from '../../../assets/img/twitter.svg';
 
 
-const AuthSocialLogin = () => {
+const SocialLogin = () => {
    return (  
       <S.Wrapper>
          <S.Divider>
@@ -23,4 +23,4 @@ const AuthSocialLogin = () => {
    );
 }
  
-export default AuthSocialLogin;
+export default SocialLogin;

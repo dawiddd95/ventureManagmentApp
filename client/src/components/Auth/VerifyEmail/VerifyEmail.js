@@ -17,6 +17,7 @@ const AuthVerifyEmail = (props) => {
       .then(res => {
          setResult(res.data);
       })
+      .catch(err => console.log(err))
    }, [])
 
    return (  

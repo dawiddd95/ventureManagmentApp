@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from './StyledLoginManagerForm';
+import * as S from './StyledManagerLoginPanelForm';
 
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 
 const LoginUserForm = ({state, err, handleOnInput, handleOnChange}) => {
    return (  

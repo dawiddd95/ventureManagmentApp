@@ -4,9 +4,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
-import LoginManagerForm from '../LoginManagerForm/LoginManagerForm';
+import ManagerLoginPanelForm from '../ManagerLoginPanelForm/ManagerLoginPanelForm';
 
-const LoginManagerFormWrapper = () => {  
+const ManagerLoginPanelContent = () => {  
    const [err, setErr] = React.useState(''); 
    const [state, setState] = React.useState({
       success: false, isChecked: false, isLoading: false
@@ -48,7 +48,7 @@ const LoginManagerFormWrapper = () => {
          {state.success ? <Redirect to='/user/bookings' /> : ( 
             <Formik
                component={props => (
-                  <LoginManagerForm 
+                  <ManagerLoginPanelForm 
                      {...props} 
                      err={err}
                      state={state}
@@ -76,4 +76,4 @@ const LoginManagerFormWrapper = () => {
    );
 }
  
-export default LoginManagerFormWrapper;
+export default ManagerLoginPanelContent;

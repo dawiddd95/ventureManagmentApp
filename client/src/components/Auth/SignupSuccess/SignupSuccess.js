@@ -1,8 +1,8 @@
 import React from 'react';
 
-import * as S from './StyledSuccessSignup';
+import * as S from './StyledSignupSuccess';
 
-const SuccessSignup = ({email}) => {
+const SignupSuccess = ({email}) => {
    return (  
       <S.Wrapper>
          <S.Content>
@@ -24,4 +24,4 @@ const SuccessSignup = ({email}) => {
    );
 }
  
-export default SuccessSignup;
+export default SignupSuccess;

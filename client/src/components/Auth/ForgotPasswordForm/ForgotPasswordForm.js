@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './StyledForgotPasswordForm';
 
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 
 const ForgotPasswordForm = ({state, handleOnInput}) => {
    return (  
@@ -18,9 +18,6 @@ const ForgotPasswordForm = ({state, handleOnInput}) => {
                   name='email' 
                   component='div' 
                />
-               <S.Response successfully={state.success}>
-                  {state.responseText}
-               </S.Response>
             </S.FieldWrapper>
             <S.Button type='submit' disabled={state.isLoading}>
                Send password reset email

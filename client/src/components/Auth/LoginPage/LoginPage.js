@@ -1,10 +1,10 @@
 import React from 'react';
-import * as S from './StyledAuthLogin';
+import * as S from './StyledLoginPage';
 
 import ManagerLoginPanel from '../ManagerLoginPanel/ManagerLoginPanel';
 import LoginEmployeeFormWrapper from '../LoginEmployeeFormWrapper/LoginEmployeeFormWrapper';
 
-const AuthLogin = () => {
+const LoginPage = () => {
    const [logIn, setLogIn] = React.useState('manager');
 
    return (  
@@ -34,4 +34,4 @@ const AuthLogin = () => {
    );
 }
  
-export default AuthLogin;
+export default LoginPage;

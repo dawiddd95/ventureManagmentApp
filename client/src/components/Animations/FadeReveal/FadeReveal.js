@@ -1,9 +1,9 @@
 import React from 'react'
 import Fade from 'react-reveal/Fade';
 
-import * as S from './StyledFadeRevealAnimation'
-import correctImg from '../../assets/img/correct.png'
-import errorImg from '../../assets/img/error.png'
+import * as S from './StyledFadeReveal'
+import correctImg from '../../../assets/img/correct.png'
+import errorImg from '../../../assets/img/error.png'
 
 
 const FadeRevealAnimation = ({text, success}) => {

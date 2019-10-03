@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './StyledSignupUserForm';
 
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 
 const SignupUserForm = ({err, isLoading, handleOnInput}) => {
    return (  
@@ -40,9 +40,6 @@ const SignupUserForm = ({err, isLoading, handleOnInput}) => {
                   name='email' 
                   component='p' 
                />
-               {/* <S.Error>
-                  {err}
-               </S.Error> */}
             </S.FieldWrapper>
             <S.FieldWrapper>
                <S.StyledField 

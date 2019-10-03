@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import queryString from 'query-string';
-import ResetPasswordFormWrapper from '../ResetPasswordFormWrapper/ResetPasswordFormWrapper';
+import ResetPasswordContent from '../ResetPasswordContent/ResetPasswordContent';
 
 const FetchResetPasswordLink = (props) => {
    const [success, setSuccess] = React.useState(true);
@@ -18,11 +18,12 @@ const FetchResetPasswordLink = (props) => {
          const {success} = res.data;
          setSuccess(success);
       })
+      .catch(err => console.log(err))
    }, [])
 
    return (  
       <div>
-         {success ? <ResetPasswordFormWrapper
+         {success ? <ResetPasswordContent
                location={props.location.search}
             /> : <div>Link is expired</div>
          }

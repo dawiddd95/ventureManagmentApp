@@ -1,19 +1,19 @@
 import React from 'react';
 
-import * as S from './StyledAuthSignup';
-import AuthSignupContent from '../AuthSignupContent/AuthSignupContent';
+import * as S from './StyledSignupPage';
+import SignupContent from '../SignupContent/SignupContent';
 
-const AuthSignup = () => {
+const SignupPage = () => {
    return (  
       <S.Wrapper>
          <S.Content>
             <S.Header>
                Venture Managment App
             </S.Header>
-            <AuthSignupContent />
+            <SignupContent />
          </S.Content>
       </S.Wrapper>
    );
 }
  
-export default AuthSignup;
+export default SignupPage;
