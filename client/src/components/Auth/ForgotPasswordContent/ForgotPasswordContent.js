@@ -25,10 +25,11 @@ const ForgotPasswordContent = () => {
             submit: state.submit = true
          });
       })
-      .catch(() => {
+      .catch(err => {
+         console.log(err)
          setState({
             ...state, 
-            responseText: state.responseText = 'Cannot send password reset email :( Please try again later.',
+            responseText: state.responseText = `Sorry, we don't recognize your credentials`,
             success: state.success = false,
             isLoading: state.isLoading = false,
             submit: state.submit = true

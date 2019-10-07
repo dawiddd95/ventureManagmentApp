@@ -9,6 +9,16 @@ const {forgotPassword} = require('../../services/emails/emails')
 
 const router = express.Router()
 
+// kontrakt :
+// 1. Zwrócenie błędów walidacji jeśli coś jest nie tak,
+// 2. NIE zwracanie błędów walidacji kiedy wszystko okej
+// 3. Zwrócenie użytkownika z bazy danych jeśli istnieje (Jego obiekt lub cos)
+// 4. Zwrócenie status 200 jeśli użytkownik istnieje
+// 5. Zwrócenie status 404 jeśli użytkownik o email nie istnieje 
+// 6. Wysłanie emaila jeśli user istnieje, nie wysyłanie kiedy nie istnieje
+// 7. zupdatewanie usera jeśli istnieje, nie robienie tego kiedy nie istnieje
+// 8. Zwrócenie jsona o odpowiedniej tresci
+
 router.post('/api/auth/forgot-password', emailValidation, async (req, res) => {
    const {email} = req.body
    const newKey = uuid.v4()
@@ -17,7 +27,7 @@ router.post('/api/auth/forgot-password', emailValidation, async (req, res) => {
    if (!errors.isEmpty()) return res.status(422).jsonp(errors.array())
    
    const user = await SignupUser.findOne({ where: { email }})
-   if (user === null) res.json({success: false, text: `Sorry, we don't recognize your credentials`})
+   if (user === null) return res.sendStatus(404)
 
    const host = 'http://localhost:5000' ? 'http://localhost:3000' : req.get('host')
    const link = `${host}/auth/reset?code=${user.code}&key=${newKey}`
@@ -28,7 +38,7 @@ router.post('/api/auth/forgot-password', emailValidation, async (req, res) => {
       await SignupUser.update({key: newKey}, { where: { email }})
       res.json({success: true, text: 'Password reset email sent successfully'})        
    } catch(err) {
-      res.status(400).send(err);
+      console.log(err)
    }
 })
 
