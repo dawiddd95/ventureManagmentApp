@@ -1,9 +1,8 @@
 import React from 'react'
 import Fade from 'react-reveal/Fade';
 
-import * as S from './StyledFadeReveal'
-import correctImg from '../../../assets/img/correct.png'
-import errorImg from '../../../assets/img/error.png'
+import * as S from './StyledFadeReveal';
+import icons from '../../../assets/icons';
 
 
 const FadeRevealAnimation = ({text, success}) => {
@@ -11,7 +10,7 @@ const FadeRevealAnimation = ({text, success}) => {
 		<S.Wrapper>
          <Fade left when={text}>
             <S.AnimationWrapper>
-					<S.Img src={success ? correctImg : errorImg} />
+					<S.Img src={success ? icons.correctIcon : icons.errorIcon} />
 					<S.Text>
 						{text}
 					</S.Text>

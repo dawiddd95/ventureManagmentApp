@@ -1,10 +1,6 @@
 import React from 'react';
-
 import * as S from './StyledSocialLogin';
-import facebookIcon from '../../../assets/img/facebook.svg';
-import googleIcon from '../../../assets/img/google.svg';
-import twitterIcon from '../../../assets/img/twitter.svg';
-
+import icons from '../../../assets/icons';
 
 const SocialLogin = () => {
    return (  
@@ -15,9 +11,9 @@ const SocialLogin = () => {
             </S.Span>
          </S.Divider>
          <S.SocialIconsWrapper>
-            <S.SocialIcon src={facebookIcon} />
-            <S.SocialIcon src={googleIcon} />
-            <S.SocialIcon src={twitterIcon} />
+            <S.SocialIcon src={icons.facebookIcon} />
+            <S.SocialIcon src={icons.googleIcon} />
+            <S.SocialIcon src={icons.twitterIcon} />
          </S.SocialIconsWrapper>
       </S.Wrapper>
    );

@@ -2,10 +2,14 @@ const redColor = '#f5222d';
 const hoverRedColor = '#ff4d4f';
 const redColorDisabled = '#f86b73';
 const silverColor = '#d9d9d9';
+const black85 = 'rgba(0,0,0,0.85)';
+const black65 = 'rgba(0,0,0,0.65)';
 
 export default {
    redColor,
    hoverRedColor,
    redColorDisabled,
-   silverColor
+   silverColor,
+   black85,
+   black65
 }

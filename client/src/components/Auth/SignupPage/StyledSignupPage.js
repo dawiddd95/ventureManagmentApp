@@ -27,7 +27,7 @@ export const Header = styled.h1`
    margin-top: 60px;
    font-weight: 600;
    font-size: 24px;
-   font-family: segoe;
+   font-family: segoe-ui;
    color: rgba(0,0,0,0.85);
    text-align: center;
 `

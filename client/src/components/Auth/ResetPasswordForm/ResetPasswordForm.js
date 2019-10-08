@@ -2,8 +2,7 @@ import React from 'react';
 import {Form} from 'formik';
 import * as S from './StyledResetPasswordForm';
 
-import viewIcon from '../../../assets/img/view.png';
-import hideIcon from '../../../assets/img/hide.png';
+import icons from '../../../assets/icons';
 
 const ResetPassword = ({hide, handleOnClick}) => {
    return (  
@@ -22,7 +21,7 @@ const ResetPassword = ({hide, handleOnClick}) => {
                         name='password' 
                         type={hide ? 'password' : 'text'} 
                      />
-                     <S.Img src={hide ? hideIcon : viewIcon} onClick={handleOnClick} />
+                     <S.Img src={hide ? icons.hideIcon : icons.viewIcon} onClick={handleOnClick} />
                   </S.InputWrapper>
                   <S.StyledErrorMessage 
                      name='password' 
