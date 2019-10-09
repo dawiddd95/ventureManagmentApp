@@ -4,11 +4,14 @@ import {useSelector, useDispatch} from 'react-redux';
 import * as S from './StyledApp';
 
 import thunkActions from '../../duck/thunks';
-//import Bookings from '../../../../components/Bookings/Bookings/Bookings';
+
+import Navbar from '../../../../components/Navbar/Navbar';
 import AsideContent from '../../../../components/AsideMenu/AsideContent/AsideContent';
 import UserRoutes from '../../../../routes/UserRoutes';
 
 const App = () => {
+   const [menuVisibility, setMenuVisibility] = React.useState(false)
+   
    const dispatch = useDispatch();
    // loggedUser w finalnej wersji byłoby userBookings
    const loggedUser = useSelector(state => state.fetchLoggedUser);
@@ -23,12 +26,9 @@ const App = () => {
    // przekazujemy te dane do komponentu 
    return (  
       <S.Wrapper>
-         {/* <Bookings 
-            //bookings={userBookings}
-            bookings={loggedUser}
-         /> */}
-         <AsideContent user={user} />
-         {/* Wywołuje <FetchUserBookings /> */}
+         <Navbar user={user}/>
+         {/* Niech odrazu teraz pokazuje UserRoutes */}
+         {/* <AsideContent user={user} /> */}
          <UserRoutes /> 
       </S.Wrapper>
    );

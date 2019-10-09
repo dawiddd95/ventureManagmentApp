@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './StyledAsideContent';
-import icons from '../../../assets/icons';
 import AsideNavigation from '../AsideNavigation/AsideNavigation';
 
 
@@ -11,10 +10,6 @@ const AsideContent = ({user}) => {
 
    return (  
       <S.Wrapper>
-         <S.Avatar to='/user/profile'>
-            <S.AvatarImg src={icons.avatarIcon} />
-            {user.name} {user.surname}
-         </S.Avatar>
          <AsideNavigation />
          <S.Logout onClick={logout} to='/auth/login'>
             Sign out

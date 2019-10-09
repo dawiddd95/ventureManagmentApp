@@ -6,35 +6,10 @@ export const Wrapper = styled.aside`
    width: 200px;
    height: 100%;
    border-right: 1px solid #e8e8e8;
+   background-color: white;
    font-family: segoe;
    color: ${colors.black85};
-`
-
-export const Avatar = styled(Link)`
-   width: 100%;
-   height: 100px;
-   font-weight: 800;
-   font-size: 14px;
-   color: ${colors.black85};
-   text-decoration: none;
-   background-color: transparent;
-   transition: .3s;
-
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-
-   &:hover {
-      transition: .3s;
-      background-color: #F9F9F9;
-   }
-`
-
-export const AvatarImg = styled.img`
-   width: 30px;
-   height: 30px;
-   margin-bottom: 5px;
+   position: relative;
 `
 
 export const Logout = styled(Link)`

@@ -12,6 +12,9 @@ import chatIcon from './img/chat.svg';
 import clientsIcon from './img/clients.svg';
 import reservedIcon from './img/reserved.svg';
 import ordersIcon from './img/orders.svg';
+import menu from './img/menu.svg';
+import open from './img/open.png';
+import close from './img/close.svg';
 
 
 export default {
@@ -28,5 +31,8 @@ export default {
    reservedIcon,
    ordersIcon,
    viewIcon,
-   hideIcon
+   hideIcon,
+   menu,
+   open,
+   close
 }
