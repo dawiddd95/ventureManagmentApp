@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {Form, Field, ErrorMessage} from 'formik';
 import {Link} from 'react-router-dom';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import colors from '../../../assets/colors';
 
@@ -66,10 +67,15 @@ export const Error = styled.p`
 
 export const CheckboxWrapper = styled.div`
    display: flex;
+   align-items: center;
+`
+
+// Stylowanie checkboxa z Labelem jako kontener
+export const StyledFormControlLabel = styled(FormControlLabel)`
+   height: 20px;
 `
 
 export const Label = styled.label`
-   margin: 0 0 0 8px;
    font-family: segoe;
    font-size: 14px;
    color: rgba(0,0,0,0.65);
@@ -84,7 +90,7 @@ export const StyledLink = styled(Link)`
    transition: .3s;
 
    :hover {
-      color: rgba(245,34,45,0.8);
+      color: rgba(245,34,45,0.4);
       transition: .3s;
    }
 `

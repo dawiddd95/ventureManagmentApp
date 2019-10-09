@@ -1,4 +1,5 @@
 import React from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
 import * as S from './StyledManagerLoginPanelForm';
 
 import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
@@ -35,17 +36,18 @@ const LoginUserForm = ({state, err, handleOnInput, handleOnChange}) => {
                </S.Error>
             </S.FieldWrapper>
             <S.CheckboxWrapper>
-               <S.StyledField 
-                  checkboxstyle='true'
-                  name='remember'
-                  type='checkbox'
-                  id='remember'
-                  checked={state.isChecked}
-                  onChange={handleOnChange}
+               {/* Customowy Label */}
+               <S.StyledFormControlLabel
+                  control={
+                     <Checkbox
+                        checked={state.isChecked}
+                        onChange={handleOnChange}
+                        id="remember"
+                     />
+                  }
+                  // Stylowanie Labela
+                  label={<S.Label htmlFor='remember'>Remember me</S.Label>}
                />
-               <S.Label htmlFor='remember'>
-                  Remember me
-               </S.Label>
                <S.StyledLink to='/auth/forgot-password'>
                   Forgot password
                </S.StyledLink>

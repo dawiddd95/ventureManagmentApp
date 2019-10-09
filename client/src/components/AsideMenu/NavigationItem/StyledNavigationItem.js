@@ -1,22 +1,23 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import colors from '../../../assets/colors';
 
-export const NavigationItem = styled(Link)`
+export const NavigationItem = styled(NavLink)`
    width: 100%;
-   height: 40px;
-   margin: 4px 0;
-   text-decoration: none;
+   height: 45px;
+   margin: 5px 0;
    font-weight: 700;
    font-size: 14px;
-   color: ${props => props.isActive ? colors.redColor : colors.black65};
-   background-color: ${props => props.isActive ? '#FFF1F0' : 'transparent'};
-   box-shadow: ${props => props.isActive ? `inset -10px 0px 0px -7px ${colors.redColor}` : 'none'};
+   font-family: segoe;
+   text-decoration: none;
+   color: ${colors.black65};
 
    display: flex;
    align-items: center;
-   
-   &:hover {
+
+   &.active {
+      background-color: #FFF1F0;
+      box-shadow: inset -10px 0px 0px -7px ${colors.redColor};
       color: ${colors.redColor};
    }
 `
