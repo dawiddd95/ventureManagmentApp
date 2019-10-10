@@ -1,4 +1,5 @@
 import React from 'react';
+import * as S from './StyledBookingsContainer';
 
 import AppNavbar from '../../../../components/AppNavbar/AppNavbar';
 import Bookings from '../../../../components/Bookings/Bookings/Bookings';
@@ -26,7 +27,7 @@ const FetchUserBookings = () => {
    }
 
    return (  
-      <>
+      <S.Wrapper>
          <AppNavbar 
             visible={visibility}
             showHideMenu={showHideMenu}
@@ -35,7 +36,7 @@ const FetchUserBookings = () => {
             bookings='tutaj obiekt bookingów'  
             visible={visibility}
          />
-      </>
+      </S.Wrapper>
    );
 }
  

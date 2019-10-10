@@ -20,8 +20,9 @@ export const MenuIcon = styled.img`
 `
 
 export const Title = styled.h1`
+   font-weight: normal;
    font-size: 20px;
-   font-family: segoe;
+   font-family: Nunito;
 `
 
 export const Avatar = styled.div`

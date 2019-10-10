@@ -1,48 +1,60 @@
 import React from 'react';
 import * as S from './StyledBookings';
 
+import icons from '../../../assets/icons';
+
 import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 import AsideContent from '../../AsideMenu/AsideContent/AsideContent';
 
 const Bookings = ({bookings, visible}) => {
-   
    // return (  
    //    <div>
    //       <LoadingSpinner small={false} />
    //    </div>
    // );
-
-   const styleForm = {
-      'width': '95%',
-      'height': '100px',
-      'marginLeft': '10px',
-      'border': '1px solid red'
-   }
-
-   const styleInput = {
-      'width': '100%',
-      'height': '40px',
-   }
+   const [isAllowed, setIsAllowed] = React.useState(false)
 
    return(
       <S.Wrapper>
          {visible ? <AsideContent /> : null}
-         <div style={{'width': '100%', 'marginTop': '100px'}}>
-            <h1>Bookings</h1>
-            <div>
-               Sekcja buttonów potem pomyśleć jak to porozdzielać
-            </div>
-            <div>
-               Formularz szukania
-            </div>
-            <div>
-               tabela i te filtrowanie {bookings}
-            </div> 
-            <form style={styleForm}>
-               <input style={styleInput} type="text" placeholder='name'/>
-            </form>
-         </div>
-         
+         <S.MainContent>
+            <S.BreadCrumbs>
+               <S.StyledLink>
+                  Home
+               </S.StyledLink>
+               / Bookings
+            </S.BreadCrumbs>
+            <S.BookingsBox>
+               <S.Header>
+                  Bookings
+               </S.Header>
+               <S.ButtonsWrapper>
+                  <S.ButtonLink to='/user/bookings/new' allowed>
+                     <S.Img src={icons.add} />
+                     New
+                  </S.ButtonLink>
+                  <S.ButtonLink to='/user/bookings/new' allowed>
+                     <S.Img src={icons.upload} />
+                     Import
+                  </S.ButtonLink>
+                  <S.ButtonLink to='/user/bookings/new' allowed={isAllowed}>
+                     <S.Img src={icons.bin} />
+                     Delete
+                  </S.ButtonLink>
+                  <S.FancyButtonLink allowed>
+                     <S.Img src={icons.audit} />
+                     Audit Logs
+                  </S.FancyButtonLink>
+                  <S.FancyButtonLink allowed>
+                     <S.Img src={icons.exportToExcel} />
+                     Export to Excel
+                  </S.FancyButtonLink>
+               </S.ButtonsWrapper>
+               {/* Formularz szukania oddzielny komponent */}
+               
+               {/* tabela z paginacja jako 1 oddzielny */}
+            </S.BookingsBox>
+         </S.MainContent>
       </S.Wrapper>
    )
 }

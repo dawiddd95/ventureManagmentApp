@@ -20,6 +20,10 @@ export const NavigationItem = styled(NavLink)`
       box-shadow: inset -10px 0px 0px -7px ${colors.redColor};
       color: ${colors.redColor};
    }
+
+   :hover {
+      color: ${colors.redColor};
+   }
 `
 
 export const Icon = styled.img`

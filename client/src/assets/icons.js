@@ -15,7 +15,11 @@ import ordersIcon from './img/orders.svg';
 import menu from './img/menu.svg';
 import open from './img/open.png';
 import close from './img/close.svg';
-
+import add from './img/add.svg';
+import upload from './img/upload.svg';
+import bin from './img/bin.svg';
+import audit from './img/audit-logs.svg';
+import exportToExcel from './img/export.svg';
 
 export default {
    facebookIcon,
@@ -34,5 +38,10 @@ export default {
    hideIcon,
    menu,
    open,
-   close
+   close,
+   add,
+   upload,
+   bin,
+   audit,
+   exportToExcel
 }

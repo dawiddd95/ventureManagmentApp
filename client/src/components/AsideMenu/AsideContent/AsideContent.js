@@ -3,7 +3,7 @@ import * as S from './StyledAsideContent';
 import AsideNavigation from '../AsideNavigation/AsideNavigation';
 
 
-const AsideContent = ({user}) => {
+const AsideContent = () => {
    const logout = () => {
       localStorage.removeItem('session'); 
    }
