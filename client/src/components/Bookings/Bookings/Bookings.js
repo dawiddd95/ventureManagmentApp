@@ -1,10 +1,13 @@
 import React from 'react';
 import * as S from './StyledBookings';
+import * as Yup from 'yup';
+import {Formik} from 'formik';
 
 import icons from '../../../assets/icons';
 
 import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 import AsideContent from '../../AsideMenu/AsideContent/AsideContent';
+import BookingsSearchForm from '../BookingsSearchForm/BookingsSearchForm';
 
 const Bookings = ({bookings, visible}) => {
    // return (  
@@ -13,6 +16,8 @@ const Bookings = ({bookings, visible}) => {
    //    </div>
    // );
    const [isAllowed, setIsAllowed] = React.useState(false)
+
+   const handleOnSubmit = values => console.log(values)
 
    return(
       <S.Wrapper>
@@ -50,8 +55,44 @@ const Bookings = ({bookings, visible}) => {
                      Export to Excel
                   </S.FancyButtonLink>
                </S.ButtonsWrapper>
+
+
                {/* Formularz szukania oddzielny komponent */}
-               
+               <Formik
+                  component={BookingsSearchForm}
+                  initialValues={{
+                     id: '',
+                     owner: '',
+                     period: '',
+                     totalFeeMin: '',
+                     totalFeeMax: '',
+                     createdAt: '',
+                     room: '',
+                     status: '',
+                  }}
+                  validationSchema={Yup.object().shape({
+                     id: Yup
+                        .string(),
+                     owner: Yup
+                        .string(),
+                     period: Yup
+                        .string(),  
+                     totalFeeMin: Yup
+                        .number(),
+                     totalFeeMax: Yup
+                        .number(),
+                     createdAt: Yup
+                        .string(),                     
+                     room: Yup
+                        .string(),
+                     status: Yup
+                        .string(),
+                  })}
+                  onSubmit={values => handleOnSubmit(values)}      
+               />
+
+
+
                {/* tabela z paginacja jako 1 oddzielny */}
             </S.BookingsBox>
          </S.MainContent>

@@ -36,11 +36,10 @@ export const StyledLink = styled(Link)`
 export const BookingsBox = styled.div`
    width: 100%;
    height: 100%;
-   margin: 20px 0;
+   margin: 20px auto;
    background-color: white;
    border: 1px solid #E9E9E9;
    border-radius: 5px;
-   position: relative;
 `
 
 export const Header = styled.header`
@@ -51,7 +50,7 @@ export const Header = styled.header`
 `
 
 export const ButtonsWrapper = styled.div`
-   width: 50%;
+   width: 90%;
    margin-left: 20px;
 
    display: flex;
