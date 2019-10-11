@@ -5,7 +5,6 @@ import AppNavbar from '../../../../components/AppNavbar/AppNavbar';
 import Bookings from '../../../../components/Bookings/Bookings/Bookings';
 
 // ZMIENIC NAZWE NA BOOKINGS CONTAINER
-// Dodac chyba redux tutaj do menu
 // App z container usunac
 const FetchUserBookings = () => {
    // const dispatch = useDispatch();
@@ -29,11 +28,12 @@ const FetchUserBookings = () => {
    return (  
       <S.Wrapper>
          <AppNavbar 
+            avatar='Tutaj pobrac z bazy danych dane o avatarze'
             visible={visibility}
             showHideMenu={showHideMenu}
          />
          <Bookings 
-            bookings='tutaj obiekt bookingów'  
+            bookings='tutaj obiekt bookingów z bazy danych'  
             visible={visibility}
          />
       </S.Wrapper>

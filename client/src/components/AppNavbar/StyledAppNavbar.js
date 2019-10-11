@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+import colors from '../../assets/colors';
 
 export const Wrapper = styled.div`
    width: 100%;
@@ -12,8 +14,8 @@ export const Wrapper = styled.div`
 `
 
 export const MenuIcon = styled.img`
-   width: ${props => props.visible ? '18px' : '25px'};
-   height: ${props => props.visible ? '18px' : '25px'};
+   width: ${props => props.visible ? '14px' : '20px'};
+   height: ${props => props.visible ? '14px' : '20px'};
    margin-left: ${props => props.visible ? '180px' : '20px'};
    padding: 10px 30px 10px 20px;
    cursor: pointer;
@@ -25,9 +27,33 @@ export const Title = styled.h1`
    font-family: Nunito;
 `
 
-export const Avatar = styled.div`
-   width: 200px;
+export const Avatar = styled(Link)`
+   width: 150px;
    height: 100%;
    margin-left: auto;
-   border: 1px solid red;
+   font-family: segoe;
+   font-size: 14px;
+   text-decoration: none;
+   color: ${colors.black65};
+   transition: .3s;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   :hover {
+      background-color: #F9F9F9;
+      transition: .3s;
+   }
+`
+
+export const Img = styled.img`
+   width: 30px;
+   height: 30px;
+   margin-right: 10px;
+   border-radius: 50%;
+   background-size: cover;
+   background-position: center;
+   object-fit: fit;
+   cursor: pointer;
 `

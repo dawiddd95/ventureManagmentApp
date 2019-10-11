@@ -6,7 +6,18 @@ const BookingsSearchForm = () => {
       <S.Wrapper>
          <S.StyledForm>
             <S.InputsWrapper>
-
+               {/* <S.StyledField 
+                  name='id' 
+                  type='text' 
+                  placeholder='ID' 
+                  onInput={handleOnInput}
+               />
+               <S.StyledField 
+                  name='id' 
+                  type='text' 
+                  placeholder='ID' 
+                  onInput={handleOnInput}
+               /> */}
             </S.InputsWrapper>
          </S.StyledForm>
       </S.Wrapper>
