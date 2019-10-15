@@ -6,11 +6,6 @@ import NavigationItem from '../NavigationItem/NavigationItem';
 
 const AsideNavigation = () => {
    return (  
-      // wysokosc elementu 1cm
-      // ikonka od lewej 0.5cm
-      // teskt od ikonki 0.3cm
-      // element od elementu 0.3cm
-      // czcionka 14px segoe
       <S.Navigation>
          <NavigationItem icon={icons.usersIcon} text='Users' link='/user/users' /> 
          <NavigationItem icon={icons.auditIcon} text='Audit Logs' link='/user/audit-logs'/>  

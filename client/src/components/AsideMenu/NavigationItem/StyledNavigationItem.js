@@ -33,5 +33,5 @@ export const Icon = styled.img`
 `
 
 export const Text = styled.p`
-   margin-left: 10px;
+   margin: 0 0 0 10px;
 `

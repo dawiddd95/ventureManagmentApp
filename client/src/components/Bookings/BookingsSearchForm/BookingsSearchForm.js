@@ -1,23 +1,82 @@
 import React from 'react';
 import * as S from './StyledBookingsSearchForm';
+import icons from '../../../assets/icons';
 
 const BookingsSearchForm = () => {
    return ( 
       <S.Wrapper>
          <S.StyledForm>
             <S.InputsWrapper>
-               {/* <S.StyledField 
-                  name='id' 
-                  type='text' 
-                  placeholder='ID' 
-                  onInput={handleOnInput}
-               />
-               <S.StyledField 
-                  name='id' 
-                  type='text' 
-                  placeholder='ID' 
-                  onInput={handleOnInput}
-               /> */}
+               <S.Col>
+                  <S.Label>Booking ID:</S.Label> 
+                  <S.StyledField 
+                     name='id' 
+                     type='text' 
+                  />
+               </S.Col>
+               <S.Col>
+                  <S.Label>Client:</S.Label> 
+                  <S.StyledField 
+                     name='client' 
+                     type='text' 
+                  />
+               </S.Col>
+               <S.Col>
+                  <S.Label>Room:</S.Label> 
+                  <S.StyledField 
+                     name='room' 
+                     type='text' 
+                  />
+               </S.Col>
+               <S.Col>
+                  <S.Label>Status:</S.Label> 
+                  <S.StyledField 
+                     name='status' 
+                     type='text' 
+                  />
+               </S.Col>
+               <S.Col>
+                  <S.Label>Booking Start Date:</S.Label> 
+                  <S.StyledField 
+                     name='bookingStart' 
+                     type='date' 
+                  />
+               </S.Col>
+               <S.Col>
+                  <S.Label>Created At:</S.Label> 
+                  <S.StyledField 
+                     rangeValue
+                     title='Created At Start Date'
+                     name='createdAtStartDate' 
+                     type='date' 
+                  />
+                  ~~
+                  <S.StyledField 
+                     rangeValue
+                     title='Created At End Date'
+                     name='createdAtEndDate' 
+                     type='date' 
+                  />
+               </S.Col>
+               <S.Col lastInput>
+                  <S.Label>Booking End Date:</S.Label> 
+                  <S.StyledField 
+                     name='bookingEnd' 
+                     type='date' 
+                  />
+               </S.Col>
+               
+               {/* Zrobic te 2 buttony */}
+               <S.ButtonsWrapper>
+                  <S.Button type='submit'>
+                     <S.Img src={icons.search} />
+                     Search
+                  </S.Button> 
+                  <S.Button type='reset' fancy>
+                     <S.Img src={icons.reset} />
+                     Reset
+                  </S.Button> 
+               </S.ButtonsWrapper>
             </S.InputsWrapper>
          </S.StyledForm>
       </S.Wrapper>
@@ -25,40 +84,3 @@ const BookingsSearchForm = () => {
 }
  
 export default BookingsSearchForm;
-
-
-{/* <S.Wrapper>
-         <S.StyledForm>
-            <S.FieldWrapper>
-               <S.StyledField 
-                  name='id' 
-                  type='text' 
-                  placeholder='ID' 
-                  onInput={handleOnInput}
-               />
-               <S.StyledErrorMessage 
-                  name='id' 
-                  component='p' 
-               />
-            </S.FieldWrapper>
-            <S.FieldWrapper>
-               <S.StyledField 
-                  name='password' 
-                  type='password' 
-                  placeholder='Password' 
-                  onInput={handleOnInput}
-               />
-               <S.StyledErrorMessage 
-                  name='password' 
-                  component='p' 
-               />
-               <S.Error>
-                  {err}
-               </S.Error>
-            </S.FieldWrapper>
-            <S.Button type='submit' disabled={state.isLoading}>
-               Log in
-               {state.isLoading ? <LoadingSpinner small /> : null}
-            </S.Button>
-         </S.StyledForm>
-      </S.Wrapper> */}

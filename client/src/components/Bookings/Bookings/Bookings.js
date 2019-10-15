@@ -34,6 +34,7 @@ const Bookings = ({bookings, visible}) => {
                   Bookings
                </S.Header>
                <S.ButtonsWrapper>
+                  {/* Byc moze te buttony wyniesc */}
                   <S.ButtonLink to='/user/bookings/new' allowed>
                      <S.Img src={icons.add} />
                      New
@@ -62,31 +63,31 @@ const Bookings = ({bookings, visible}) => {
                   component={BookingsSearchForm}
                   initialValues={{
                      id: '',
-                     owner: '',
-                     period: '',
-                     totalFeeMin: '',
-                     totalFeeMax: '',
-                     createdAt: '',
+                     client: '',
                      room: '',
                      status: '',
+                     bookingStart: '',
+                     bookingEnd: '',
+                     createdAtStartDate: '',
+                     createdAtEndDate: '',
                   }}
                   validationSchema={Yup.object().shape({
                      id: Yup
                         .string(),
-                     owner: Yup
+                     client: Yup
                         .string(),
-                     period: Yup
-                        .string(),  
-                     totalFeeMin: Yup
-                        .number(),
-                     totalFeeMax: Yup
-                        .number(),
-                     createdAt: Yup
-                        .string(),                     
                      room: Yup
                         .string(),
                      status: Yup
                         .string(),
+                     bookingStart: Yup
+                        .string(), 
+                     bookingEnd: Yup
+                        .string(),
+                     createdAtStartDate: Yup
+                        .string(),                     
+                     createdAtEndDate: Yup
+                        .string(), 
                   })}
                   onSubmit={values => handleOnSubmit(values)}      
                />

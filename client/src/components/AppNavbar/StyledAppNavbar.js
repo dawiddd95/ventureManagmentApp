@@ -16,12 +16,12 @@ export const Wrapper = styled.div`
 export const MenuIcon = styled.img`
    width: ${props => props.visible ? '14px' : '20px'};
    height: ${props => props.visible ? '14px' : '20px'};
-   margin-left: ${props => props.visible ? '180px' : '20px'};
-   padding: 10px 30px 10px 20px;
+   margin-left: ${props => props.visible ? '190px' : '25px'};
    cursor: pointer;
 `
 
 export const Title = styled.h1`
+   margin: 0 0 0 25px;
    font-weight: normal;
    font-size: 20px;
    font-family: Nunito;
