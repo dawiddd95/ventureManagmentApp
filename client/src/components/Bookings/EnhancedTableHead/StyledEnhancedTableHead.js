@@ -4,13 +4,19 @@ import TableCell from '@material-ui/core/TableCell';
 import colors from '../../../assets/colors';
 
 const StyledTableCell = withStyles(theme => ({
-   head: {
-     backgroundColor: '#F9F9F9',
-     color: colors.black85,
-   },
-   body: {
-     fontSize: 14,
-   },
+	root: {
+		
+	},
+	head: {
+		backgroundColor: colors.hoverRedColor,
+		color: colors.black85,
+		fontWeight: 600,
+		fontSize: '12px',
+		color: 'white',
+	},
+	body: {
+		
+	},
 }))(TableCell);
  
 export default StyledTableCell;

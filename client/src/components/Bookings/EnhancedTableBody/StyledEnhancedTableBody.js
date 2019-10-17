@@ -7,15 +7,18 @@ const useStyles = makeStyles(theme => ({
       fontFamily: 'segoe',
       color: colors.black65,
       marginTop: theme.spacing(3), 
+      '& .makeStyles-actions-70': {
+			margin: '0 100% 0 10px',
+      },
    },
    paper: {
       width: '100%',
       marginBottom: theme.spacing(2),
-      border: '1px solid #D9D9D9',
       boxShadow: 'none'
    },
    table: {
       minWidth: 750,
+      height: '100%',
    },
    tableWrapper: {
       overflowX: 'auto',

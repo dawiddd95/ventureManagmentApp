@@ -26,7 +26,7 @@ const EnhancedTableToolbar = props => {
 						{numSelected} selected
 					</Typography>
 					) 
-				: <div sttyle={{'fontSize': '16px'}}>Bookings List</div>
+				:	null
 			}
 			</div>
 			<div className={classes.spacer} />
