@@ -7,6 +7,7 @@ import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 import SearchFormActionButtons from '../SearchFormActionButtons/SearchFormActionButtons';
 import BookingsSearchForm from '../BookingsSearchForm/BookingsSearchForm';
 import AsideNavigation from '../../AsideMenu/AsideNavigation/AsideNavigation';
+import BookingsTable from '../BookingsTable/BookingsTable';
 
 const Bookings = ({bookings, visible}) => {
    // return (  
@@ -14,7 +15,6 @@ const Bookings = ({bookings, visible}) => {
    //       <LoadingSpinner small={false} />
    //    </div>
    // );
-   const [isAllowed, setIsAllowed] = React.useState(false)
 
    return(
       <S.Wrapper>
@@ -32,10 +32,7 @@ const Bookings = ({bookings, visible}) => {
                </S.Header>
                <SearchFormActionButtons />
                <BookingsSearchForm />
-
-               {/* tabela z paginacja jako 1 oddzielny */}
-               
-
+               <BookingsTable />
             </S.BookingsBox>
          </S.MainContent>
       </S.Wrapper>
