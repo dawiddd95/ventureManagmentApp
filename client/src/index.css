@@ -7,6 +7,26 @@ html, body {
    height: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F5222D;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
 @font-face {
    font-family: 'nobel';
    src: url('./assets/fonts/nobel.otf');
@@ -21,3 +41,10 @@ html, body {
    font-family: 'segoe';
    src: url('./assets/fonts/segoe-ui.ttf');
 }
+
+::-webkit-scrollbar-track {
+   width: 14px;
+   background: #f1f1f1; }
+ 
+ ::-webkit-scrollbar-thumb {
+   background-color: #f26876; }

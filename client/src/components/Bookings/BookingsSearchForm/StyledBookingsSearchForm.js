@@ -4,7 +4,6 @@ import {Form, Field} from 'formik';
 import colors from '../../../assets/colors';
 
 // Dziwne zaleznosci naprawiamy display: block;
-
 export const Wrapper = styled.div`
    width: 100%;
    height: 100%;

@@ -42,7 +42,7 @@ export const Span = styled.span`
 
 export const SocialIconsWrapper = styled.div`
    width: 100%;
-   margin-top: 35px;
+   margin-top: 25px;
 
    display: flex;
    justify-content: center;

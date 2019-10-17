@@ -1,8 +1,9 @@
 import React from 'react';
 import * as S from './StyledAppNavbar';
 
-import icons from '../../assets/icons';
-import avatarDefault from '../../assets/img/avatar-default.jpg';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
+
+import icons from '../../../assets/icons';
 
 const AppNavbar = ({avatar, visible, showHideMenu}) => {
    const defaultAvatar = 'sciezka';
@@ -17,12 +18,7 @@ const AppNavbar = ({avatar, visible, showHideMenu}) => {
          <S.Title>
             Venture Managment App
          </S.Title>
-         <S.Avatar to='/user/profile'>
-            <S.Img 
-               style={{'backgroundImage': `url(${avatarDefault})`}}
-            />
-            Manager
-         </S.Avatar>
+         <DropdownMenu />
       </S.Wrapper>
    );
 }

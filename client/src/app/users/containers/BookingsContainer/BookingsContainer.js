@@ -1,13 +1,11 @@
 import React from 'react';
 import * as S from './StyledBookingsContainer';
 
-import AppNavbar from '../../../../components/AppNavbar/AppNavbar';
+import AppNavbar from '../../../../components/AppNavbar/AppNavbar/AppNavbar';
 import Bookings from '../../../../components/Bookings/Bookings/Bookings';
 
-// ZMIENIC NAZWE NA BOOKINGS CONTAINER
-// App z container usunac
-const FetchUserBookings = () => {
-   // const dispatch = useDispatch();
+const BookingsContainer = () => {
+   // const dispatch = useDi- spatch();
    // //loggedUser w finalnej wersji byłoby userBookings
    // const loggedUser = useSelector(state => state.fetchLoggedUser);
    // //const userBookings = useSelector(state => state.fetchUserBookings);
@@ -28,7 +26,7 @@ const FetchUserBookings = () => {
    return (  
       <S.Wrapper>
          <AppNavbar 
-            avatar='Tutaj pobrac z bazy danych dane o avatarze'
+            avatar='Tutaj pobrac z bazy danych dane o avatarze - sciezke miniaturki'
             visible={visibility}
             showHideMenu={showHideMenu}
          />
@@ -40,4 +38,4 @@ const FetchUserBookings = () => {
    );
 }
  
-export default FetchUserBookings;
+export default BookingsContainer;

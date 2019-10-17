@@ -45,10 +45,11 @@ const ForgotPasswordContent = () => {
 
    return (  
       <div>
-         {!state.submit ? null : <FadeReveal 
-            text={state.responseText} 
-            success={state.success} 
-         />}
+         {!state.submit 
+            ? null 
+            : <FadeReveal text={state.responseText} success={state.success} />
+         }
+         {/* Tutaj odrazu formularz */}
          <Formik
             render={props => <ForgotPasswordForm 
                {...props} 

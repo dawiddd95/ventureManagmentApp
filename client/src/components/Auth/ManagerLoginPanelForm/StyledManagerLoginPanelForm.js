@@ -12,7 +12,8 @@ export const Wrapper = styled.div`
 `
 
 export const StyledForm = styled(Form)`
-   width: 100%
+   width: 100%;
+   font-family: 'segoe';
 `
 
 export const FieldWrapper = styled.div`

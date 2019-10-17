@@ -1,13 +1,12 @@
 import React from 'react';
 import * as S from './StyledBookings';
-import * as Yup from 'yup';
-import {Formik} from 'formik';
 
 import icons from '../../../assets/icons';
 
 import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
-import AsideContent from '../../AsideMenu/AsideContent/AsideContent';
+import SearchFormActionButtons from '../SearchFormActionButtons/SearchFormActionButtons';
 import BookingsSearchForm from '../BookingsSearchForm/BookingsSearchForm';
+import AsideNavigation from '../../AsideMenu/AsideNavigation/AsideNavigation';
 
 const Bookings = ({bookings, visible}) => {
    // return (  
@@ -17,11 +16,9 @@ const Bookings = ({bookings, visible}) => {
    // );
    const [isAllowed, setIsAllowed] = React.useState(false)
 
-   const handleOnSubmit = values => console.log(values)
-
    return(
       <S.Wrapper>
-         {visible ? <AsideContent /> : null}
+         {visible ? <AsideNavigation /> : null}
          <S.MainContent>
             <S.BreadCrumbs>
                <S.StyledLink>
@@ -33,68 +30,12 @@ const Bookings = ({bookings, visible}) => {
                <S.Header>
                   Bookings
                </S.Header>
-               <S.ButtonsWrapper>
-                  {/* Byc moze te buttony wyniesc */}
-                  <S.ButtonLink to='/user/bookings/new' allowed>
-                     <S.Img src={icons.add} />
-                     New
-                  </S.ButtonLink>
-                  <S.ButtonLink to='/user/bookings/new' allowed>
-                     <S.Img src={icons.upload} />
-                     Import
-                  </S.ButtonLink>
-                  <S.ButtonLink to='/user/bookings/new' allowed={isAllowed}>
-                     <S.Img src={icons.bin} />
-                     Delete
-                  </S.ButtonLink>
-                  <S.FancyButtonLink allowed>
-                     <S.Img src={icons.audit} />
-                     Audit Logs
-                  </S.FancyButtonLink>
-                  <S.FancyButtonLink allowed>
-                     <S.Img src={icons.exportToExcel} />
-                     Export to Excel
-                  </S.FancyButtonLink>
-               </S.ButtonsWrapper>
-
-
-               {/* Formularz szukania oddzielny komponent */}
-               <Formik
-                  component={BookingsSearchForm}
-                  initialValues={{
-                     id: '',
-                     client: '',
-                     room: '',
-                     status: '',
-                     bookingStart: '',
-                     bookingEnd: '',
-                     createdAtStartDate: '',
-                     createdAtEndDate: '',
-                  }}
-                  validationSchema={Yup.object().shape({
-                     id: Yup
-                        .string(),
-                     client: Yup
-                        .string(),
-                     room: Yup
-                        .string(),
-                     status: Yup
-                        .string(),
-                     bookingStart: Yup
-                        .string(), 
-                     bookingEnd: Yup
-                        .string(),
-                     createdAtStartDate: Yup
-                        .string(),                     
-                     createdAtEndDate: Yup
-                        .string(), 
-                  })}
-                  onSubmit={values => handleOnSubmit(values)}      
-               />
-
-
+               <SearchFormActionButtons />
+               <BookingsSearchForm />
 
                {/* tabela z paginacja jako 1 oddzielny */}
+               
+
             </S.BookingsBox>
          </S.MainContent>
       </S.Wrapper>
@@ -102,3 +43,66 @@ const Bookings = ({bookings, visible}) => {
 }
  
 export default Bookings;
+
+
+
+
+// {
+//   "name": "client",
+//   "version": "0.1.0",
+//   "private": true,
+//   "dependencies": {
+//     "@date-io/date-fns": "^1.3.11",
+//     "@material-ui/core": "^4.5.0",
+//     "@material-ui/icons": "^4.4.3",
+//     "@material-ui/pickers": "^3.2.6",
+//     "antd": "^3.23.6",
+//     "axios": "^0.19.0",
+//     "bootstrap": "^4.3.1",
+//     "date-fns": "^2.0.0-beta.5",
+//     "formik": "^1.5.8",
+//     "immer": "^3.2.0",
+//     "js-cookie": "^2.2.1",
+//     "jwt-decode": "^2.2.0",
+//     "query-string": "^6.8.2",
+//     "rc-datepicker": "^5.0.14",
+//     "react": "^16.8.6",
+//     "react-bootstrap": "^1.0.0-beta.14",
+//     "react-datepicker": "^2.9.6",
+//     "react-day-picker": "^7.3.2",
+//     "react-dom": "^16.8.6",
+//     "react-redux": "^7.1.0",
+//     "react-reveal": "^1.2.2",
+//     "react-router": "^5.0.1",
+//     "react-router-dom": "^5.0.1",
+//     "react-scripts": "3.0.1",
+//     "redux": "^4.0.4",
+//     "redux-devtools-extension": "^2.13.8",
+//     "redux-thunk": "^2.3.0",
+//     "styled-components": "^4.3.2",
+//     "uuid": "^3.3.2",
+//     "yup": "^0.27.0"
+//   },
+//   "scripts": {
+//     "start": "react-scripts start",
+//     "build": "react-scripts build",
+//     "test": "react-scripts test",
+//     "eject": "react-scripts eject"
+//   },
+//   "eslintConfig": {
+//     "extends": "react-app"
+//   },
+//   "browserslist": {
+//     "production": [
+//       ">0.2%",
+//       "not dead",
+//       "not op_mini all"
+//     ],
+//     "development": [
+//       "last 1 chrome version",
+//       "last 1 firefox version",
+//       "last 1 safari version"
+//     ]
+//   },
+//   "proxy": "http://localhost:5000"
+// }

@@ -22,6 +22,8 @@ import audit from './img/audit-logs.svg';
 import exportToExcel from './img/export.svg';
 import search from './img/search.svg';
 import reset from './img/reset.svg';
+import logout from './img/logout.svg';
+import profile from './img/profile.svg';
 
 
 export default {
@@ -48,5 +50,7 @@ export default {
    audit,
    exportToExcel,
    search,
-   reset
+   reset,
+   logout,
+   profile
 }

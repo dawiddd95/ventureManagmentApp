@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './StyledLoginPage';
 
-import ManagerLoginPanel from '../ManagerLoginPanel/ManagerLoginPanel';
+import LoginAsManager from '../LogisAsManager/LoginAsManager';
 import LoginEmployeeFormWrapper from '../LoginEmployeeFormWrapper/LoginEmployeeFormWrapper';
 
 const LoginPage = () => {
@@ -28,7 +28,7 @@ const LoginPage = () => {
                   Employee
                </S.LoginAsItem>
             </S.LoginAs>
-            {logIn === 'manager' ? <ManagerLoginPanel /> : <LoginEmployeeFormWrapper />}
+            {logIn === 'manager' ? <LoginAsManager /> : <LoginEmployeeFormWrapper />}
          </S.Content>
       </S.Wrapper>
    );

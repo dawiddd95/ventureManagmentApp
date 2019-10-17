@@ -10,6 +10,7 @@ const AuthForgotPassword = () => {
             <S.Header>
                Venture Managment App
             </S.Header>
+            {/* Zmiana na ForgotPasswordPanel */}
             <ForgotPasswordContent />
             <S.StyledLink to='/auth/login'>
                Cancel

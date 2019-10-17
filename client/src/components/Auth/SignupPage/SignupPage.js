@@ -10,6 +10,7 @@ const SignupPage = () => {
             <S.Header>
                Venture Managment App
             </S.Header>
+            {/* Zmiana na SignupPanel */}
             <SignupContent />
          </S.Content>
       </S.Wrapper>

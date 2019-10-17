@@ -44,11 +44,14 @@ const SignupContent = () => {
 
    return ( 
       <div>
-         {state.success ? null : <FadeReveal 
-            text={state.err} 
-            success={false} 
-         />}
-         {state.success ? <SignupSuccess email={state.email} /> : ( 
+         {state.success 
+            ? null 
+            : <FadeReveal text={state.err} success={false} />
+         }
+         {state.success 
+            ? <SignupSuccess email={state.email} /> 
+            : ( 
+               // <SignupUserForm /> i formik jako jedno
             <Formik
                render={props => <SignupUserForm {...props} 
                   err={state.err} 

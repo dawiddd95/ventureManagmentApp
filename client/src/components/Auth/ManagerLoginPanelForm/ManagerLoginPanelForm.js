@@ -4,7 +4,7 @@ import * as S from './StyledManagerLoginPanelForm';
 
 import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 
-const LoginUserForm = ({state, err, handleOnInput, handleOnChange}) => {
+const ManagerLoginPanelForm = ({state, err, handleOnInput, handleOnChange}) => {
    return (  
       <S.Wrapper>
          <S.StyledForm>
@@ -61,4 +61,4 @@ const LoginUserForm = ({state, err, handleOnInput, handleOnChange}) => {
    );
 }
  
-export default LoginUserForm;
+export default ManagerLoginPanelForm;
