@@ -16,21 +16,21 @@ export const ButtonLink = styled(Link)`
    padding: 0 15px;
    font-weight: 400;
    font-size: 14px;
-   background-color: ${props => props.allowed ? colors.redColor : '#DEDEDE'};
-   border: ${props => props.allowed ? '1px solid transparent' : '1px solid #c4c4c4'}
+   background-color: ${colors.redColor};
+   border: 1px solid transparent;
    border-radius: 5px;
    text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
    box-shadow: 0 2px 0 rgba(0,0,0,0.045);
    text-decoration: none;
    color: white;
    transition: .3s;
-   cursor: ${props => props.allowed ? 'pointer' : 'not-allowed'};
+   cursor: pointer;
 
    display: flex;
    align-items: center;
 
    :hover {
-      background-color: ${props => props.allowed ? colors.hoverRedColor : '#D9D9D9'};
+      background-color: ${colors.hoverRedColor};
       transition: .3s;
    }
 `
