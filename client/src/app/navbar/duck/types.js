@@ -1,0 +1,5 @@
+const ASIDE_MENU_VISIBILITY = 'ASIDE_MENU_VISIBILITY';
+
+export default {
+   ASIDE_MENU_VISIBILITY,
+}

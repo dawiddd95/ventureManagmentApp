@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 export const MenuIcon = styled.img`
    width: ${props => props.visible ? '15px' : '20px'};
    height: ${props => props.visible ? '15px' : '20px'};
-   margin-left: ${props => props.visible ? '190px' : '25px'};
+   margin-left: ${props => props.visible ? '190px' : '25px'}; 
    cursor: pointer;
 `
 

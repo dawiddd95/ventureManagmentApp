@@ -6,7 +6,6 @@ import colors from '../../../assets/colors';
 // Dziwne zaleznosci naprawiamy display: block;
 export const Wrapper = styled.div`
    width: 100%;
-   height: 100%;
    margin-bottom: 20px;
    
    display: block;
@@ -14,7 +13,6 @@ export const Wrapper = styled.div`
 
 export const StyledForm = styled(Form)`
    width: 96%;
-   height: 100%;
    margin: 30px auto 0 auto;
    border: 1px solid #D9D9D9;
    border-radius: 4px;
@@ -58,6 +56,7 @@ export const StyledField = styled(Field)`
    padding: 0 0 0 15px;
    border: 0;
    outline: 0;
+   background-color: white;
    border: 1px solid ${colors.silverColor};   
    border-radius: 5px;
    font-weight: 200;

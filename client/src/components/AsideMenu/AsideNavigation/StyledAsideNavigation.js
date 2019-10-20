@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../../assets/colors';
 
-// Jesli nie mamy wysokosci na całe miejsce jak byśmy chcieli to użyjmy zamiast height: 100%; height:auto lub bez height
+// Jesli nie mamy wysokosci na całe miejsce jak byśmy chcieli, to użyjmy zamiast height: 100%; height:auto lub bez height
 export const Wrapper = styled.aside`
    width: 200px;
    border-right: 1px solid #e8e8e8;

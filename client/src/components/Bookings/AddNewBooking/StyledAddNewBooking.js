@@ -2,8 +2,13 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import colors from '../../../assets/colors';
 
-
 export const Wrapper = styled.div`
+   width: 100%;
+   background-color: #F0F2F5;
+   display: block;
+`
+
+export const Section = styled.div`
    width: 100%;
    height: 100%;
    font-family: segoe;
@@ -35,7 +40,6 @@ export const StyledLink = styled(Link)`
 
 export const BookingsBox = styled.div`
    width: 100%;
-   height: 100%;
    margin: 20px auto;
    background-color: white;
    border: 1px solid #E9E9E9;

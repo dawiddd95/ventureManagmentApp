@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import fetchLoggedUser from './app/users/duck'; 
+// import fetchedLoggedUser from './app/user/duck'; 
+import menuVisibility from './app/navbar/duck';
 
 const rootReducer = combineReducers({
-   fetchLoggedUser,
+   // fetchedLoggedUser,
+   menuVisibility
 })
 
 export default rootReducer;

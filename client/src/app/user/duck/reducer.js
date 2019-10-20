@@ -5,7 +5,7 @@ const INITIAL_STATE = {
    user: {}
 }
 
-const fetchLoggedUser = (state = INITIAL_STATE, action) => {
+const fetchedLoggedUser = (state = INITIAL_STATE, action) => {
    switch(action.type) {
       case types.FETCH_LOGGED_USER: 
          return produce(state, draftState => {
@@ -17,4 +17,4 @@ const fetchLoggedUser = (state = INITIAL_STATE, action) => {
    }
 }
 
-export default fetchLoggedUser;
+export default fetchedLoggedUser;

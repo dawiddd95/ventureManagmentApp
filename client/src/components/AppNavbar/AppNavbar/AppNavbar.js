@@ -5,14 +5,14 @@ import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 import icons from '../../../assets/icons';
 
-const AppNavbar = ({avatar, visible, showHideMenu}) => {
+const AppNavbar = ({avatar, visible, handleChangeMenuVisibility}) => {
    const defaultAvatar = 'sciezka';
 
    return (  
       <S.Wrapper>
          <S.MenuIcon 
             src={visible ? icons.close : icons.menu}
-            onClick={() => showHideMenu()} 
+            onClick={() => handleChangeMenuVisibility()} 
             visible={visible}
          />
          <S.Title>
