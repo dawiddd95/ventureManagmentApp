@@ -50,14 +50,14 @@ export const Label = styled.div`
 `
 
 export const StyledField = styled(Field)`
-   width: ${props => props.rangeValue ? '30%' : '72%'};
-   height: 100%;
+   width: ${props => props.rangeValue ? '40%' : '72%'};
+   height:  ${props => props.rangeValue ? '95%' : '100%'};
    margin: ${props => props.rangeValue ? '0 5px' : '0'};
-   padding: 0 0 0 15px;
+   padding: ${props => props.rangeValue ? '0 0 0 40px' : '0 0 0 15px'};
    border: 0;
    outline: 0;
    background-color: white;
-   border: 1px solid ${colors.silverColor};   
+   border: ${props => props.rangeValue ? 0 : `1px solid ${colors.silverColor}`};   
    border-radius: 5px;
    font-weight: 200;
    font-size: 14px;
@@ -66,12 +66,12 @@ export const StyledField = styled(Field)`
 
    &:hover {
       transition: 0.3s;
-      border: 1px solid ${colors.redColor};
+      border: ${props => props.rangeValue ? '0' : `1px solid ${colors.redColor}`};
    }
 
    &:focus {
-      border: 1px solid ${colors.redColor};
-      box-shadow: 0 0 0 2px rgba(245,34,45,0.2);
+      border: ${props => props.rangeValue ? '0' : `1px solid ${colors.redColor}`};
+      box-shadow:  ${props => props.rangeValue ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
    }
 `
 
@@ -87,6 +87,7 @@ export const PickersWrapper = styled.div`
    
    display: flex;
    justify-content: space-between;
+   align-items: center;
 
    &:hover {
       transition: 0.3s;

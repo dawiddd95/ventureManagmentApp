@@ -79,19 +79,21 @@ const BookingsSearchForm = () => {
                      </S.Col>
                      <S.Col>
                         <S.Label>Created At:</S.Label> 
-                        <S.StyledField 
-                           rangeValue
-                           title='Created At Start Date'
-                           name='createdAtStartDate' 
-                           type='date' 
-                        />
-                        ~~
-                        <S.StyledField 
-                           rangeValue
-                           title='Created At End Date'
-                           name='createdAtEndDate' 
-                           type='date' 
-                        />
+                        <S.PickersWrapper> 
+                           <S.StyledField 
+                              rangeValue
+                              title='Created At Start Date'
+                              name='createdAtStartDate' 
+                              type='date' 
+                           />
+                           ~~
+                           <S.StyledField 
+                              rangeValue
+                              title='Created At End Date'
+                              name='createdAtEndDate' 
+                              type='date' 
+                           />
+                        </S.PickersWrapper>
                      </S.Col>
                      <S.Col lastInput>
                         <S.Label>Booking End Date:</S.Label> 

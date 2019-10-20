@@ -24,6 +24,7 @@ import search from './img/search.svg';
 import reset from './img/reset.svg';
 import logout from './img/logout.svg';
 import profile from './img/profile.svg';
+import save from './img/save.svg';
 
 
 export default {
@@ -52,5 +53,6 @@ export default {
    search,
    reset,
    logout,
-   profile
+   profile,
+   save
 }
