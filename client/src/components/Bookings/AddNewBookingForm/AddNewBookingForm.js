@@ -14,8 +14,13 @@ const AddNewBookingForm = () => {
             client: '',
             room: '',
             status: '',
-            bookingStart: '',
-            bookingEnd: '',
+            bookingStartDate: '',
+            bookingStartTime: '',
+            bookingEndDate: '',
+            bookingEndTime: '',
+            notes: '',
+            employeeNotes: '',
+            cancellationNotes: ''
          }}
          validationSchema={Yup.object().shape({
             client: Yup
@@ -26,12 +31,18 @@ const AddNewBookingForm = () => {
             status: Yup
                .string()
                .required('status is required'),
-            bookingStart: Yup
+            bookingStartDate: Yup
                .string()
                .required('Booking start date is required'),
-            bookingEnd: Yup
+            bookingStartTime: Yup
+               .string()
+               .required('Booking start time is required'),
+            bookingEndDate: Yup
                .string()
                .required('Booking end date is required'),
+            bookingEndTime: Yup
+               .string()
+               .required('Booking end time is required'),
             notes: Yup
                .string(),
             employeeNotes: Yup
@@ -58,29 +69,55 @@ const AddNewBookingForm = () => {
                   </S.FieldWrapper> 
                   <S.FieldWrapper>
                      <S.Col>
-                        <S.Label>Booking Period:</S.Label> 
+                        <S.Label>Booking Start Date:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
-                              rangeValue
+                              secondaryStyled
                               left
-                              name='bookingStart' 
-                              type='datetime-local' 
+                              name='bookingStartDate' 
+                              type='date' 
                            />
-                           ~~
                            <S.StyledField 
-                              rangeValue
-                              right
-                              name='bookingEnd' 
-                              type='datetime-local' 
+                              secondaryStyled
+                              dateTimeStyled
+                              name='bookingStartTime' 
+                              type='time' 
                            />
                         </S.PickersWrapper>
                      </S.Col>
                      <S.StyledErrorMessage 
-                        name='bookingStart' 
+                        name='bookingStartDate' 
                         component='p' 
                      />
                      <S.StyledErrorMessage 
-                        name='bookingEnd' 
+                        name='bookingStartTime' 
+                        component='p' 
+                     />
+                  </S.FieldWrapper>
+                  <S.FieldWrapper>
+                     <S.Col>
+                        <S.Label>Booking End Date:</S.Label> 
+                        <S.PickersWrapper>
+                           <S.StyledField 
+                              secondaryStyled
+                              right
+                              name='bookingEndDate' 
+                              type='date' 
+                           />
+                           <S.StyledField 
+                              secondaryStyled
+                              dateTimeStyled
+                              name='bookingEndTime' 
+                              type='time' 
+                           />
+                        </S.PickersWrapper>
+                     </S.Col>
+                     <S.StyledErrorMessage 
+                        name='bookingEndDate' 
+                        component='p' 
+                     />
+                     <S.StyledErrorMessage 
+                        name='bookingEndTime' 
                         component='p' 
                      />
                   </S.FieldWrapper> 
@@ -90,6 +127,7 @@ const AddNewBookingForm = () => {
                         <S.StyledFieldTextarea 
                            textarea
                            component='textarea'
+                           value={props.notes}
                            name='notes' 
                            type='text' 
                         />

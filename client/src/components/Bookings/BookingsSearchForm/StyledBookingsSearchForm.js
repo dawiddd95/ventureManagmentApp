@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {Form, Field} from 'formik';
 
 import colors from '../../../assets/colors';
@@ -50,14 +50,14 @@ export const Label = styled.div`
 `
 
 export const StyledField = styled(Field)`
-   width: ${props => props.rangeValue ? '40%' : '72%'};
-   height:  ${props => props.rangeValue ? '95%' : '100%'};
-   margin: ${props => props.rangeValue ? '0 5px' : '0'};
-   padding: ${props => props.rangeValue ? '0 0 0 40px' : '0 0 0 15px'};
+   width: ${props => props.secondaryStyled ? '40%' : '72%'};
+   height:  ${props => props.secondaryStyled ? '95%' : '100%'};
+   margin: ${props => props.secondaryStyled ? '0 5px' : '0'};
+   padding: ${props => props.secondaryStyled ? '0 0 0 40px' : '0 0 0 15px'};
    border: 0;
    outline: 0;
    background-color: white;
-   border: ${props => props.rangeValue ? 0 : `1px solid ${colors.silverColor}`};   
+   border: ${props => props.secondaryStyled ? 0 : `1px solid ${colors.silverColor}`};   
    border-radius: 5px;
    font-weight: 200;
    font-size: 14px;
@@ -66,17 +66,17 @@ export const StyledField = styled(Field)`
 
    &:hover {
       transition: 0.3s;
-      border: ${props => props.rangeValue ? '0' : `1px solid ${colors.redColor}`};
+      border: ${props => props.secondaryStyled ? '0' : `1px solid ${colors.redColor}`};
    }
 
    &:focus {
-      border: ${props => props.rangeValue ? '0' : `1px solid ${colors.redColor}`};
-      box-shadow:  ${props => props.rangeValue ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
+      border: ${props => props.secondaryStyled ? '0' : `1px solid ${colors.redColor}`};
+      box-shadow:  ${props => props.secondaryStyled ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
    }
-`
 
-export const Divider = styled.span`
-   margin: 0 10px;
+   ${props => props.dateTimeStyled && css `
+      padding: 0;
+   `}
 `
 
 export const PickersWrapper = styled.div`
@@ -86,7 +86,7 @@ export const PickersWrapper = styled.div`
    border-radius: 5px;
    
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
    align-items: center;
 
    &:hover {

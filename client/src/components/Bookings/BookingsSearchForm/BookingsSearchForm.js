@@ -14,8 +14,10 @@ const BookingsSearchForm = () => {
             client: '',
             room: '',
             status: '',
-            bookingStart: '',
-            bookingEnd: '',
+            bookingStartDate: '',
+            bookingStartTime: '',
+            bookingEndDate: '',
+            bookingEndTime: '',
             createdAtStartDate: '',
             createdAtEndDate: '',
          }}
@@ -28,7 +30,7 @@ const BookingsSearchForm = () => {
                .string(),
             status: Yup
                .string(),
-            bookingStart: Yup
+            bookingStartDate: Yup
                .string(), 
             bookingEnd: Yup
                .string(),
@@ -72,23 +74,32 @@ const BookingsSearchForm = () => {
                      </S.Col>
                      <S.Col>
                         <S.Label>Booking Start Date:</S.Label> 
-                        <S.StyledField 
-                           name='bookingStart' 
-                           type='datetime-local' 
-                        />
+                        <S.PickersWrapper>
+                           <S.StyledField 
+                              secondaryStyled
+                              name='bookingStartDate' 
+                              type='date' 
+                           />
+                           <S.StyledField 
+                              secondaryStyled
+                              dateTimeStyled
+                              name='bookingStartTime' 
+                              type='time' 
+                           />
+                        </S.PickersWrapper>  
                      </S.Col>
                      <S.Col>
                         <S.Label>Created At:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
-                              rangeValue
+                              secondaryStyled
                               title='Created At Start Date'
                               name='createdAtStartDate' 
                               type='date' 
                            />
                            ~~
                            <S.StyledField 
-                              rangeValue
+                              secondaryStyled
                               title='Created At End Date'
                               name='createdAtEndDate' 
                               type='date' 
@@ -97,10 +108,19 @@ const BookingsSearchForm = () => {
                      </S.Col>
                      <S.Col lastInput>
                         <S.Label>Booking End Date:</S.Label> 
-                        <S.StyledField 
-                           name='bookingEnd' 
-                           type='datetime-local'  
-                        />
+                        <S.PickersWrapper>
+                           <S.StyledField 
+                              secondaryStyled
+                              name='bookingEndDate' 
+                              type='date' 
+                           />
+                           <S.StyledField 
+                              secondaryStyled
+                              dateTimeStyled
+                              name='bookingEndTime' 
+                              type='time' 
+                           />
+                        </S.PickersWrapper>  
                      </S.Col>
                      <S.ButtonsWrapper>
                         <S.Button type='submit'>
