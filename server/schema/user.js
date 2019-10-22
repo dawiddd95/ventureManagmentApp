@@ -17,12 +17,12 @@ export default `
       user: User!
    }
 
-   type Query {
-      loggedUser: User
+   extend type Query {
+      me: User
       getUser(id: Int!): User
    }
 
-   type Mutation {
+   extend type Mutation {
       createUser(name: String!, surname: String!, email: String!, password: String!, key: String!, active: Boolean!, code: String!): User
       loginUser(email: String!, password: String!): AuthenticatedUser
       updateUser(id: Int!, name: String, surname: String, email: String, password: String, key: String, active: Boolean, code: String): [Int!]

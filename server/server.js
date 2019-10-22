@@ -2,8 +2,8 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import {makeExecutableSchema} from 'graphql-tools'
 
-import resolvers from './graphql/resolvers'
-import typeDefs from './graphql/schema'
+import resolvers from './resolvers/index'
+import typeDefs from './schema/index'
 import models from './db/models'
 
 import {getUserIdMiddleware} from './services/user'

@@ -22,6 +22,8 @@ export const createUser = async (name, surname, email, password, key, active, co
    const emailSend = verifyEmail(email, link)
    const newPassword = await bcrypt.hash(password, 10)
    
+   // Napisać warunek czy email istnieje jeśli tak to {throw new Error('Email already exist')} czy cos tam
+
    transporter.sendMail(emailSend.mailOptions)
 
    return models.User.create({name, surname, email, password: newPassword, key: newKey, active, code: newCode})
@@ -41,27 +43,15 @@ export const loginUser = async (email, password) => {
 }
 
 export const getUserIdMiddleware = async (req) => {
-   const token = req.headers.authorization
-   if(token) {
-      const {userId} = await jwt.verify(token, SECRET)
-      req.userId = userId
+   try {
+      const token = req.headers.authorization
+      if (token) {
+        const { userId } = await jwt.verify(token, SECRET)
+        req.userId = userId
+      }
+   } catch(err) {
+      req.userId = null
    }
-
+  
    req.next()
 } 
-
-// mutation {
-//    createUser(
-//      name: "Dawid", 
-//      surname: "Łychoński",
-//       email: "dawlyc1995@gmail.com",
-//      password: "QWEDSA!@#",
-//      key: "klucz",
-//      active: true,
-//      code: "kod"
-//    ) {
-//      id
-//      name
-//      active
-//    }
-//  }
