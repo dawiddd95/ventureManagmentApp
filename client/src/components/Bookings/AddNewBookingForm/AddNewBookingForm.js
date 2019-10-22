@@ -5,9 +5,7 @@ import * as S from './StyledAddNewBookingForm';
 
 import icons from '../../../assets/icons';
 
-const AddNewBookingForm = () => {
-   const handleOnSubmit = values => console.log(values)
-
+const AddNewBookingForm = ({handleOnSubmit}) => {
    return ( 
       <Formik
          initialValues={{
@@ -54,7 +52,7 @@ const AddNewBookingForm = () => {
          render={props => (
             <S.Wrapper>
                <S.StyledForm onSubmit={props.handleSubmit}>
-                  <S.FieldWrapper firstField>
+                  <S.FieldWrapper firstField='true'>
                      <S.Col>
                         <S.Label>Client:</S.Label> 
                         <S.StyledField 
@@ -72,14 +70,14 @@ const AddNewBookingForm = () => {
                         <S.Label>Booking Start Date:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
-                              secondaryStyled
-                              left
+                              secondaryStyled='true'
+                              left='true'
                               name='bookingStartDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondaryStyled
-                              dateTimeStyled
+                              secondaryStyled='true'
+                              dateTimeStyled='true'
                               name='bookingStartTime' 
                               type='time' 
                            />
@@ -99,14 +97,14 @@ const AddNewBookingForm = () => {
                         <S.Label>Booking End Date:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
-                              secondaryStyled
-                              right
+                              secondaryStyled='true'
+                              right='true'
                               name='bookingEndDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondaryStyled
-                              dateTimeStyled
+                              secondaryStyled='true'
+                              dateTimeStyled='true'
                               name='bookingEndTime' 
                               type='time' 
                            />
@@ -125,7 +123,7 @@ const AddNewBookingForm = () => {
                      <S.Col>
                         <S.Label>Notes:</S.Label> 
                         <S.StyledFieldTextarea 
-                           textarea
+                           textarea='true'
                            component='textarea'
                            value={props.notes}
                            name='notes' 
@@ -137,7 +135,7 @@ const AddNewBookingForm = () => {
                      <S.Col>
                         <S.Label>Employee Notes:</S.Label> 
                         <S.StyledFieldTextarea 
-                           textarea
+                           textarea='true'
                            component='textarea'
                            name='employeeNotes' 
                            type='text' 
@@ -170,7 +168,7 @@ const AddNewBookingForm = () => {
                      <S.Col>
                         <S.Label>Cancellation Notes:</S.Label> 
                         <S.StyledFieldTextarea 
-                           textarea
+                           textarea='true'
                            component='textarea'
                            name='cancellationNotes' 
                            type='text' 

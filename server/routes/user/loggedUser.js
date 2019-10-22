@@ -15,6 +15,7 @@ router.get('/api/user/loggedUser', checkToken, async (req, res) => {
    const user = await SignupUser.findOne({ where: { code: tokenCode }});
 
    const loggedUser = {
+      id: user.id,
       name: user.name,
       surname: user.surname,
       email: user.email,

@@ -12,8 +12,6 @@ const fetchLoggedUserAction = () => (dispatch) => {
    .then(res => dispatch(actions.addLoggedUserAction(res.data.loggedUser)))
 }
 
-// NORMALNIE TUTAJ BYLBY DO BOOKINGS =>  fetchUserBookingsAction
-// DO DANYCH O ZALOGOWNYM UZYTKOWNIKU UZYLBYM => fetchUserDataAction
 
 export default {
    fetchLoggedUserAction

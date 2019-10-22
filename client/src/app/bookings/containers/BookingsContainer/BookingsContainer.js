@@ -1,16 +1,20 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import * as S from './StyledBookingsContainer';
 
 import Bookings from '../../../../components/Bookings/Bookings/Bookings';
 
 
 const BookingsContainer = () => {
-   // const dispatch = useDispatch();
-   // //loggedUser w finalnej wersji byłoby userBookings
-   // const loggedUser = useSelector(state => state.fetchLoggedUser);
-   // //const userBookings = useSelector(state => state.fetchUserBookings);
+   const dispatch = useDispatch();
 
+   // pobranie ze storea id zalogowanego usera
+   const {id} = useSelector(state => state.fetchedLoggedUser.user);
+   
+   // pobierze wszystkie bookingi gdzie userId to id naszego usera
+   const userBookings = useSelector(state => state.fetchUserBookings);
+
+   // Tutaj na useEffect() pobierze wszystkie 
    // useEffect(() => {
    //    // dispatch(thunkActions.fetchBookingsAction())
    //    dispatch(thunkActions.fetchLoggedUserAction())
@@ -28,48 +32,3 @@ const BookingsContainer = () => {
 }
  
 export default BookingsContainer;
-
-
-
-
-
-// BACK UP ////////////////////////////////////////////////////////////////////////////
-// import React from 'react';
-// import {useSelector} from 'react-redux';
-// import * as S from './StyledBookingsContainer';
-
-// import AppNavbar from '../../../../components/AppNavbar/AppNavbar/AppNavbar';
-// import AppNavbarContainer from '../../../navbar/containers/AppNavbarContainer/AppNavbarContainer';
-// import Bookings from '../../../../components/Bookings/Bookings/Bookings';
-
-
-// const BookingsContainer = () => {
-//    // const dispatch = useDispatch();
-//    // //loggedUser w finalnej wersji byłoby userBookings
-//    // const loggedUser = useSelector(state => state.fetchLoggedUser);
-//    // //const userBookings = useSelector(state => state.fetchUserBookings);
-
-//    // useEffect(() => {
-//    //    // dispatch(thunkActions.fetchBookingsAction())
-//    //    dispatch(thunkActions.fetchLoggedUserAction())
-//    // }, [])
-
-//    // //przekazujemy te dane do komponentu <Bookings />
-
-//    const menuVisibility = useSelector(state => state.menuVisibility);
-
-//    return (  
-//       <S.Wrapper>
-//          {/* Wywołanie <AppNavbarContainer /> zamiast <AppNavbar />*/}   
-//          <AppNavbarContainer 
-//             avatar='Tutaj pobrac z bazy danych dane o avatarze - sciezke miniaturki'
-//          />
-//          <Bookings 
-//             bookings='tutaj obiekt bookingów z bazy danych'  
-//             visible={menuVisibility.visible}
-//          />
-//       </S.Wrapper>
-//    );
-// }
- 
-// export default BookingsContainer;
