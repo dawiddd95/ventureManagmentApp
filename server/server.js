@@ -2,6 +2,10 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import {makeExecutableSchema} from 'graphql-tools'
 
+// Testowanie walidacji graphQL 1. Musimy zaimportowac te 2 biblioteki
+import { applyMiddleware } from 'graphql-middleware';
+import { yupMiddleware } from 'graphql-yup-middleware';
+
 import resolvers from './resolvers/index'
 import typeDefs from './schema/index'
 import models from './db/models'
@@ -13,20 +17,24 @@ const schema = makeExecutableSchema({
   	resolvers,  
 })
 
+// Testowanie walidacji graphQL 2. Musimy wkleic ten kod
+const schemaWithMiddleware = applyMiddleware(schema, yupMiddleware());
+
 const app = express()
 app.use(getUserIdMiddleware)
 app.use('/graphql', graphqlHTTP( req => ({
 	schema,
-	context: {
-		models,
-		userId: req.userId
-	},
+   context: {
+      models,
+      userId: req.userId
+   }, 
   	graphiql: true,
 })))
+
 app.listen(5000, () => console.log('Now browse to localhost:5000/graphql'))
 
 
-
+// //////////////////////////////////////////////////////////////////////////////////
 // const express = require('express')
 // const bodyParser = require('body-parser')
 // const cookieParser = require('cookie-parser')

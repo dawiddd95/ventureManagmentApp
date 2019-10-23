@@ -1,9 +1,10 @@
 import uuid from 'uuid'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import * as Yup from 'yup'
 
 import models from '../db/models'
-import {verifyEmail} from './emails/emails'
+import {verifyEmail, forgotPassword} from './emails/emails'
 import {transporter} from './emails/transporter'
 
 
@@ -13,21 +14,29 @@ const generateToken = user => {
    return jwt.sign({userId: user.id}, SECRET)
 }
 
-// SPROBOWAC URUCHOMIC SAM SERWER, WPISAC MUTACJE TWORZENIA USERA I CZY WYSLE EMAIL DODDA DO DB I ZAHASHUJE HASLO
-export const createUser = async (name, surname, email, password, key, active, code) => {
-   const newKey = uuid.v4()
-   const newCode = uuid.v4()
+// Dodać tutaj jakoś walidację z yup
+export const createUser = async (name, surname, email, password) => {
+   const key = uuid.v4()
+   const active = false
+   const code = uuid.v4()
    const host = 'http://localhost:5000' ? 'http://localhost:3000' : req.get('host')
    const link = `${host}/auth/verify?code=${code}&key=${key}`
    const emailSend = verifyEmail(email, link)
    const newPassword = await bcrypt.hash(password, 10)
    
-   // Napisać warunek czy email istnieje jeśli tak to {throw new Error('Email already exist')} czy cos tam
+   const user = await models.User.findOne({where: {email}})
+   if(user) throw new Error('Email is already in usage')
+
+   const userData = {name, surname, email, password: newPassword, key, active, code}
 
    transporter.sendMail(emailSend.mailOptions)
+   return models.User.create(userData)
 
-   return models.User.create({name, surname, email, password: newPassword, key: newKey, active, code: newCode})
+   // mozna chyba zrobic return { user, success: true}
+   // return "success";   => nie można zwrócić w ten sam sposób jsona jak w REST
+   // return {success: true, err: '', email}
 }
+
 
 export const loginUser = async (email, password) => {
    const user = await models.User.findOne({where: {email}})
@@ -36,11 +45,9 @@ export const loginUser = async (email, password) => {
    const valid = await bcrypt.compare(password, user.password)
    if(!valid) throw new Error('Wrong password')
 
-   return {
-      token: generateToken(user), 
-      user
-   }
+   return { token: generateToken(user), user}
 }
+
 
 export const getUserIdMiddleware = async (req) => {
    try {
@@ -55,3 +62,21 @@ export const getUserIdMiddleware = async (req) => {
   
    req.next()
 } 
+
+
+export const forgotPasswordUser = async (email) => {
+   const key = uuid.v4()
+
+   const user = await models.User.findOne({where: {email}})
+   if(!user) throw new Error(`Sorry, we don't recognize your credentials`)
+
+   const host = 'http://localhost:5000' ? 'http://localhost:3000' : req.get('host')
+   const link = `${host}/auth/reset?code=${user.code}&key=${key}`
+   const emailSend = forgotPassword(email, link)
+
+   transporter.sendMail(emailSend.mailOptions)
+   models.User.update({key}, { where: { email }})
+
+   // Jeśli nic nie zwrócę w return to zapytanie graphQL zwróci mi null
+   return user
+}
