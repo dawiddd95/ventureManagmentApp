@@ -5,7 +5,18 @@ import * as Yup from 'yup';
 
 import LoadingSpinner from '../../../Animations/LoadingSpinner/LoadingSpinner';
 
-const ForgotPasswordForm = ({state, handleOnInput, handleOnSubmit}) => {
+// const ForgotPasswordPanelForm = () => {
+//    return (
+//       <div>
+         
+//       </div>
+//    )
+// }
+
+// export default ForgotPasswordPanelForm
+
+
+const ForgotPasswordForm = ({mutation, loading, handleOnInput, handleOnSubmit}) => {
    return (  
       <Formik
          initialValues={{
@@ -17,9 +28,19 @@ const ForgotPasswordForm = ({state, handleOnInput, handleOnSubmit}) => {
                .email()
                .required('Email is required'),
          })}
-         onSubmit={values => handleOnSubmit(values)}
+         // Przy on submit już nie jest wykonywana funckja np: 
+         // onSubmit={values => handleOnSubmit(values)}
+         // Jest już wykonywana mutacja tak jak poniżej
+         // Jednakże można dodać wykonanie kolejnej metody np: handleOnSubmit() od zmiany stanu modalu
+         onSubmit={values => {
+            mutation({
+               variables: values,
+            })
+            handleOnSubmit()
+         }}
          render={props => (
             <S.Wrapper>
+               {/* onSubmit pozostaje bez zmian */}
                <S.StyledForm onSubmit={props.handleSubmit}>
                   <S.FieldWrapper>
                      <S.StyledField 
@@ -33,9 +54,11 @@ const ForgotPasswordForm = ({state, handleOnInput, handleOnSubmit}) => {
                         component='div' 
                      />
                   </S.FieldWrapper>
-                  <S.Button type='submit' disabled={state.isLoading}>
+                  <S.Button type='submit' 
+                     disabled={loading}
+                  >
                      Send password reset email
-                     {state.isLoading ? <LoadingSpinner small /> : null}
+                     {loading ? <LoadingSpinner small /> : null}
                   </S.Button>
                </S.StyledForm>
             </S.Wrapper>

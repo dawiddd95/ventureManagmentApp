@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import graphqlHTTP from 'express-graphql'
 import {makeExecutableSchema} from 'graphql-tools'
 
@@ -21,6 +22,7 @@ const schema = makeExecutableSchema({
 const schemaWithMiddleware = applyMiddleware(schema, yupMiddleware());
 
 const app = express()
+app.use(cors())
 app.use(getUserIdMiddleware)
 app.use('/graphql', graphqlHTTP( req => ({
 	schema,
