@@ -6,6 +6,7 @@ import {isAuthenticated} from './auth'
 import * as userService from '../services/user'
 
 import createUserValidation from '../services/validations/Yup/createUser'
+import updateUserValidation from '../services/validations/Yup/updateUser'
 
 export default {
    Query: {
@@ -37,7 +38,7 @@ export default {
          userService.forgotPasswordUser(email)
       ),
       updateUser: { 
-         validationSchema: createUserValidation,
+         validationSchema: updateUserValidation,
          resolve: async (parent, {id, name, surname, email, password, key, active, code}, {models}) => (
             models.User.update({name, surname, email, password, key, active, code}, {where: {id}})
          ),

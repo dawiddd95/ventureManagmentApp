@@ -40,10 +40,12 @@ export const createUser = async (name, surname, email, password) => {
 
 export const loginUser = async (email, password) => {
    const user = await models.User.findOne({where: {email}})
-   if(!user) throw new Error('User not found')
-   
+   if(!user) throw new Error('Wrong user or password')
+
    const valid = await bcrypt.compare(password, user.password)
-   if(!valid) throw new Error('Wrong password')
+   if(!valid) throw new Error('Wrong user or password')
+
+   if(!user.active) throw new Error('Account is inactive, Wrong user or password')
 
    return { token: generateToken(user), user}
 }
