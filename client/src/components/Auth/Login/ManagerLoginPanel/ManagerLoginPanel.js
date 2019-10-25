@@ -1,60 +1,53 @@
 import React from 'react';
-import {Formik} from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import {Mutation} from 'react-apollo';
 
 import ManagerLoginPanelForm from '../ManagerLoginPanelForm/ManagerLoginPanelForm';
 
+import {LOGIN_USER_MUTATION} from '../../../../graphql/user/mutation';
+
 const ManagerLoginPanel = () => {  
-   const [err, setErr] = React.useState(''); 
-   const [state, setState] = React.useState({
-      success: false, isChecked: false, isLoading: false
-   });
+   const [checked, setChecked] = React.useState(false);
+   const [submit, setSubmit] = React.useState(false);
 
-   const handleOnSubmit = values => {
-      setState({...state, isLoading: state.isLoading = true});
-
-      if(state.isChecked) localStorage.setItem('user', values.email)
-
-      axios.post('/api/auth/login', values)
-      .then(res => {
-         const {err, success, token} = res.data;
-         
-         if(success) localStorage.setItem('session', true);
-         localStorage.setItem('token', token); 
-
-         setErr(err);
-         setState({
-            ...state, 
-            success: state.success = success, 
-            isLoading: state.isLoading = false
-         });
-      })
-   }
-
-   const handleOnInput= () => {
-      setErr('');
+   const handleOnInput = () => {
+      setSubmit(false)
    }
 
    const handleOnChange = () => {
-      setState({
-         ...state, isChecked: !state.isChecked,
-      });
+      setChecked(!checked)
+   }
+
+   const handleOnSubmit = values => {
+      setSubmit(true)
+      if(checked) localStorage.setItem('user', values.email)
    }
 
    return (  
       <>
-         {state.success 
-            ?  <Redirect to='/user/bookings' /> 
-            :  <ManagerLoginPanelForm 
-                  err={err}
-                  state={state}
-                  handleOnInput={handleOnInput} 
-                  handleOnChange={handleOnChange}
-                  handleOnSubmit={handleOnSubmit}   
-               />
-         }
+         <Mutation mutation={LOGIN_USER_MUTATION}>
+            {(mutation, {loading, error, data}) => {
+               if(data) {
+                  localStorage.setItem('token', data.loginUser.token);  
+                  localStorage.setItem('session', true)
+                  return <Redirect to='/user/bookings' />
+               }
+               
+               return (
+                  <> 
+                     <ManagerLoginPanelForm 
+                        mutation={mutation}
+                        err={(error && submit) && 'Wrong user or password'}
+                        loading={loading}
+                        checked={checked}
+                        handleOnInput={handleOnInput} 
+                        handleOnChange={handleOnChange}
+                        handleOnSubmit={handleOnSubmit}   
+                     />
+                  </>
+               )
+            }}
+         </Mutation>
       </>
    );
 }

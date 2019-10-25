@@ -1,59 +1,48 @@
 import React from 'react';
-import axios from 'axios';
+import {Mutation} from 'react-apollo';
 
 import SignupUserForm from '../SignupUserForm/SignupUserForm';
 import SignupSuccess from '../SignupSuccess/SignupSuccess';
 import FadeReveal from '../../../Animations/FadeReveal/FadeReveal';
 
+import {CREATE_USER_MUTATION} from '../../../../graphql/user/mutation';
+
 const SignupPanel = () => {
-   const [state, setState] = React.useState({
-      success: false, err: '', email: '', isLoading: false
-   });
+   const [isSubmit, setIsSubmit] = React.useState(false)
 
-   const handleOnSubmit = values => {
-      setState({...state, isLoading: state.isLoading = true});
-
-      axios.post('/api/auth/signup', values)
-      .then(res => {
-         const {err, email, success} = res.data;
-         setState({
-            ...state, 
-            success: state.success = success, 
-            err: state.err = err,
-            email: state.email = email,
-            isLoading: state.isLoading = false,
-         });
-      })
-      .catch(() => {
-         setState({
-            ...state, 
-            err: state.err = 'Cannot sign up to application :( Please try again later.',
-            isLoading: state.isLoading = false,
-         })
-      })
+   const handleOnSubmit = () => {
+      setIsSubmit(true)
    }
 
    const handleOnInput= () => {
-      setState({
-         ...state, 
-         err: state.err = '',
-      });
+      setIsSubmit(false)
    }
 
    return ( 
       <div>
-         {state.success 
-            ? null 
-            : <FadeReveal text={state.err} success={false} />
-         }
-         {state.success 
-            ?  <SignupSuccess email={state.email} /> 
-            :  <SignupUserForm
-                  isLoading={state.isLoading}
-                  handleOnInput={handleOnInput} 
-                  handleOnSubmit={handleOnSubmit}
-               />  
-         }
+         <Mutation mutation={CREATE_USER_MUTATION}>
+            {/* odnoszenie sie do loading i error w mutacji */}
+            {(mutation, {loading, error, data}) => (
+               <>
+                  {(error && isSubmit) && <FadeReveal 
+                     text='Cannot sign up to application :( Please try again later.'
+                     success={false} 
+                  />}
+                  {(data && isSubmit) 
+                     // obiekt {data} reprezentuje data.nazwaMutacji.zwracanePoleWMutacji
+                     ?  <SignupSuccess email={data.createUser.email} /> 
+                     :  <SignupUserForm
+                           // przeslanie mutation, {loading, error}
+                           mutation={mutation}
+                           // przekazanie nizej loading z {loading, error) by pokazywalo kolko
+                           loading={loading}
+                           handleOnInput={handleOnInput} 
+                           handleOnSubmit={handleOnSubmit}
+                        />  
+                  }
+               </>
+            )}
+         </Mutation>
       </div> 
    );
 }

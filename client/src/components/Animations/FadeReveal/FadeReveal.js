@@ -5,10 +5,10 @@ import * as S from './StyledFadeReveal';
 import icons from '../../../assets/icons';
 
 
-const FadeRevealAnimation = ({text, success}) => {
+const FadeReveal = ({text, success, showModal}) => {
   	return (  
 		<S.Wrapper>
-         <Fade left when={text}>
+         <Fade left>
             <S.AnimationWrapper>
 					<S.Img src={success ? icons.correctIcon : icons.errorIcon} />
 					<S.Text>
@@ -20,4 +20,4 @@ const FadeRevealAnimation = ({text, success}) => {
   	);
 }
  
-export default FadeRevealAnimation;
+export default FadeReveal;

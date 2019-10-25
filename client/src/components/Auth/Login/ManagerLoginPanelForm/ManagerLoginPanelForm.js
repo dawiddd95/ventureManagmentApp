@@ -6,7 +6,15 @@ import * as S from './StyledManagerLoginPanelForm';
 
 import LoadingSpinner from '../../../Animations/LoadingSpinner/LoadingSpinner';
 
-const ManagerLoginPanelForm = ({err, state, handleOnInput, handleOnChange, handleOnSubmit}) => {
+const ManagerLoginPanelForm = ({
+   mutation,
+   err,
+   loading,
+   checked,
+   handleOnInput,
+   handleOnChange,
+   handleOnSubmit,
+}) => {
    return (  
       <Formik
          initialValues={{
@@ -22,10 +30,13 @@ const ManagerLoginPanelForm = ({err, state, handleOnInput, handleOnChange, handl
                .string()
                .required('Password is required'),
          })}
-         onSubmit={(values, isChecked) => handleOnSubmit(values, isChecked)}     
+         // success po values (values, success) to wcale nie jest props success tylko jakis parametr onSubmit
+         onSubmit={values => {
+            mutation({variables: values})
+            handleOnSubmit(values)
+         }}     
          render={props => (
             <S.Wrapper>
-               {/* handleSubmit is Formik function to send form. only onSubmit have props. syntax */}
                <S.StyledForm onSubmit={props.handleSubmit}>
                   <S.FieldWrapper>
                      <S.StyledField 
@@ -59,7 +70,7 @@ const ManagerLoginPanelForm = ({err, state, handleOnInput, handleOnChange, handl
                      <S.StyledFormControlLabel
                         control={
                            <Checkbox
-                              checked={state.isChecked}
+                              checked={checked}
                               onChange={handleOnChange}
                               id="remember"
                            />
@@ -71,9 +82,9 @@ const ManagerLoginPanelForm = ({err, state, handleOnInput, handleOnChange, handl
                         Forgot password
                      </S.StyledLink>
                   </S.CheckboxWrapper>
-                  <S.Button type='submit' disabled={state.isLoading}>
+                  <S.Button type='submit' disabled={loading}>
                      Log in
-                     {state.isLoading ? <LoadingSpinner small /> : null}
+                     {loading && <LoadingSpinner small />}
                   </S.Button>
                </S.StyledForm>
             </S.Wrapper>

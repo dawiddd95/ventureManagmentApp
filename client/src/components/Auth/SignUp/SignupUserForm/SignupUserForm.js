@@ -5,7 +5,7 @@ import * as S from './StyledSignupUserForm';
 
 import LoadingSpinner from '../../../Animations/LoadingSpinner/LoadingSpinner';
 
-const SignupUserForm = ({isLoading, handleOnInput, handleOnSubmit}) => {
+const SignupUserForm = ({mutation, loading, handleOnInput, handleOnSubmit}) => {
    return (  
       <Formik
          initialValues={{
@@ -41,9 +41,17 @@ const SignupUserForm = ({isLoading, handleOnInput, handleOnSubmit}) => {
                .required('Password must match')
                .oneOf([Yup.ref('password'), null], 'Passwords must match'),
          })}
-         onSubmit={values => handleOnSubmit(values)}
+         // Przy on submit już nie jest wykonywana funckja np: 
+         // onSubmit={values => handleOnSubmit(values)}
+         // Jest już wykonywana mutacja tak jak poniżej
+         // Jednakże można dodać wykonanie kolejnej metody np: handleOnSubmit() od zmiany stanu modalu
+         onSubmit={values => {
+            mutation({variables: values})
+            handleOnSubmit()
+         }}
          render={props => (
             <S.Wrapper>
+               {/* onSubmit pozostaje bez zmian */}
                <S.StyledForm onSubmit={props.handleSubmit}>
                   <S.FieldWrapper>
                      <S.StyledField 
@@ -101,9 +109,9 @@ const SignupUserForm = ({isLoading, handleOnInput, handleOnSubmit}) => {
                         component='p' 
                      />
                   </S.FieldWrapper>        
-                  <S.Button type='submit' disabled={isLoading}>
+                  <S.Button type='submit' disabled={loading}>
                      Sign up
-                     {isLoading ? <LoadingSpinner small /> : null}
+                     {loading && <LoadingSpinner small />}
                   </S.Button>
                   <S.LinkWrapper>
                      <S.StyledLink to='/auth/login'>

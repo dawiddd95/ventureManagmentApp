@@ -2,7 +2,7 @@ import React from 'react';
 
 import ForgotPasswordPanelForm from '../ForgotPasswordPanelForm/ForgotPasswordPanelForm';
 import FadeReveal from '../../../Animations/FadeReveal/FadeReveal';
-import {Mutation} from 'react-apollo'
+import {Mutation} from 'react-apollo';
 
 import {FORGOT_USER_PASSWORD_MUTATION} from '../../../../graphql/user/mutation';
 

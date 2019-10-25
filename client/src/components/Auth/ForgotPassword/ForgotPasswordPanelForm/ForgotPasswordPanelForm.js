@@ -5,16 +5,6 @@ import * as Yup from 'yup';
 
 import LoadingSpinner from '../../../Animations/LoadingSpinner/LoadingSpinner';
 
-// const ForgotPasswordPanelForm = () => {
-//    return (
-//       <div>
-         
-//       </div>
-//    )
-// }
-
-// export default ForgotPasswordPanelForm
-
 
 const ForgotPasswordForm = ({mutation, loading, handleOnInput, handleOnSubmit}) => {
    return (  
@@ -33,9 +23,7 @@ const ForgotPasswordForm = ({mutation, loading, handleOnInput, handleOnSubmit}) 
          // Jest już wykonywana mutacja tak jak poniżej
          // Jednakże można dodać wykonanie kolejnej metody np: handleOnSubmit() od zmiany stanu modalu
          onSubmit={values => {
-            mutation({
-               variables: values,
-            })
+            mutation({variables: values})
             handleOnSubmit()
          }}
          render={props => (
@@ -58,7 +46,7 @@ const ForgotPasswordForm = ({mutation, loading, handleOnInput, handleOnSubmit}) 
                      disabled={loading}
                   >
                      Send password reset email
-                     {loading ? <LoadingSpinner small /> : null}
+                     {loading && <LoadingSpinner small />}
                   </S.Button>
                </S.StyledForm>
             </S.Wrapper>
