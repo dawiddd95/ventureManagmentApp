@@ -1,12 +1,12 @@
 import React from 'react';
-import * as S from './StyledBookings';
+import * as S from './StyledReservations';
 
 import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 import SearchFormActionButtons from '../SearchFormActionButtons/SearchFormActionButtons';
-import BookingsSearchForm from '../BookingsSearchForm/BookingsSearchForm';
-import BookingsTable from '../BookingsTable/BookingsTable';
+import ReservationsSearchForm from '../ReservationsSearchForm/ReservationsSearchForm';
+import ReservationsTable from '../ReservationsTable/ReservationsTable';
 
-const Bookings = ({bookings}) => {
+const Reservations = ({bookings}) => {
    // return (  
    //    <div>
    //       <LoadingSpinner small={false} />
@@ -17,22 +17,22 @@ const Bookings = ({bookings}) => {
       <S.Wrapper>
          <S.MainContent>
             <S.BreadCrumbs>
-               <S.StyledLink>
+               <S.StyledLink to='/user/reservations'>
                   Home
                </S.StyledLink>
-               / Bookings
+               / Reservations
             </S.BreadCrumbs>
             <S.BookingsBox>
                <S.Header>
-                  Bookings
+                  Reservations
                </S.Header>
                <SearchFormActionButtons />
-               <BookingsSearchForm />
-               <BookingsTable />
+               <ReservationsSearchForm />
+               <ReservationsTable />
             </S.BookingsBox>
          </S.MainContent>
       </S.Wrapper>
    )
 }
  
-export default Bookings;
+export default Reservations;

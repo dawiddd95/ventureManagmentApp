@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import * as S from './StyledBookingsContainer';
+import * as S from './StyledReservationsContainer';
 
-import Bookings from '../../../../components/Bookings/Bookings/Bookings';
+import Reservations from '../../../../components/Reservations/Reservations/Reservations';
 
 
-const BookingsContainer = () => {
+const ReservationsContainer = () => {
    const dispatch = useDispatch();
 
    // pobranie ze storea id zalogowanego usera
@@ -24,11 +24,11 @@ const BookingsContainer = () => {
 
    return (  
       <S.Wrapper>
-         <Bookings 
+         <Reservations
             bookings='tutaj obiekt bookingów z bazy danych'  
          />
       </S.Wrapper>
    );
 }
  
-export default BookingsContainer;
+export default ReservationsContainer;

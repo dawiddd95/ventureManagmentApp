@@ -21,3 +21,11 @@ const FadeReveal = ({text, success, showModal}) => {
 }
  
 export default FadeReveal;
+
+{/* <Zoom when={false}>
+  <h1>You won't see me, but I will still take space on screen</h1>
+</Zoom>
+
+<Zoom when={true}>
+  <h1>I will be seen</h1>
+</Zoom> */}

@@ -30,7 +30,7 @@ const ManagerLoginPanel = () => {
                if(data) {
                   localStorage.setItem('token', data.loginUser.token);  
                   localStorage.setItem('session', true)
-                  return <Redirect to='/user/bookings' />
+                  return <Redirect to='/user/reservations' />
                }
                
                return (

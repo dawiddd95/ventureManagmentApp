@@ -1,10 +1,10 @@
 import React from 'react';
-import * as S from './StyledBookingsTable';
+import * as S from './StyledReservationsTable';
 
 import EnhancedTableBody from '../EnhancedTableBody/EnhancedTableBody';
 
 // wszystkie funkcje raczej tutaj ale niekoniecznie jesli one sa w enhancedtablebody
-const BookingsTable = () => {
+const ReservationsTable = () => {
    return (  
       <S.Wrapper>
          <EnhancedTableBody />
@@ -12,4 +12,4 @@ const BookingsTable = () => {
    );
 }
  
-export default BookingsTable;
+export default ReservationsTable;

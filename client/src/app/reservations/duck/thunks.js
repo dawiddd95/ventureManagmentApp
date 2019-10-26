@@ -1,7 +1,7 @@
 import actions from './actions';
 import axios from 'axios';
 
-const fetchLoggedUserBookings = () => (dispatch) => {
+const fetchLoggedUserReservations = () => (dispatch) => {
    const token = localStorage.getItem('token');
       
    // pobrac ze storea id usera zalogowanego
@@ -17,5 +17,5 @@ const fetchLoggedUserBookings = () => (dispatch) => {
 }
 
 export default {
-   fetchLoggedUserBookings
+   fetchLoggedUserReservations
 }

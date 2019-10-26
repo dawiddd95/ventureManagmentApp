@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
-import * as S from './StyledAddNewBooking';
+import * as S from './StyledAddNewReservation';
 
-import AddNewBookingForm from '../AddNewBookingForm/AddNewBookingForm';
+import AddNewReservationForm from '../AddNewReservationForm/AddNewReservationForm';
 
-const AddNewBooking = () => {
+const AddNewReservation = () => {
    const [success, setSuccess] = React.useState(false);
 
    const handleOnSubmit = values => {
@@ -24,21 +24,21 @@ const AddNewBooking = () => {
          <S.Section>
             <S.MainContent>
                <S.BreadCrumbs>
-                  <S.StyledLink to='/user/bookings'>
+                  <S.StyledLink to='/user/reservations'>
                      Home
                   </S.StyledLink>
-                  <S.StyledLink to='/user/bookings'>
-                  / Bookings
+                  <S.StyledLink to='/user/reservations'>
+                  / Reservations
                   </S.StyledLink>
-                  / New Booking
+                  / New Reservation
                </S.BreadCrumbs>
                <S.BookingsBox>
                   <S.Header>
-                     New Booking
+                     New Reservation
                   </S.Header>
                   {success 
-                     ?  <Redirect to='/user/bookings'/>
-                     :  <AddNewBookingForm 
+                     ?  <Redirect to='/user/reservations'/>
+                     :  <AddNewReservationForm 
                            handleOnSubmit={handleOnSubmit}
                         />
                   }
@@ -49,4 +49,4 @@ const AddNewBooking = () => {
    );
 }
  
-export default AddNewBooking;
+export default AddNewReservation;

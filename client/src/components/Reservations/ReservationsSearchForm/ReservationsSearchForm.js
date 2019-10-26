@@ -1,10 +1,10 @@
 import React from 'react';
-import * as S from './StyledBookingsSearchForm';
+import * as S from './StyledReservationsSearchForm';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import icons from '../../../assets/icons';
 
-const BookingsSearchForm = () => {
+const ReservationsSearchForm = () => {
    const handleOnSubmit = values => console.log(values)
 
    return ( 
@@ -14,13 +14,14 @@ const BookingsSearchForm = () => {
             client: '',
             room: '',
             status: '',
-            bookingStartDate: '',
-            bookingStartTime: '',
-            bookingEndDate: '',
-            bookingEndTime: '',
+            reservationStartDate: '',
+            reservationStartTime: '',
+            reservationEndDate: '',
+            reservationEndTime: '',
             createdAtStartDate: '',
             createdAtEndDate: '',
          }}
+         // validationSchema NIE JEST SKONCZONE I NIE JEST DOBRZE
          validationSchema={Yup.object().shape({
             id: Yup
                .string(),
@@ -30,9 +31,9 @@ const BookingsSearchForm = () => {
                .string(),
             status: Yup
                .string(),
-            bookingStartDate: Yup
+            reservationStartDate: Yup
                .string(), 
-            bookingEnd: Yup
+            reservationEndDate: Yup
                .string(),
             createdAtStartDate: Yup
                .string(),                     
@@ -45,7 +46,7 @@ const BookingsSearchForm = () => {
                <S.StyledForm onSubmit={props.handleSubmit}>
                   <S.InputsWrapper>
                      <S.Col>
-                        <S.Label>Booking ID:</S.Label> 
+                        <S.Label>Reservation ID:</S.Label> 
                         <S.StyledField 
                            name='id' 
                            type='text' 
@@ -73,11 +74,11 @@ const BookingsSearchForm = () => {
                         />
                      </S.Col>
                      <S.Col>
-                        <S.Label>Booking Start Date:</S.Label> 
+                        <S.Label>Start Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
                               secondaryStyled
-                              name='bookingStartDate' 
+                              name='reservationStartDate' 
                               type='date' 
                            />
                            <S.StyledField 
@@ -107,17 +108,17 @@ const BookingsSearchForm = () => {
                         </S.PickersWrapper>
                      </S.Col>
                      <S.Col lastInput>
-                        <S.Label>Booking End Date:</S.Label> 
+                        <S.Label>End Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
                               secondaryStyled
-                              name='bookingEndDate' 
+                              name='reservationEndDate' 
                               type='date' 
                            />
                            <S.StyledField 
                               secondaryStyled
                               dateTimeStyled
-                              name='bookingEndTime' 
+                              name='reservationEndTime' 
                               type='time' 
                            />
                         </S.PickersWrapper>  
@@ -140,4 +141,4 @@ const BookingsSearchForm = () => {
    );
 }
  
-export default BookingsSearchForm;
+export default ReservationsSearchForm;

@@ -1,5 +1,0 @@
-const FETCH_USER_BOOKINGS = 'FETCH_USER_BOOKINGS';
-
-export default {
-   FETCH_USER_BOOKINGS
-}

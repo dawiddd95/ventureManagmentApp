@@ -7,12 +7,12 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import StyledTableCell from './StyledEnhancedTableHead';
  
 const headCells = [
-	{ id: 'booking', numeric: false, disablePadding: true, label: 'Booking ID' },
+	{ id: 'reservation', numeric: false, disablePadding: true, label: 'Reservation ID' },
 	{ id: 'client', numeric: true, disablePadding: false, label: 'Client' },
 	{ id: 'room', numeric: true, disablePadding: false, label: 'Room' },
 	{ id: 'status', numeric: false, disablePadding: false, label: 'Status' },
-	{ id: 'bookingStart', numeric: false, disablePadding: false, label: 'Booking Start Date' },
-	{ id: 'bookingEnd', numeric: false, disablePadding: false, label: 'Booking End Date' },
+	{ id: 'startReservation', numeric: false, disablePadding: false, label: 'Start Reservation' },
+	{ id: 'endReservation', numeric: false, disablePadding: false, label: 'End Reservation' },
 	{ id: 'createdAt', numeric: false, disablePadding: false, label: 'Created At Date' },
 ];
  

@@ -1,21 +1,21 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import * as S from './StyledAddNewBookingForm';
+import * as S from './StyledAddNewReservationForm';
 
 import icons from '../../../assets/icons';
 
-const AddNewBookingForm = ({handleOnSubmit}) => {
+const AddNewReservationForm = ({handleOnSubmit}) => {
    return ( 
       <Formik
          initialValues={{
             client: '',
             room: '',
             status: '',
-            bookingStartDate: '',
-            bookingStartTime: '',
-            bookingEndDate: '',
-            bookingEndTime: '',
+            reservationStartDate: '',
+            reservationStartTime: '',
+            reservationEndDate: '',
+            reservationEndTime: '',
             notes: '',
             employeeNotes: '',
             cancellationNotes: ''
@@ -29,18 +29,18 @@ const AddNewBookingForm = ({handleOnSubmit}) => {
             status: Yup
                .string()
                .required('status is required'),
-            bookingStartDate: Yup
+            reservationStartDate: Yup
                .string()
-               .required('Booking start date is required'),
-            bookingStartTime: Yup
+               .required('Reservation start date is required'),
+            reservationStartTime: Yup
                .string()
-               .required('Booking start time is required'),
-            bookingEndDate: Yup
+               .required('Reservation start time is required'),
+            reservationEndDate: Yup
                .string()
-               .required('Booking end date is required'),
-            bookingEndTime: Yup
+               .required('Reservation end date is required'),
+            reservationEndTime: Yup
                .string()
-               .required('Booking end time is required'),
+               .required('Reservation end time is required'),
             notes: Yup
                .string(),
             employeeNotes: Yup
@@ -67,55 +67,55 @@ const AddNewBookingForm = ({handleOnSubmit}) => {
                   </S.FieldWrapper> 
                   <S.FieldWrapper>
                      <S.Col>
-                        <S.Label>Booking Start Date:</S.Label> 
+                        <S.Label>Start Reservation:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
                               secondaryStyled='true'
                               left='true'
-                              name='bookingStartDate' 
+                              name='reservationStartDate' 
                               type='date' 
                            />
                            <S.StyledField 
                               secondaryStyled='true'
                               dateTimeStyled='true'
-                              name='bookingStartTime' 
+                              name='reservationStartTime' 
                               type='time' 
                            />
                         </S.PickersWrapper>
                      </S.Col>
                      <S.StyledErrorMessage 
-                        name='bookingStartDate' 
+                        name='reservationStartDate' 
                         component='p' 
                      />
                      <S.StyledErrorMessage 
-                        name='bookingStartTime' 
+                        name='reservationStartTime' 
                         component='p' 
                      />
                   </S.FieldWrapper>
                   <S.FieldWrapper>
                      <S.Col>
-                        <S.Label>Booking End Date:</S.Label> 
+                        <S.Label>End Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
                               secondaryStyled='true'
                               right='true'
-                              name='bookingEndDate' 
+                              name='reservationEndDate' 
                               type='date' 
                            />
                            <S.StyledField 
                               secondaryStyled='true'
                               dateTimeStyled='true'
-                              name='bookingEndTime' 
+                              name='reservationEndTime' 
                               type='time' 
                            />
                         </S.PickersWrapper>
                      </S.Col>
                      <S.StyledErrorMessage 
-                        name='bookingEndDate' 
+                        name='reservationEndDate' 
                         component='p' 
                      />
                      <S.StyledErrorMessage 
-                        name='bookingEndTime' 
+                        name='reservationEndTime' 
                         component='p' 
                      />
                   </S.FieldWrapper> 
@@ -192,4 +192,4 @@ const AddNewBookingForm = ({handleOnSubmit}) => {
    );
 }
  
-export default AddNewBookingForm;
+export default AddNewReservationForm;

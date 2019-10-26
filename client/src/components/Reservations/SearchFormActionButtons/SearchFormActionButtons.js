@@ -6,11 +6,11 @@ import icons from '../../../assets/icons';
 const SearchFormActionButtons = () => {
    return (  
       <S.ButtonsWrapper>
-         <S.ButtonLink to='/user/bookings/new'>
+         <S.ButtonLink to='/user/reservations/new'>
             <S.Img src={icons.add} />
             New
          </S.ButtonLink>
-         <S.ButtonLink to='/user/bookings/new'>
+         <S.ButtonLink to='/user/reservations/new'>
             <S.Img src={icons.upload} />
             Import
          </S.ButtonLink>
