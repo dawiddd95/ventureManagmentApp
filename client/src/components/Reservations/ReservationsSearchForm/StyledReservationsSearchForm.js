@@ -50,14 +50,14 @@ export const Label = styled.div`
 `
 
 export const StyledField = styled(Field)`
-   width: ${props => props.secondaryStyled ? '40%' : '72%'};
-   height:  ${props => props.secondaryStyled ? '95%' : '100%'};
-   margin: ${props => props.secondaryStyled ? '0 5px' : '0'};
-   padding: ${props => props.secondaryStyled ? '0 0 0 40px' : '0 0 0 15px'};
+   width: ${props => props.secondarystyled ? '40%' : '72%'};
+   height:  ${props => props.secondarystyled ? '95%' : '100%'};
+   margin: ${props => props.secondarystyled ? '0 5px' : '0'};
+   padding: ${props => props.secondarystyled ? '0 0 0 40px' : '0 0 0 15px'};
    border: 0;
    outline: 0;
    background-color: white;
-   border: ${props => props.secondaryStyled ? 0 : `1px solid ${colors.silverColor}`};   
+   border: ${props => props.secondarystyled ? 0 : `1px solid ${colors.silverColor}`};   
    border-radius: 5px;
    font-weight: 200;
    font-size: 14px;
@@ -66,12 +66,12 @@ export const StyledField = styled(Field)`
 
    &:hover {
       transition: 0.3s;
-      border: ${props => props.secondaryStyled ? '0' : `1px solid ${colors.redColor}`};
+      border: ${props => props.secondarystyled ? '0' : `1px solid ${colors.redColor}`};
    }
 
    &:focus {
-      border: ${props => props.secondaryStyled ? '0' : `1px solid ${colors.redColor}`};
-      box-shadow:  ${props => props.secondaryStyled ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
+      border: ${props => props.secondarystyled ? '0' : `1px solid ${colors.redColor}`};
+      box-shadow:  ${props => props.secondarystyled ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
    }
 
    ${props => props.dateTimeStyled && css `

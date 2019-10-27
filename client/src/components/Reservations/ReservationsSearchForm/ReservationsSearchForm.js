@@ -77,12 +77,12 @@ const ReservationsSearchForm = () => {
                         <S.Label>Start Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
-                              secondaryStyled
+                              secondarystyled
                               name='reservationStartDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondaryStyled
+                              secondarystyled
                               dateTimeStyled
                               name='bookingStartTime' 
                               type='time' 
@@ -93,14 +93,14 @@ const ReservationsSearchForm = () => {
                         <S.Label>Created At:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
-                              secondaryStyled
+                              secondarystyled
                               title='Created At Start Date'
                               name='createdAtStartDate' 
                               type='date' 
                            />
                            ~~
                            <S.StyledField 
-                              secondaryStyled
+                              secondarystyled
                               title='Created At End Date'
                               name='createdAtEndDate' 
                               type='date' 
@@ -111,12 +111,12 @@ const ReservationsSearchForm = () => {
                         <S.Label>End Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
-                              secondaryStyled
+                              secondarystyled
                               name='reservationEndDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondaryStyled
+                              secondarystyled
                               dateTimeStyled
                               name='reservationEndTime' 
                               type='time' 

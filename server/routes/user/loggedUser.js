@@ -1,3 +1,5 @@
+// Dowiedziec sie gdzie jest wykonywane zapytanie do API loggedUser
+// W AppContainer w thunku
 const express = require('express');
 const router = express.Router();
 const checkToken = require('../../services/token/checkToken');

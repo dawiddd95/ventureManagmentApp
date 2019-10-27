@@ -1,7 +1,6 @@
 import uuid from 'uuid'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import * as Yup from 'yup'
 
 import models from '../db/models'
 import {verifyEmail, forgotPassword} from './emails/emails'
@@ -14,7 +13,6 @@ const generateToken = user => {
    return jwt.sign({userId: user.id}, SECRET)
 }
 
-// Dodać tutaj jakoś walidację z yup
 export const createUser = async (name, surname, email, password) => {
    const key = uuid.v4()
    const active = false
@@ -31,10 +29,6 @@ export const createUser = async (name, surname, email, password) => {
 
    transporter.sendMail(emailSend.mailOptions)
    return models.User.create(userData)
-
-   // mozna chyba zrobic return { user, success: true}
-   // return "success";   => nie można zwrócić w ten sam sposób jsona jak w REST
-   // return {success: true, err: '', email}
 }
 
 

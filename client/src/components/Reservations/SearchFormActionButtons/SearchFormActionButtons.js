@@ -14,11 +14,11 @@ const SearchFormActionButtons = () => {
             <S.Img src={icons.upload} />
             Import
          </S.ButtonLink>
-         <S.FancyButtonLink>
+         <S.FancyButtonLink to='/test'>
             <S.Img src={icons.audit} />
             Audit Logs
          </S.FancyButtonLink>
-         <S.FancyButtonLink>
+         <S.FancyButtonLink to='/test'>
             <S.Img src={icons.exportToExcel} />
             Export to Excel
          </S.FancyButtonLink>

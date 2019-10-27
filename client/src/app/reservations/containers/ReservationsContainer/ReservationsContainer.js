@@ -7,12 +7,9 @@ import Reservations from '../../../../components/Reservations/Reservations/Reser
 
 const ReservationsContainer = () => {
    const dispatch = useDispatch();
-
-   // pobranie ze storea id zalogowanego usera
-   const {id} = useSelector(state => state.fetchedLoggedUser.user);
    
-   // pobierze wszystkie bookingi gdzie userId to id naszego usera
-   const userBookings = useSelector(state => state.fetchUserBookings);
+   // pobierze wszystkie rezerwacje gdzie userId to id naszego usera
+   // const userReservations = useSelector(state => state.fetchUserReservations);
 
    // Tutaj na useEffect() pobierze wszystkie 
    // useEffect(() => {
