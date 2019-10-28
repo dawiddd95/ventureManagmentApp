@@ -32,7 +32,7 @@ export const InputsWrapper = styled.div`
 export const Col = styled.div`
    width: 49%;
    height: 40px;
-   margin: ${props => props.lastInput ? '20px auto 0 10px' : '20px 0 0 0'};
+   margin: ${props => props.lastinput ? '20px auto 0 10px' : '20px 0 0 0'};
 
    display: flex;
    justify-content: flex-end;
@@ -74,7 +74,7 @@ export const StyledField = styled(Field)`
       box-shadow:  ${props => props.secondarystyled ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
    }
 
-   ${props => props.dateTimeStyled && css `
+   ${props => props.datetimestyled && css `
       padding: 0;
    `}
 `

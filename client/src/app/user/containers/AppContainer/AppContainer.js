@@ -23,6 +23,7 @@ const AppContainer = () => {
    return (  
       <Query query={ME_QUERY}>
          {({loading, error, data}) => {
+            console.log(data)
             return (
                <S.Wrapper>
                   <AppNavbarContainer />

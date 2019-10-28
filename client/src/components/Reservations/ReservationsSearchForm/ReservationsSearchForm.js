@@ -77,13 +77,13 @@ const ReservationsSearchForm = () => {
                         <S.Label>Start Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
-                              secondarystyled
+                              secondarystyled='true'
                               name='reservationStartDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondarystyled
-                              dateTimeStyled
+                              secondarystyled='true'
+                              datetimestyled='true'
                               name='bookingStartTime' 
                               type='time' 
                            />
@@ -93,31 +93,31 @@ const ReservationsSearchForm = () => {
                         <S.Label>Created At:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
-                              secondarystyled
+                              secondarystyled='true'
                               title='Created At Start Date'
                               name='createdAtStartDate' 
                               type='date' 
                            />
                            ~~
                            <S.StyledField 
-                              secondarystyled
+                              secondarystyled='true'
                               title='Created At End Date'
                               name='createdAtEndDate' 
                               type='date' 
                            />
                         </S.PickersWrapper>
                      </S.Col>
-                     <S.Col lastInput>
+                     <S.Col lastinput='true'>
                         <S.Label>End Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
-                              secondarystyled
+                              secondarystyled='true'
                               name='reservationEndDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondarystyled
-                              dateTimeStyled
+                              secondarystyled='true'
+                              datetimestyled='true'
                               name='reservationEndTime' 
                               type='time' 
                            />

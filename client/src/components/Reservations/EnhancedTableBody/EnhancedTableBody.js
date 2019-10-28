@@ -6,6 +6,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Checkbox from '@material-ui/core/Checkbox';
 import TablePagination from '@material-ui/core/TablePagination';
+import uuid from 'uuid';
 
 import EnhancedTableToolbar from '../EnhancedTableToolbar/EnhancedTableToolbar';
 import EnhancedTableHead from '../EnhancedTableHead/EnhancedTableHead';
@@ -132,12 +133,12 @@ const EnhancedTableBody = () => {
 		
 								return (
 									<TableRow
+										key={uuid.v4()}
 										hover
 										onClick={event => handleClick(event, row.name)}
 										role="checkbox"
 										aria-checked={isItemSelected}
 										tabIndex={-1}
-										key={row.name}
 										selected={isItemSelected}
 									>
 										<TableCell padding="checkbox">
