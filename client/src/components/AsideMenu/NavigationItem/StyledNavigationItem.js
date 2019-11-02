@@ -4,11 +4,11 @@ import colors from '../../../assets/colors';
 
 export const NavigationItem = styled(NavLink)`
    width: 100%;
-   height: 45px;
-   margin: 5px 0;
-   font-weight: 700;
+   height: 47px;
+   margin-bottom: 5px;
    font-size: 14px;
    font-family: segoe;
+   font-variant: tabular-nums;
    text-decoration: none;
    color: ${colors.black65};
 
@@ -22,16 +22,17 @@ export const NavigationItem = styled(NavLink)`
    }
 
    :hover {
+      background-color: #FFF1F0;
       color: ${colors.redColor};
    }
 `
 
 export const Icon = styled.img`
-   width 15px;
-   height: 15px;
+   width 17px;
+   height: 17px;
    margin-left: 20px;
 `
 
 export const Text = styled.p`
-   margin: 0 0 0 10px;
+   margin: 0 0 0 15px;
 `

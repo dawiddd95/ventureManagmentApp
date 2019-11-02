@@ -3,7 +3,7 @@ import colors from '../../../assets/colors';
 
 // Jesli nie mamy wysokosci na całe miejsce jak byśmy chcieli, to użyjmy zamiast height: 100%; height:auto lub bez height
 export const Wrapper = styled.aside`
-   width: 200px;
+   width: 240px;
    border-right: 1px solid #e8e8e8;
    background-color: white;
    font-family: segoe;
@@ -12,10 +12,19 @@ export const Wrapper = styled.aside`
    z-index: 10;
 `
 
+export const Title = styled.header`
+   width: 100%;
+   height: 45px;
+   padding-top: 15px;
+   font-weight: 600;
+
+   display: flex;
+   justify-content: center;
+`
+
 export const Navigation = styled.ul`
    width: 100%;
    height: auto;
-   margin-top: 10px;
    margin-bottom: 100%;
 
    display: flex;

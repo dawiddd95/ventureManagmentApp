@@ -7,6 +7,9 @@ import NavigationItem from '../NavigationItem/NavigationItem';
 const AsideNavigation = () => {
    return (  
       <S.Wrapper>
+         <S.Title>
+            Managment
+         </S.Title>
          <S.Navigation>
             <NavigationItem icon={icons.usersIcon} text='Employees' link='/user/employees' /> 
             <NavigationItem icon={icons.auditIcon} text='Audit Logs' link='/user/audit-logs'/>  
