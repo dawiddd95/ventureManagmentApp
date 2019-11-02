@@ -26,10 +26,6 @@ export default `
       createUser(name: String!, surname: String!, email: String!, password: String!): User
       loginUser(email: String!, password: String!): AuthenticatedUser
       forgotUserPassword(email: String!): User
-      updateUser(id: Int!, name: String, surname: String, email: String, password: String, key: String, active: Boolean, code: String): [Int!]
+      updateUser(id: Int!, name: String, surname: String, email: String, password: String, key: String): [Int!]
    }
 `
-// moglbym napisac Mutation { forgotUserPassword(email: String!): Result }
-// i Stworzyć type Result {success: Boolean!, error: String}
-
-// potem mutację gdzie jest za dlugo przerobić na input

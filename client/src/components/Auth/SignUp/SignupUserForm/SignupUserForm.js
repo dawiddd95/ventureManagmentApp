@@ -41,17 +41,12 @@ const SignupUserForm = ({mutation, loading, handleOnInput, handleOnSubmit}) => {
                .required('Password must match')
                .oneOf([Yup.ref('password'), null], 'Passwords must match'),
          })}
-         // Przy on submit już nie jest wykonywana funckja np: 
-         // onSubmit={values => handleOnSubmit(values)}
-         // Jest już wykonywana mutacja tak jak poniżej
-         // Jednakże można dodać wykonanie kolejnej metody np: handleOnSubmit() od zmiany stanu modalu
          onSubmit={values => {
             mutation({variables: values})
             handleOnSubmit()
          }}
          render={props => (
             <S.Wrapper>
-               {/* onSubmit pozostaje bez zmian */}
                <S.StyledForm onSubmit={props.handleSubmit}>
                   <S.FieldWrapper>
                      <S.StyledField 

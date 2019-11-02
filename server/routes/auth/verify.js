@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import models from '../../db/models';
 
-const SignupUser = require('../../models/signupUser');
+const router = express.Router();
 
 router.get('/auth/verify', async (req, res) => {
    const {code, key} = req.headers;
 
-   const isExist = await SignupUser.findOne({ where: {code, key, active: false} });
+   const isExist = await models.User.findOne({ where: {code, key, active: false} });
 
    if(isExist === null) {
       res.json({
@@ -16,7 +16,7 @@ router.get('/auth/verify', async (req, res) => {
    } 
    
    try {
-      await SignupUser.update({active: true}, { where: {code, key, active: false} });     
+      await models.User.update({active: true}, { where: {code, key, active: false} });     
       res.json({
          header: 'Your email has been verified',
          text: 'You can now sign in with your new account'

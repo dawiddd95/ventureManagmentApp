@@ -20,7 +20,6 @@ const ForgotPasswordContent = () => {
    return (  
       <div>
          <Mutation mutation={FORGOT_USER_PASSWORD_MUTATION}>
-            {/* odnoszenie sie do loading i error w mutacji */}
             {(mutation, {loading, error, data}) => (
                <>
                   {(error && isSubmit) && <FadeReveal 
@@ -32,9 +31,7 @@ const ForgotPasswordContent = () => {
                      success={true} 
                   />}
                   <ForgotPasswordPanelForm 
-                     // przeslanie mutation, {loading, error}
                      mutation={mutation}
-                     // przekazanie nizej loading z {loading, error) by pokazywalo kolko
                      loading={loading}
                      handleOnInput={handleOnInput} 
                      handleOnSubmit={handleOnSubmit}

@@ -21,20 +21,16 @@ const SignupPanel = () => {
    return ( 
       <div>
          <Mutation mutation={CREATE_USER_MUTATION}>
-            {/* odnoszenie sie do loading i error w mutacji */}
             {(mutation, {loading, error, data}) => (
                <>
                   {(error && isSubmit) && <FadeReveal 
                      text='Cannot sign up to application :( Please try again later.'
                      success={false} 
                   />}
-                  {(data && isSubmit) 
-                     // obiekt {data} reprezentuje data.nazwaMutacji.zwracanePoleWMutacji
+                  {(data && isSubmit)      
                      ?  <SignupSuccess email={data.createUser.email} /> 
                      :  <SignupUserForm
-                           // przeslanie mutation, {loading, error}
                            mutation={mutation}
-                           // przekazanie nizej loading z {loading, error) by pokazywalo kolko
                            loading={loading}
                            handleOnInput={handleOnInput} 
                            handleOnSubmit={handleOnSubmit}

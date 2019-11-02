@@ -1,16 +1,17 @@
-const express = require('express')
-const {validationResult} = require('express-validator')
-const bcrypt = require('bcrypt')
-const uuid = require('uuid')
-const SignupUser = require('../../models/signupUser')
-const {passwordValidation} = require('../../services/validations/password')
+import express from 'express'
+import {validationResult} from 'express-validator'
+import bcrypt from 'bcrypt'
+import uuid from 'uuid'
+
+import models from '../../db/models'
+import {passwordValidation} from '../../services/validations/password'
 
 const router = express.Router();
 
 // GET
 router.get('/api/auth/reset-password', async (req, res) => {
    const {code, key} = req.headers;
-   const isValid = await SignupUser.findOne({ where: { code, key }})
+   const isValid = await models.User.findOne({ where: { code, key }})
    
    if(isValid === null) res.json({success: false})
    else res.json({success: true})      
@@ -25,11 +26,11 @@ router.post('/api/auth/reset-password', passwordValidation, async (req, res) => 
    const errors = validationResult(req)
    if (!errors.isEmpty()) return res.status(422).jsonp(errors.array());
    
-   const isExist = await SignupUser.findOne({ where: { code }})
+   const isExist = await models.User.findOne({ where: { code }})
    if (isExist === null) res.json({success: false})
    
    try {
-      await SignupUser.update({password: hash, key: newKey}, { where: {code} })
+      await models.User.update({password: hash, key: newKey}, { where: {code} })
       res.json({success: true})
    } catch(err) {
       res.status(400).send(err)

@@ -7,7 +7,6 @@ import AsideNavigation from '../../../../components/AsideMenu/AsideNavigation/As
 import UserRoutes from '../../../../routes/UserRoutes';
 
 import * as S from './StyledAppContainer';
-import thunkActions from '../../duck/thunks';
 import {ME_QUERY} from '../../../../graphql/user/query';
 
 
@@ -24,6 +23,7 @@ const AppContainer = () => {
       <Query query={ME_QUERY}>
          {({loading, error, data}) => {
             console.log(data)
+            // Tutaj chyba powinien być kod który wrzuci te {data} do reduxowego storea
             return (
                <S.Wrapper>
                   <AppNavbarContainer />

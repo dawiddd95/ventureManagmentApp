@@ -1,9 +1,6 @@
 import React from 'react';
 import { MenuItem } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
-
-// Czyszczenie storea clienta po wylogowaniu
-// 1. Importujemy useApolloClient 
 import { useApolloClient } from "@apollo/react-hooks";
 
 import * as S from './StyledDropdownMenu';
@@ -12,7 +9,6 @@ import icons from '../../../assets/icons';
 import avatarDefault from '../../../assets/img/avatar-default.jpg';
 
 const DropdownMenu = ({avatar}) => {
-   // 2. Dodajemy tutaj hook useApolloClient 
    const client = useApolloClient();
    const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -58,7 +54,6 @@ const DropdownMenu = ({avatar}) => {
                </S.StyledLink>   
             </MenuItem>
             <Divider />
-            {/* 3. Dodajemy funkcję onClick={} która obsłuży czyszczenie storea Apollo */}
             <MenuItem onClick={logout} >
                <S.StyledLink to='/auth/login'>
                   <S.DropdownIcon src={icons.logout} />

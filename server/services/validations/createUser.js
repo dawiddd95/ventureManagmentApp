@@ -1,6 +1,5 @@
 import * as Yup from 'yup'
 
-//  dodac te walidacje jakos do createUser
 const createUserValidation = Yup.object().shape({
    name: Yup
       .string()

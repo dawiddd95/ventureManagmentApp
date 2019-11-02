@@ -30,7 +30,6 @@ const ManagerLoginPanelForm = ({
                .string()
                .required('Password is required'),
          })}
-         // success po values (values, success) to wcale nie jest props success tylko jakis parametr onSubmit
          onSubmit={values => {
             mutation({variables: values})
             handleOnSubmit(values)

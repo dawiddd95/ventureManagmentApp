@@ -39,3 +39,31 @@ export const FORGOT_USER_PASSWORD_MUTATION = gql`
       }
    }
 `
+
+export const UPDATE_USER_MUTATION = gql`
+   mutation updateUserMutation(
+      $id: Int!, 
+      $name: String, 
+      $surname: String, 
+      $email: String, 
+      $password: String,
+      $key: String
+   ) {
+      updateUser(
+         id: $id, 
+         name: $name, 
+         surname: $surname, 
+         email: $email, 
+         password: $password,
+         key: $key
+      ) {
+         id 
+         name
+         surname 
+         email
+         password
+         key
+      }
+   }
+`
+
