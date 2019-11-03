@@ -33,6 +33,3 @@ export default `
       ): Reservation
    }
 `
-
-// 0. do type Reservation dopisujemy relacje na usera user: User!  
-// 1. Przy tworzeniu rezerwacji createReservation() nie podajemy userId

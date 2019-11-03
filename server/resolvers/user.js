@@ -13,8 +13,13 @@ export default {
       ),
       getUser: (parent, {id}, {models}) => models.User.findOne({where: {id}})
    },
-   
-   
+
+   User: {
+      reservation: async (user, args, {models}) => (
+         models.Reservation.findAll({where: {userId: user.id}})
+      )
+   },
+
    Mutation: {
       createUser: {
          validationSchema: createUserValidation,

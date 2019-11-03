@@ -9,26 +9,16 @@ const AddNewReservationForm = ({mutation}) => {
    return ( 
       <Formik
          initialValues={{
-            // client: '',
-            // room: '',
-            // status: '',
-            // reservationStartDate: '',
-            // reservationStartTime: '',
-            // reservationEndDate: '',
-            // reservationEndTime: '',
-            // notes: '',
-            // employeeNotes: '',
-            // cancellationNotes: ''
-            cancellationNotes: "b",
-            client: "Tadeusz Zielonke",
-            employeeNotes: "b",
-            notes: "b",
-            reservationEndDate: "2019-11-16",
-            reservationEndTime: "12:12",
-            reservationStartDate: "2019-11-16",
-            reservationStartTime: "11:11",
-            room: "C207",
-            status: "Oczekujące",
+            client: '',
+            room: '',
+            status: '',
+            reservationStartDate: '',
+            reservationStartTime: '',
+            reservationEndDate: '',
+            reservationEndTime: '',
+            notes: '',
+            employeeNotes: '',
+            cancellationNotes: ''
          }}
          validationSchema={Yup.object().shape({
             client: Yup
