@@ -1,24 +1,16 @@
 import React from 'react';
-import axios from 'axios';
+import {Mutation} from 'react-apollo';
 import {Redirect} from 'react-router-dom';
 import * as S from './StyledAddNewReservation';
 
 import AddNewReservationForm from '../AddNewReservationForm/AddNewReservationForm';
 
+import {CREATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
+
 const AddNewReservation = () => {
-   const [success, setSuccess] = React.useState(false);
-
-   const handleOnSubmit = values => {
-      axios.post('/api/user/bookings/new', values)
-      .then(res => {
-         const {success} = res.data;
-         setSuccess(success);
-      })
-      .catch(err => {
-         console.log(err)
-      })
-   }
-
+   // Jesli to konieczne uzyc hooka do odczytania danych o zalogowanym i id przekazac
+   // Pobrac stan reduxa do NewReservationContainer stamtad rpzekazac go do componentu pomoce to: AppContainer i ReservationsContainer
+   // Zobaczyc jak on to robil z łódkami
    return (  
       <S.Wrapper>
          <S.Section>
@@ -36,12 +28,20 @@ const AddNewReservation = () => {
                   <S.Header>
                      New Reservation
                   </S.Header>
-                  {success 
-                     ?  <Redirect to='/user/reservations'/>
-                     :  <AddNewReservationForm 
-                           handleOnSubmit={handleOnSubmit}
-                        />
-                  }
+                  <Mutation mutation={CREATE_RESERVATION_MUTATION}>
+                     {(mutation, {loading, error, data}) => {
+                        if(data) {
+                           return <Redirect to='/user/reservations'/>
+                        }
+                        return (
+                           <>
+                              <AddNewReservationForm
+                                 mutation={mutation}
+                              />
+                           </>
+                        )
+                     }}
+                  </Mutation>
                </S.BookingsBox>
             </S.MainContent>
          </S.Section>

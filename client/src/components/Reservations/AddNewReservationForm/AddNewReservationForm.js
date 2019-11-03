@@ -5,20 +5,30 @@ import * as S from './StyledAddNewReservationForm';
 
 import icons from '../../../assets/icons';
 
-const AddNewReservationForm = ({handleOnSubmit}) => {
+const AddNewReservationForm = ({mutation}) => {
    return ( 
       <Formik
          initialValues={{
-            client: '',
-            room: '',
-            status: '',
-            reservationStartDate: '',
-            reservationStartTime: '',
-            reservationEndDate: '',
-            reservationEndTime: '',
-            notes: '',
-            employeeNotes: '',
-            cancellationNotes: ''
+            // client: '',
+            // room: '',
+            // status: '',
+            // reservationStartDate: '',
+            // reservationStartTime: '',
+            // reservationEndDate: '',
+            // reservationEndTime: '',
+            // notes: '',
+            // employeeNotes: '',
+            // cancellationNotes: ''
+            cancellationNotes: "b",
+            client: "Tadeusz Zielonke",
+            employeeNotes: "b",
+            notes: "b",
+            reservationEndDate: "2019-11-16",
+            reservationEndTime: "12:12",
+            reservationStartDate: "2019-11-16",
+            reservationStartTime: "11:11",
+            room: "C207",
+            status: "Oczekujące",
          }}
          validationSchema={Yup.object().shape({
             client: Yup
@@ -48,7 +58,9 @@ const AddNewReservationForm = ({handleOnSubmit}) => {
             cancellationNotes: Yup
                .string()
          })}
-         onSubmit={values => handleOnSubmit(values)}
+         onSubmit={values => {
+            mutation({variables: values})
+         }}
          render={props => (
             <S.Wrapper>
                <S.StyledForm onSubmit={props.handleSubmit}>
