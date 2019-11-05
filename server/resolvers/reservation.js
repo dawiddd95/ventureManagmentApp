@@ -6,10 +6,11 @@ import createReservationValidation from '../services/validations/createReservati
 
 
 export default {
-   // Query: {
-   //    allBoats: (parent, args, { models }) =>
-   //       models.Boat.findAll()
-   // },
+   Query: {
+      userReservations: combineResolvers(isAuthenticated, async (parent, args, { models, userId }) => (
+         models.Reservation.findAll({where: {userId}})
+      ))
+   },
 
    Mutation: {
       createReservation: {

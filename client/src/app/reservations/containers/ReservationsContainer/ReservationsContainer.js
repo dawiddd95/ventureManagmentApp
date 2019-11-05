@@ -1,30 +1,28 @@
+//  Tutaj tylko działania redux to filtrowania, sortowania etc... (W Duck reservations)
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import * as S from './StyledReservationsContainer';
+import {useDispatch} from 'react-redux';
+import {Query} from 'react-apollo';
+
+import {USER_RESERVATIONS_QUERY} from '../../../../graphql/reservation/query';
+import thunkActions from '../../duck/thunks';
 
 import Reservations from '../../../../components/Reservations/Reservations/Reservations';
 
 
 const ReservationsContainer = () => {
-   const dispatch = useDispatch();
-   
-   // pobierze wszystkie rezerwacje gdzie userId to id naszego usera
-   // const userReservations = useSelector(state => state.fetchUserReservations);
-
-   // Tutaj na useEffect() pobierze wszystkie 
-   // useEffect(() => {
-   //    // dispatch(thunkActions.fetchBookingsAction())
-   //    dispatch(thunkActions.fetchLoggedUserAction())
-   // }, [])
-
-   // //przekazujemy te dane do komponentu <Bookings />
-
+   const dispatch = useDispatch()
    return (  
-      <S.Wrapper>
-         <Reservations
-            bookings='tutaj obiekt bookingów z bazy danych'  
-         />
-      </S.Wrapper>
+      <>
+         <Query query={USER_RESERVATIONS_QUERY}>
+            {({loading, error, data}) => {
+               if(data) dispatch(thunkActions.fetchLoggedUserReservations(data))
+               
+               return (
+                  <Reservations />
+               )
+            }}
+         </Query>
+      </>
    );
 }
  

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import { MenuItem } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import { useApolloClient } from "@apollo/react-hooks";
@@ -10,6 +11,7 @@ import avatarDefault from '../../../assets/img/avatar-default.jpg';
 
 const DropdownMenu = ({avatar}) => {
    const client = useApolloClient();
+   const dispatch = useDispatch();
    const [anchorEl, setAnchorEl] = React.useState(null);
 
    const handleClick = event => {
@@ -21,9 +23,8 @@ const DropdownMenu = ({avatar}) => {
    };
 
    const logout = () => {
-      // 4. Czyszczenie storea Apollo Client 
-      console.log(client)
       client.resetStore();
+      dispatch({type: 'RESET_STORE'})
       sessionStorage.removeItem('session');  
    }
 

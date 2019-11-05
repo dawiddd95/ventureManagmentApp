@@ -8,16 +8,9 @@ import updateUserValidation from '../services/validations/updateUser'
 
 export default {
    Query: {
-      me: combineResolvers(isAuthenticated, (parent, args, {models, userId}) =>
+      me: combineResolvers(isAuthenticated, (parent, args, {models, userId}) => 
          models.User.findOne({where: {id: userId}})
       ),
-      getUser: (parent, {id}, {models}) => models.User.findOne({where: {id}})
-   },
-
-   User: {
-      reservation: async (user, args, {models}) => (
-         models.Reservation.findAll({where: {userId: user.id}})
-      )
    },
 
    Mutation: {

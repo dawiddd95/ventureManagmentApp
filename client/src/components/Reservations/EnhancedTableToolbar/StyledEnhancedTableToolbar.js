@@ -7,7 +7,7 @@ const useToolbarStyles = makeStyles(theme => ({
 		paddingRight: theme.spacing(1),
 	},
 	highlight: {
-		backgroundColor: '#FF4D4F',
+		backgroundColor: '#f5222d',
 		color: 'white',
 		'& .MuiButtonBase-root': {
 			color: 'white',

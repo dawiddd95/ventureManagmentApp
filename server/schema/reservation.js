@@ -12,10 +12,12 @@ export default `
       status: String!
       employeeNotes: String
       cancellationNotes: String
+      createdAt: String!
    }
 
    extend type Query {
       allReservations: [Reservation!]
+      userReservations: [Reservation!]
    }
    
    extend type Mutation {

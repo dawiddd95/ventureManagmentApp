@@ -11,7 +11,6 @@ const UserReservationsRoutes = () => {
       <Switch>
          <Route exact path='/user/reservations' component={ReservationsContainer} />   
          <Route exact path='/user/reservations/new' component={AddNewReservation} />
-
          {/* <Route exact path='/user/bookings/:id_bookingu' component={} /> */}
          {/* <Route exact path='/user/bookings/:id_bookingu/edit' component={} /> */}
          <Route component={ErrorPage} />

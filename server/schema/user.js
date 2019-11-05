@@ -10,7 +10,6 @@ export default `
       code: String!
       createdAt: String!
       updatedAt: String!
-      reservation: [Reservation!]
    }
 
    type AuthenticatedUser {

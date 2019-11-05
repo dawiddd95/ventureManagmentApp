@@ -33,7 +33,7 @@ export const StyledLink = styled(Link)`
    color: #B8BABC;
 `
 
-export const BookingsBox = styled.div`
+export const ReservationsBox = styled.div`
    width: 100%;
    height: 100%;
    margin: 20px auto;

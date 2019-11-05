@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './StyledReservationsTable';
 
-import EnhancedTableBody from '../EnhancedTableBody/EnhancedTableBody';
+import EnhancedTableBodyContainer from '../../../app/reservations/containers/EnhancedTableBodyContainer/EnhancedTableBodyContainer';
 
 const ReservationsTable = () => {
    return (  
       <S.Wrapper>
-         <EnhancedTableBody />
+         <EnhancedTableBodyContainer />
       </S.Wrapper>
    );
 }

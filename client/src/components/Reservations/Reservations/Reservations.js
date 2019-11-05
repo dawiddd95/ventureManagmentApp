@@ -1,18 +1,11 @@
 import React from 'react';
 import * as S from './StyledReservations';
 
-import LoadingSpinner from '../../Animations/LoadingSpinner/LoadingSpinner';
 import SearchFormActionButtons from '../SearchFormActionButtons/SearchFormActionButtons';
 import ReservationsSearchForm from '../ReservationsSearchForm/ReservationsSearchForm';
 import ReservationsTable from '../ReservationsTable/ReservationsTable';
 
-const Reservations = ({bookings}) => {
-   // return (  
-   //    <div>
-   //       <LoadingSpinner small={false} />
-   //    </div>
-   // );
-
+const Reservations = () => {
    return(
       <S.Wrapper>
          <S.MainContent>
@@ -22,14 +15,14 @@ const Reservations = ({bookings}) => {
                </S.StyledLink>
                / Reservations
             </S.BreadCrumbs>
-            <S.BookingsBox>
+            <S.ReservationsBox>
                <S.Header>
                   Reservations
                </S.Header>
                <SearchFormActionButtons />
-               <ReservationsSearchForm />
+               <ReservationsSearchForm />  
                <ReservationsTable />
-            </S.BookingsBox>
+            </S.ReservationsBox>
          </S.MainContent>
       </S.Wrapper>
    )

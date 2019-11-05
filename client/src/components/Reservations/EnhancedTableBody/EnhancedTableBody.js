@@ -13,13 +13,6 @@ import EnhancedTableHead from '../EnhancedTableHead/EnhancedTableHead';
 
 import useStyles from './StyledEnhancedTableBody';
 
-const rows = [
-	createData('1', 'Tobiasz Konieczny', 147, 'done', '2019.10.18 11:15', '2019.10.21 11:15', '2019.10.12 15:42'),
-];
- 
-function createData(booking, client, room, status, bookingStart, bookingEnd, createdAt) {
-	return { booking, client, room, status, bookingStart, bookingEnd, createdAt };
-}
 
 function stableSort(array, cmp) {
 	const stabilizedThis = array.map((el, index) => [el, index]);
@@ -38,17 +31,23 @@ function getSorting(order, orderBy) {
 
 function desc(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
-	return -1;
+		return -1;
 	}
 	if (b[orderBy] > a[orderBy]) {
-	return 1;
+		return 1;
 	}
 	return 0;
 }
 
+// Z liniami dodajemy do tabeli reszta będzie widoczna po view
+// 1. Muszę zamienić createdAt na datę
+// 1B. Zrobić wyszukiwanie by zwracało tylko niektóre 
+// 2. Pozamieniać funkcjonalnosci by wszystko ogarniało jak prędzej
+// 3. Refaktoryzacja tego komponentu
+const EnhancedTableBody = ({userReservations}) => {
+	console.log(userReservations)
+	console.log(userReservations.length)
 
-const EnhancedTableBody = () => {
-	
 	const classes = useStyles();
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -56,6 +55,49 @@ const EnhancedTableBody = () => {
 	const [page, setPage] = React.useState(0);
 	const [dense, setDense] = React.useState(false);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+
+	const rows = [
+		userReservations.map(currentElement => (
+			createData(
+				currentElement.id,
+				currentElement.client, 
+				currentElement.reservationStartDate, 
+				currentElement.reservationStartTime, 
+				currentElement.reservationEndDate, 
+				currentElement.reservationEndTime, 
+				currentElement.room, 
+				currentElement.status, 
+				currentElement.createdAt
+			)
+		))
+	];
+
+	console.log(rows)
+	
+	function createData(
+		id, 
+		client, 
+		reservationStartDate, 
+		reservationStartTime, 
+		reservationEndDate, 
+		reservationEndTime, 
+		room, 
+		status, 
+		createdAt
+	) {
+		return { 
+			id, 
+			client, 
+			reservationStartDate, 
+			reservationStartTime, 
+			reservationEndDate, 
+			reservationEndTime, 
+			room, 
+			status, 
+			createdAt 
+		};
+	}
  
    const handleRequestSort = (event, property) => {
      const isDesc = orderBy === property && order === 'desc';
@@ -65,7 +107,7 @@ const EnhancedTableBody = () => {
  
 	const handleSelectAllClick = event => {
 		if (event.target.checked) {
-			const newSelecteds = rows.map(n => n.name);
+			const newSelecteds = rows[0].map(n => n.name);
 			setSelected(newSelecteds);
 			return;
 		}
@@ -103,13 +145,15 @@ const EnhancedTableBody = () => {
  
    const isSelected = name => selected.indexOf(name) !== -1;
  
-   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows[0].length - page * rowsPerPage);
  
+
    return (
 		<div className={classes.root}>
 			<Paper className={classes.paper}>
 				<EnhancedTableToolbar numSelected={selected.length} />
 				<div className={classes.tableWrapper}>
+					{/* Start Table */}
 					<Table
 						className={classes.table}
 						aria-labelledby="tableTitle"
@@ -123,41 +167,51 @@ const EnhancedTableBody = () => {
 							orderBy={orderBy}
 							onSelectAllClick={handleSelectAllClick}
 							onRequestSort={handleRequestSort}
-							rowCount={rows.length}
+							rowCount={rows[0].length}
 						/>
+
+						{/* Start Table Body */}
 						<TableBody>
 							{stableSort(rows, getSorting(order, orderBy))
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((row, index) => {
-								const isItemSelected = isSelected(row.name);
+								const isItemSelected = row && isSelected(row.client);
 								const labelId = `enhanced-table-checkbox-${index}`;
 		
 								return (
-									<TableRow
-										key={uuid.v4()}
-										hover
-										onClick={event => handleClick(event, row.name)}
-										role="checkbox"
-										aria-checked={isItemSelected}
-										tabIndex={-1}
-										selected={isItemSelected}
-									>
-										<TableCell padding="checkbox">
-											<Checkbox
-												checked={isItemSelected}
-												inputProps={{ 'aria-labelledby': labelId }}
-											/>
-										</TableCell>
-										<TableCell component="th" id={labelId} scope="row" padding="none">
-											{row.booking}
-										</TableCell>
-										<TableCell padding="none">{row.client}</TableCell>
-										<TableCell padding="none">{row.room}</TableCell>
-										<TableCell padding="none">{row.status}</TableCell>
-										<TableCell padding="none">{row.bookingStart}</TableCell>
-										<TableCell padding="none">{row.bookingEnd}</TableCell>
-										<TableCell padding="none">{row.createdAt}</TableCell>
-									</TableRow>
+									<>
+										{userReservations.map(row => (
+											<TableRow
+												key={uuid.v4()}
+												hover
+												onClick={event => handleClick(event, row.client)}
+												role="checkbox"
+												aria-checked={isItemSelected}
+												tabIndex={-1}
+												selected={isItemSelected}
+											>
+												<TableCell padding="checkbox">
+													<Checkbox
+														checked={isItemSelected}
+														inputProps={{ 'aria-labelledby': labelId }}
+													/>
+												</TableCell>			
+												<TableCell component="th" id={labelId} scope="row" padding="none">
+													{row.id}
+												</TableCell>
+												<TableCell padding="none">{row.client}</TableCell>
+												<TableCell padding="none">{row.room}</TableCell>
+												<TableCell padding="none">{row.status}</TableCell>
+												<TableCell padding="none">
+													{row.reservationStartDate} {row.reservationStartTime}
+												</TableCell>
+												<TableCell padding="none">
+													{row.reservationEndDate} {row.reservationEndTime}
+												</TableCell>
+												<TableCell padding="none">{row.createdAt}</TableCell>
+											</TableRow>
+										))}
+									</>
 								);
 							})}
 							{emptyRows > 0 && (
@@ -166,12 +220,16 @@ const EnhancedTableBody = () => {
 							</TableRow>
 							)}
 						</TableBody>
+						{/* End Table Body */}
+
+
 					</Table>
+					{/* End Table */}
 				</div>
 				<TablePagination
 					rowsPerPageOptions={[5, 10, 25]}
 					component="div"
-					count={rows.length}
+					count={rows[0].length}
 					rowsPerPage={rowsPerPage}
 					page={page}
 					backIconButtonProps={{
