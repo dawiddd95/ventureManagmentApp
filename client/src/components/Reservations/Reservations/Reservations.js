@@ -21,7 +21,10 @@ const Reservations = () => {
                </S.Header>
                <SearchFormActionButtons />
                <ReservationsSearchForm />  
+
+               {/* Tutaj zamiast <ReservationsTable /> powinno być odrazu <EnhancedTableBodyContainer /> jako ReservationsTableContainer*/}
                <ReservationsTable />
+               
             </S.ReservationsBox>
          </S.MainContent>
       </S.Wrapper>

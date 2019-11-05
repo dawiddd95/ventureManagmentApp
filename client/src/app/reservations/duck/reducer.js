@@ -5,7 +5,7 @@ const INITIAL_STATE = {
    reservations: {}
 }
 
-const fetchedUserReservations = (state = INITIAL_STATE, action) => {
+export const fetchedUserReservations = (state = INITIAL_STATE, action) => {
    switch(action.type) {
       case types.FETCH_USER_RESERVATIONS: 
          return produce(state, draftState => {
@@ -16,5 +16,3 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
          return state;
    }
 }
-
-export default fetchedUserReservations;

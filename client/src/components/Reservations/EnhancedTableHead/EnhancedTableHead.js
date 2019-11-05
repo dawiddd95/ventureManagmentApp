@@ -7,7 +7,7 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import StyledTableCell from './StyledEnhancedTableHead';
  
 const headCells = [
-	{ id: 'reservation', numeric: false, disablePadding: true, label: 'Reservation ID' },
+	{ id: 'id', numeric: false, disablePadding: true, label: 'Reservation ID' },
 	{ id: 'client', numeric: true, disablePadding: false, label: 'Client' },
 	{ id: 'room', numeric: true, disablePadding: false, label: 'Room' },
 	{ id: 'status', numeric: false, disablePadding: false, label: 'Status' },

@@ -14,43 +14,19 @@ import EnhancedTableHead from '../EnhancedTableHead/EnhancedTableHead';
 import useStyles from './StyledEnhancedTableBody';
 
 
-function stableSort(array, cmp) {
-	const stabilizedThis = array.map((el, index) => [el, index]);
-	stabilizedThis.sort((a, b) => {
-		const order = cmp(a[0], b[0]);
-		if (order !== 0) return order;
-		return a[1] - b[1];
-	});
-	return stabilizedThis.map(el => el[0]);
-}
- 
 
-function getSorting(order, orderBy) {
-	return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
-}
-
-function desc(a, b, orderBy) {
-	if (b[orderBy] < a[orderBy]) {
-		return -1;
-	}
-	if (b[orderBy] > a[orderBy]) {
-		return 1;
-	}
-	return 0;
-}
 
 // Z liniami dodajemy do tabeli reszta będzie widoczna po view
-// 1. Muszę zamienić createdAt na datę
+// Dodawanie nowej pozycji i tak musi być w redux
+
 // 1B. Zrobić wyszukiwanie by zwracało tylko niektóre 
 // 2. Pozamieniać funkcjonalnosci by wszystko ogarniało jak prędzej
 // 3. Refaktoryzacja tego komponentu
 const EnhancedTableBody = ({userReservations}) => {
-	console.log(userReservations)
-	console.log(userReservations.length)
-
 	const classes = useStyles();
 	const [order, setOrder] = React.useState('asc');
-	const [orderBy, setOrderBy] = React.useState('calories');
+	// rozroznia id działa
+	const [orderBy, setOrderBy] = React.useState('id');
 	const [selected, setSelected] = React.useState([]);
 	const [page, setPage] = React.useState(0);
 	const [dense, setDense] = React.useState(false);
@@ -72,8 +48,6 @@ const EnhancedTableBody = ({userReservations}) => {
 			)
 		))
 	];
-
-	console.log(rows)
 	
 	function createData(
 		id, 
@@ -98,13 +72,40 @@ const EnhancedTableBody = ({userReservations}) => {
 			createdAt 
 		};
 	}
- 
+
+	//  array tu powinno pokazać tablicę elementów z row, więc zamieniłem array.map() na array[0].map()
+	function stableSort(array, cmp) {
+		const stabilizedThis = array.map((el, index) => [el, index]);
+		stabilizedThis.sort((a, b) => {
+			const order = cmp(a[0], b[0]);
+			if (order !== 0) return order;
+			return a[1] - b[1];
+		});
+		return stabilizedThis.map(el => el[0]);
+	}
+	 
+	
+	function getSorting(order, orderBy) {
+		return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+	}
+	
+	function desc(a, b, orderBy) {
+		if (b[orderBy] < a[orderBy]) {
+			return -1;
+		}
+		if (b[orderBy] > a[orderBy]) {
+			return 1;
+		}
+		return 0;
+	}
+
    const handleRequestSort = (event, property) => {
      const isDesc = orderBy === property && order === 'desc';
      setOrder(isDesc ? 'asc' : 'desc');
      setOrderBy(property);
    };
  
+	// To działa
 	const handleSelectAllClick = event => {
 		if (event.target.checked) {
 			const newSelecteds = rows[0].map(n => n.name);
@@ -134,6 +135,7 @@ const EnhancedTableBody = ({userReservations}) => {
      	setSelected(newSelected);
    };
  
+	// dziala
    const handleChangePage = (event, newPage) => {
      setPage(newPage);
    };
@@ -143,8 +145,12 @@ const EnhancedTableBody = ({userReservations}) => {
      setPage(0);
    };
  
-   const isSelected = name => selected.indexOf(name) !== -1;
+   const isSelected = name => {
+		console.log(selected.indexOf(name))
+		return selected.indexOf(name) !== -1;
+	}
  
+	// dziala
    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows[0].length - page * rowsPerPage);
  
 
@@ -175,42 +181,46 @@ const EnhancedTableBody = ({userReservations}) => {
 							{stableSort(rows, getSorting(order, orderBy))
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((row, index) => {
-								const isItemSelected = row && isSelected(row.client);
+								const isItemSelected = isSelected(row.name);
 								const labelId = `enhanced-table-checkbox-${index}`;
 		
 								return (
 									<>
-										{userReservations.map(row => (
-											<TableRow
-												key={uuid.v4()}
-												hover
-												onClick={event => handleClick(event, row.client)}
-												role="checkbox"
-												aria-checked={isItemSelected}
-												tabIndex={-1}
-												selected={isItemSelected}
-											>
-												<TableCell padding="checkbox">
-													<Checkbox
-														checked={isItemSelected}
-														inputProps={{ 'aria-labelledby': labelId }}
-													/>
-												</TableCell>			
-												<TableCell component="th" id={labelId} scope="row" padding="none">
-													{row.id}
-												</TableCell>
-												<TableCell padding="none">{row.client}</TableCell>
-												<TableCell padding="none">{row.room}</TableCell>
-												<TableCell padding="none">{row.status}</TableCell>
-												<TableCell padding="none">
-													{row.reservationStartDate} {row.reservationStartTime}
-												</TableCell>
-												<TableCell padding="none">
-													{row.reservationEndDate} {row.reservationEndTime}
-												</TableCell>
-												<TableCell padding="none">{row.createdAt}</TableCell>
-											</TableRow>
-										))}
+										{userReservations.map(row => {
+											return (
+												<TableRow
+													key={uuid.v4()}
+													hover
+													onClick={event => handleClick(event, row.client)}
+													role="checkbox"
+													aria-checked={isItemSelected}
+													tabIndex={-1}
+													selected={isItemSelected}
+												>
+													<TableCell padding="checkbox">
+														<Checkbox
+															checked={isItemSelected}
+															inputProps={{ 'aria-labelledby': labelId }}
+														/>
+													</TableCell>			
+													<TableCell component="th" id={labelId} scope="row" padding="none">
+														{row.id}
+													</TableCell>
+													<TableCell padding="none">{row.client}</TableCell>
+													<TableCell padding="none">{row.room}</TableCell>
+													<TableCell padding="none">{row.status}</TableCell>
+													<TableCell padding="none">
+														{row.reservationStartDate} {row.reservationStartTime}
+													</TableCell>
+													<TableCell padding="none">
+														{row.reservationEndDate} {row.reservationEndTime}
+													</TableCell>
+													<TableCell padding="none">
+														{row.createdAt}
+													</TableCell>
+												</TableRow>
+											)
+										})}
 									</>
 								);
 							})}
