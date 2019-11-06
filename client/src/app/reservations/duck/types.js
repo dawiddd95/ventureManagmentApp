@@ -1,5 +1,5 @@
 const FETCH_USER_RESERVATIONS = 'FETCH_USER_RESERVATIONS';
-const SORT_BY = 'ORDER_BY';
+const SORT_BY = 'SORT_BY';
 const SORT_ORDER = 'SORT_ORDER';
 
 export default {

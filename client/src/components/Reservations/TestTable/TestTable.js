@@ -2,32 +2,31 @@ import React from 'react'
 
 const style={'padding': '20px'}
 
-const TestTable = ({userReservations, handleSortData, handleSortBy, handleSortOrder}) => {
-   // const data = [].concat(userReservations);
-
-   // // asc i desc stworzymy zamieniając miejscami 1 oraz -1 w ifach
-   // // orderBy stworzymy pobierajac do <EnhancedTableBodyContainer /> lub tutaj do <TestTable /> ze storea daną wobec czego sortujemy czy: id, client, status etc...
-
-   // // a i b reprezentują jeden element i drugi do porównania dla a i b mamy dostęp do wszystkich pól obiektu data
-   // const compare = (a, b) => {
-   //    const elementA = a.client.trim();
-   //    const elementB = b.client.trim();
-   //    let comparison = 0;
-
-   //    if(elementA > elementB) comparison = 1
-   //    if(elementA < elementB) comparison = -1
-
-   //    return comparison
-   // }
-
-   // używamy .sort() na data więc teraz cały obiekt jest przekazany do funkcji compare
-   // Później ta funkcja nie będzie tak luźno
-   // data.sort(compare)
-
+const TestTable = ({
+   userReservations,
+   sortBy,
+   sortOrder, 
+   handleSortBy, 
+   handleSortOrder
+}) => {
    return (  
       <>
-         <button>Sort By, ale to powinien być select</button>
-         <button>Sort Order, ale to powinien być select</button>
+         <label htmlFor='sortBySelect'>SORT BY </label>
+         <select value={sortBy} onChange={handleSortBy} id='sortBySelect'>
+            <option value='id'>Reservation ID</option>
+            <option value='client'>Client</option>
+            <option value='room'>Room</option>
+            <option value='status'>Status</option>
+            <option value='reservationStartDate'>Start Reservation Date</option>
+            <option value='reservationStartTime'>Start Reservation Time</option>
+            <option value='reservationEndDate'>End Reservation Date</option>
+            <option value='reservationEndTime'>End Reservation Time</option>
+            <option value='createdAt'>Created At Date</option>
+         </select>
+
+         {/* Tutaj dwa fancy buttony jak nad formularzem aktywny będzie na czerwono strzałeczki jako ikonki */}
+         <button onClick={() => handleSortOrder('asc')}>Asc</button>
+         <button onClick={() => handleSortOrder('desc')}>Desc</button>
          <table>
             <tr>
                <th style={style}>Reservation ID</th>
