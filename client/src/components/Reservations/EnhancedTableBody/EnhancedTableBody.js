@@ -73,31 +73,7 @@ const EnhancedTableBody = ({userReservations}) => {
 		};
 	}
 
-	//  array tu powinno pokazać tablicę elementów z row, więc zamieniłem array.map() na array[0].map()
-	function stableSort(array, cmp) {
-		const stabilizedThis = array.map((el, index) => [el, index]);
-		stabilizedThis.sort((a, b) => {
-			const order = cmp(a[0], b[0]);
-			if (order !== 0) return order;
-			return a[1] - b[1];
-		});
-		return stabilizedThis.map(el => el[0]);
-	}
-	 
-	
-	function getSorting(order, orderBy) {
-		return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
-	}
-	
-	function desc(a, b, orderBy) {
-		if (b[orderBy] < a[orderBy]) {
-			return -1;
-		}
-		if (b[orderBy] > a[orderBy]) {
-			return 1;
-		}
-		return 0;
-	}
+
 
    const handleRequestSort = (event, property) => {
      const isDesc = orderBy === property && order === 'desc';

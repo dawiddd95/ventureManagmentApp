@@ -2,13 +2,7 @@ import React from 'react'
 
 const style={'padding': '20px'}
 
-const TestTable = ({
-   userReservations,
-   sortBy,
-   sortOrder, 
-   handleSortBy, 
-   handleSortOrder
-}) => {
+const TestTable = ({userReservations, sortBy, handleSortBy, handleSortOrder, handleSelectElement}) => {
    return (  
       <>
          <label htmlFor='sortBySelect'>SORT BY </label>
@@ -38,7 +32,7 @@ const TestTable = ({
                <th style={style}>Created At Date</th>
             </tr>
             {userReservations.map(reservation => (
-               <tr>
+               <tr onClick={() => handleSelectElement(reservation.id)}>
                   <td style={style}>{reservation.id}</td>
                   <td style={style}>{reservation.client}</td>
                   <td style={style}>{reservation.room}</td>

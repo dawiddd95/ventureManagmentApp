@@ -33,6 +33,15 @@ const EnhancedTableBodyContainer = () => {
       dispatch(actions.sortReservationsOrderAction(order))
    }
 
+   const handleSelectElement = (id) => {
+      // zrobić warunek na dispatch select i unselect
+
+      // działa
+      // dispatch(actions.selectNewElementAction(id))
+      // Teraz tutaj zrobić unselect
+      //  ?????????????????????
+   }
+
    data.sort(compare)
 
    // Zatrzymanie przesłania propsu dopóki nie pobrało stanu z reduxa
@@ -42,9 +51,9 @@ const EnhancedTableBodyContainer = () => {
             ?  <TestTable 
                   userReservations={data}
                   sortBy={sortBy}
-                  sortOrder={sortOrder}
                   handleSortBy={handleSortBy}
                   handleSortOrder={handleSortOrder}
+                  handleSelectElement={handleSelectElement}
                />
             :  <div>LOADING</div>
          }
