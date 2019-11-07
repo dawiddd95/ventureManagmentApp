@@ -1,10 +1,22 @@
-import React from 'react'
+import React from 'react';
+import ReactPaginate from 'react-paginate';
+import * as S from './StyledTestTable';
 
 const style={'padding': '20px'}
 
-const TestTable = ({userReservations, sortBy, handleSortBy, handleSortOrder, handleSelectElement}) => {
+const TestTable = ({
+   userReservations, 
+   sortBy, 
+   selected, 
+   handleSortBy, 
+   handleSortOrder, 
+   handleSelectElement,
+   handleSelectAllElements
+}) => {
    return (  
       <>
+         <div>{selected.length} Selected</div>
+         <button>Reset Result</button>
          <label htmlFor='sortBySelect'>SORT BY </label>
          <select value={sortBy} onChange={handleSortBy} id='sortBySelect'>
             <option value='id'>Reservation ID</option>
@@ -17,10 +29,10 @@ const TestTable = ({userReservations, sortBy, handleSortBy, handleSortOrder, han
             <option value='reservationEndTime'>End Reservation Time</option>
             <option value='createdAt'>Created At Date</option>
          </select>
-
          {/* Tutaj dwa fancy buttony jak nad formularzem aktywny będzie na czerwono strzałeczki jako ikonki */}
          <button onClick={() => handleSortOrder('asc')}>Asc</button>
          <button onClick={() => handleSortOrder('desc')}>Desc</button>
+         <button onClick={() => handleSelectAllElements()}>Select All Elements</button>
          <table>
             <tr>
                <th style={style}>Reservation ID</th>
@@ -32,7 +44,10 @@ const TestTable = ({userReservations, sortBy, handleSortBy, handleSortOrder, han
                <th style={style}>Created At Date</th>
             </tr>
             {userReservations.map(reservation => (
-               <tr onClick={() => handleSelectElement(reservation.id)}>
+               <S.Tr 
+                  active={selected.includes(reservation.id) ? true : false}
+                  onClick={() => handleSelectElement(reservation.id)}
+               >
                   <td style={style}>{reservation.id}</td>
                   <td style={style}>{reservation.client}</td>
                   <td style={style}>{reservation.room}</td>
@@ -40,7 +55,7 @@ const TestTable = ({userReservations, sortBy, handleSortBy, handleSortOrder, han
                   <td style={style}>{reservation.reservationStartDate} {reservation.reservationStartTime}</td>
                   <td style={style}>{reservation.reservationEndDate} {reservation.reservationEndTime}</td>
                   <td style={style}>{reservation.createdAt}</td>
-               </tr>
+               </S.Tr>
             ))}
          </table>
       </>

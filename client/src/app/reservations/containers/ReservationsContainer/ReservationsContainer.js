@@ -1,4 +1,3 @@
-//  Tutaj tylko działania redux to filtrowania, sortowania etc... (W Duck reservations)
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {Query} from 'react-apollo';

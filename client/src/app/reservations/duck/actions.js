@@ -20,10 +20,15 @@ const unselectElementAction = (item) => ({
    type: types.UNSELECT_ELEMENT, item
 })
 
+const toggleSelectAllAction = (item) => ({
+   type: types.TOGGLE_SELECT_ALL, item
+})
+
 export default {
    addUserReservationAction,
    sortReservationsByAction,
    sortReservationsOrderAction,
    selectNewElementAction,
-   unselectElementAction
+   unselectElementAction,
+   toggleSelectAllAction
 }
