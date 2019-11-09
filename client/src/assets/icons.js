@@ -25,6 +25,11 @@ import reset from './img/reset.svg';
 import logout from './img/logout.svg';
 import profile from './img/profile.svg';
 import save from './img/save.svg';
+import arrowUp from './img/arrow-up.svg';
+import arrowDown from './img/arrow-down.svg';
+import arrowLeft from './img/arrow-left.svg';
+import arrowRight from './img/arrow-right.svg';
+import reload from './img/reload.svg';
 
 
 export default {
@@ -54,5 +59,11 @@ export default {
    reset,
    logout,
    profile,
-   save
+   save,
+   arrowUp,
+   arrowDown,
+   arrowLeft,
+   arrowRight,
+   arrowDown,
+   reload
 }

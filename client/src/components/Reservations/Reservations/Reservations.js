@@ -3,7 +3,7 @@ import * as S from './StyledReservations';
 
 import SearchFormActionButtons from '../SearchFormActionButtons/SearchFormActionButtons';
 import ReservationsSearchForm from '../ReservationsSearchForm/ReservationsSearchForm';
-import ReservationsTable from '../ReservationsTable/ReservationsTable';
+import ReservationsTableContainer from '../../../app/reservations/containers/ReservationsTableContainer/ReservationsTableContainer';
 
 const Reservations = () => {
    return(
@@ -21,10 +21,7 @@ const Reservations = () => {
                </S.Header>
                <SearchFormActionButtons />
                <ReservationsSearchForm />  
-
-               {/* Tutaj zamiast <ReservationsTable /> powinno być odrazu <EnhancedTableBodyContainer /> jako ReservationsTableContainer*/}
-               <ReservationsTable />
-               
+               <ReservationsTableContainer />
             </S.ReservationsBox>
          </S.MainContent>
       </S.Wrapper>

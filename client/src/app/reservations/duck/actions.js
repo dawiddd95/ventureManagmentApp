@@ -20,8 +20,16 @@ const unselectElementAction = (item) => ({
    type: types.UNSELECT_ELEMENT, item
 })
 
+const resetSelectedAction = (item) => ({
+   type: types.RESET_SELECTED, item
+})
+
 const toggleSelectAllAction = (item) => ({
    type: types.TOGGLE_SELECT_ALL, item
+})
+
+const paginationValueAction = (item) => ({
+   type: types.PAGINATION_VALUE, item
 })
 
 export default {
@@ -30,5 +38,7 @@ export default {
    sortReservationsOrderAction,
    selectNewElementAction,
    unselectElementAction,
-   toggleSelectAllAction
+   resetSelectedAction,
+   toggleSelectAllAction,
+   paginationValueAction
 }

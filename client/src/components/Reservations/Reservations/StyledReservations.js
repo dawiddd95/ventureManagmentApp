@@ -6,6 +6,7 @@ import colors from '../../../assets/colors';
 export const Wrapper = styled.div`
    width: 100%;
    height: 100%;
+   overflow-x: hidden;
    font-family: segoe;
 
    display: flex;
@@ -14,6 +15,7 @@ export const Wrapper = styled.div`
 export const MainContent = styled.main`
    width: 100%;
    height: 100%;
+   overflow-x: hidden;
    margin: 0 23px;
 
    display: flex;

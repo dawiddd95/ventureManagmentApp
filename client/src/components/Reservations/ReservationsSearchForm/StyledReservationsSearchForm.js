@@ -5,7 +5,6 @@ import colors from '../../../assets/colors';
 
 // Dziwne zaleznosci naprawiamy display: block;
 export const Wrapper = styled.div`
-   width: 100%;
    margin-bottom: 20px;
    
    display: block;
@@ -13,7 +12,7 @@ export const Wrapper = styled.div`
 
 export const StyledForm = styled(Form)`
    width: 96%;
-   margin: 30px auto 0 auto;
+   margin: 30px 20px 0 20px;
    border: 1px solid #D9D9D9;
    border-radius: 4px;
 

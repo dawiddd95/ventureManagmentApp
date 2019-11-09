@@ -39,3 +39,9 @@ export const CREATE_RESERVATION_MUTATION = gql`
       }
    }
 `
+
+export const DELETE_RESERVATIONS_MUTATION = gql`
+   mutation deleteReservationsMutation($id: [Int!]!) {
+      deleteReservations(id: $id) 
+   }
+`

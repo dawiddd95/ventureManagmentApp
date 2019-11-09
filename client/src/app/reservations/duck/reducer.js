@@ -6,7 +6,8 @@ const INITIAL_STATE = {
    sortBy: 'id',
    sortOrder: 'asc',
    selected: [],
-   checkSelectAll: false
+   checkSelectAll: false,
+   pagination: '5',
 }
 
 const fetchedUserReservations = (state = INITIAL_STATE, action) => {
@@ -36,9 +37,19 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
             draftState.selected = draftState.selected.filter(item => item !== action.item)
          })
 
+      case types.RESET_SELECTED:
+         return produce(state, draftState => {
+            draftState.selected = action.item
+         })
+
       case types.TOGGLE_SELECT_ALL:
          return produce(state, draftState => {
             draftState.checkSelectAll = !draftState.checkSelectAll
+         })
+
+      case types.PAGINATION_VALUE:
+         return produce(state, draftState => {
+            draftState.pagination = action.item;
          })
 
       default:

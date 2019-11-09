@@ -6,11 +6,9 @@ import * as S from './StyledAddNewReservation';
 import AddNewReservationForm from '../AddNewReservationForm/AddNewReservationForm';
 
 import {CREATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
+import {USER_RESERVATIONS_QUERY} from '../../../graphql/reservation/query';
 
 const AddNewReservation = () => {
-   // Jesli to konieczne uzyc hooka do odczytania danych o zalogowanym i id przekazac
-   // Pobrac stan reduxa do NewReservationContainer stamtad rpzekazac go do componentu pomoce to: AppContainer i ReservationsContainer
-   // Zobaczyc jak on to robil z łódkami
    return (  
       <S.Wrapper>
          <S.Section>
@@ -28,7 +26,10 @@ const AddNewReservation = () => {
                   <S.Header>
                      New Reservation
                   </S.Header>
-                  <Mutation mutation={CREATE_RESERVATION_MUTATION}>
+                  <Mutation 
+                     mutation={CREATE_RESERVATION_MUTATION} 
+                     refetchQueries={[{query: USER_RESERVATIONS_QUERY}]}
+                  >
                      {(mutation, {loading, error, data}) => {
                         if(data) {
                            return <Redirect to='/user/reservations'/>
