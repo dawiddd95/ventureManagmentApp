@@ -5,10 +5,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as S from './StyledTableActions';
 import icons from '../../../../assets/icons';
 
-const TableActions = ({sortBy, sortOrder, handleSortOrder, handleSortBy}) => {
+const TableActions = ({sortBy, sortOrder, handleReloadReservations, handleSortOrder, handleSortBy}) => {
    return (  
       <S.ButtonsWrapper>
-         <S.Button>
+         <S.Button onClick={handleReloadReservations}>
             <S.Img src={icons.reload} />
             Reload Reservations
          </S.Button>

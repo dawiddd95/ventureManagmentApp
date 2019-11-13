@@ -3,6 +3,8 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
    reservations: {},
+   searchingReservations: [],
+   filter: false,
    sortBy: 'id',
    sortOrder: 'asc',
    selected: [],
@@ -15,6 +17,16 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
       case types.FETCH_USER_RESERVATIONS: 
          return produce(state, draftState => {
             draftState.reservations = {...action.item};
+         })
+
+      case types.SEARCH_USER_RESERVATIONS:
+         return produce(state, draftState => {
+            draftState.searchingReservations = action.item
+         })
+
+      case types.FILTER: 
+         return produce(state, draftState => {
+            draftState.filter = action.item
          })
 
       case types.SORT_BY:

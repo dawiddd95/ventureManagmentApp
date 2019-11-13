@@ -4,9 +4,7 @@ import * as Yup from 'yup';
 import {Formik} from 'formik';
 import icons from '../../../assets/icons';
 
-const ReservationsSearchForm = () => {
-   const handleOnSubmit = values => console.log(values)
-
+const ReservationsSearchForm = ({handleSearchReservations}) => {
    return ( 
       <Formik
          initialValues={{
@@ -18,10 +16,10 @@ const ReservationsSearchForm = () => {
             reservationStartTime: '',
             reservationEndDate: '',
             reservationEndTime: '',
-            createdAtStartDate: '',
-            createdAtEndDate: '',
+            createdAtStart: '',
+            createdAtEnd: '',
          }}
-         // validationSchema NIE JEST SKONCZONE I NIE JEST DOBRZE
+
          validationSchema={Yup.object().shape({
             id: Yup
                .string(),
@@ -33,14 +31,20 @@ const ReservationsSearchForm = () => {
                .string(),
             reservationStartDate: Yup
                .string(), 
+            reservationStartTime: Yup
+               .string(),
             reservationEndDate: Yup
                .string(),
-            createdAtStartDate: Yup
+            reservationEndTime: Yup
+               .string(),
+            createdAtStart: Yup
                .string(),                     
-            createdAtEndDate: Yup
+            createdAtEnd: Yup
                .string(), 
          })}
-         onSubmit={values => handleOnSubmit(values)}
+         onSubmit={values => {
+            handleSearchReservations(values)
+         }}
          render={props => (
             <S.Wrapper>
                <S.StyledForm onSubmit={props.handleSubmit}>
@@ -49,7 +53,7 @@ const ReservationsSearchForm = () => {
                         <S.Label>Reservation ID:</S.Label> 
                         <S.StyledField 
                            name='id' 
-                           type='text' 
+                           type='number' 
                         />
                      </S.Col>
                      <S.Col>
@@ -74,7 +78,7 @@ const ReservationsSearchForm = () => {
                         />
                      </S.Col>
                      <S.Col>
-                        <S.Label>Start Reservation:</S.Label> 
+                        <S.Label>Start Reserv. From:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
                               secondarystyled='true'
@@ -84,7 +88,7 @@ const ReservationsSearchForm = () => {
                            <S.StyledField 
                               secondarystyled='true'
                               datetimestyled='true'
-                              name='bookingStartTime' 
+                              name='reservationStartTime' 
                               type='time' 
                            />
                         </S.PickersWrapper>  
@@ -95,20 +99,20 @@ const ReservationsSearchForm = () => {
                            <S.StyledField 
                               secondarystyled='true'
                               title='Created At Start Date'
-                              name='createdAtStartDate' 
+                              name='createdAtStart' 
                               type='date' 
                            />
                            ~~
                            <S.StyledField 
                               secondarystyled='true'
                               title='Created At End Date'
-                              name='createdAtEndDate' 
+                              name='createdAtEnd' 
                               type='date' 
                            />
                         </S.PickersWrapper>
                      </S.Col>
                      <S.Col lastinput='true'>
-                        <S.Label>End Reservation:</S.Label> 
+                        <S.Label>Start Reserv. To:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
                               secondarystyled='true'

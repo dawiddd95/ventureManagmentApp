@@ -10,6 +10,7 @@ import Reservations from '../../../../components/Reservations/Reservations/Reser
 
 const ReservationsContainer = () => {
    const dispatch = useDispatch()
+
    return (  
       <>
          <Query query={USER_RESERVATIONS_QUERY}>

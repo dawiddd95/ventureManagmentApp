@@ -10,7 +10,7 @@ export const CREATE_RESERVATION_MUTATION = gql`
       $reservationEndDate: String!,
       $reservationEndTime: String!,
       $notes: String,
-      $status: String!,
+      $status: String,
       $employeeNotes: String,
       $cancellationNotes: String,
    ) {

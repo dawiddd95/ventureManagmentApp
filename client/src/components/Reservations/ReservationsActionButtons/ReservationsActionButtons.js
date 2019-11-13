@@ -1,9 +1,9 @@
 import React from 'react';
-import * as S from './StyledSearchFormActionButtons';
+import * as S from './StyledReservationsActionButtons';
 
 import icons from '../../../assets/icons';
 
-const SearchFormActionButtons = () => {
+const ReservationsActionButtons = () => {
    return (  
       <S.ButtonsWrapper>
          <S.ButtonLink to='/user/reservations/new'>
@@ -26,4 +26,4 @@ const SearchFormActionButtons = () => {
    );
 }
  
-export default SearchFormActionButtons;
+export default ReservationsActionButtons;

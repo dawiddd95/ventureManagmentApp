@@ -8,7 +8,6 @@ export const ButtonsWrapper = styled.div`
    margin-top: 20px;
    margin-bottom: 40px;
    overflow: hidden;
-
    display: flex;
    align-items: flex-end;
    flex-wrap: wrap;
@@ -30,10 +29,8 @@ export const Button = styled.button`
    transition: .3s;
    cursor: pointer;
    outline: none;
-
    display: flex;
    align-items: center;
-
    :hover {
       background-color: #ff4285;
       border: 1px solid transparent;
@@ -55,7 +52,6 @@ export const StyledLabel = styled.label`
 
 export const SelectWrapper = styled.div`
    margin: 0 30px 0 auto;
-
    display: flex;
    flex-direction: column;
 `
@@ -78,12 +74,10 @@ export const Select = styled.select`
    color: ${colors.black65};
    outline: none;
    transition: .3s;
-
    :hover {
       border: 1px solid ${colors.redColor};
       transition: .3s;
    }
-
    :focus {
       border: 1px solid ${colors.redColor};
       box-shadow: 0 0 0 2px rgba(245,34,45,0.2);

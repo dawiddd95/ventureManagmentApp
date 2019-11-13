@@ -1,9 +1,11 @@
 import React from 'react';
 import * as S from './StyledReservations';
 
-import SearchFormActionButtons from '../SearchFormActionButtons/SearchFormActionButtons';
+import ReservationsActionButtons from '../ReservationsActionButtons/ReservationsActionButtons';
 import ReservationsSearchForm from '../ReservationsSearchForm/ReservationsSearchForm';
+import ReservationsSearchFormContainer from '../../../app/reservations/containers/ReservationsSearchFormContainer/ReservationsSearchFormContainer';
 import ReservationsTableContainer from '../../../app/reservations/containers/ReservationsTableContainer/ReservationsTableContainer';
+
 
 const Reservations = () => {
    return(
@@ -19,8 +21,8 @@ const Reservations = () => {
                <S.Header>
                   Reservations
                </S.Header>
-               <SearchFormActionButtons />
-               <ReservationsSearchForm />  
+               <ReservationsActionButtons />
+               <ReservationsSearchFormContainer />  
                <ReservationsTableContainer />
             </S.ReservationsBox>
          </S.MainContent>

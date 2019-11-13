@@ -4,6 +4,14 @@ const addUserReservationAction = (item) => ({
    type: types.FETCH_USER_RESERVATIONS, item
 })
 
+const searchUserReservationsAction = (item) => ({
+   type: types.SEARCH_USER_RESERVATIONS, item
+})
+
+const filterAction = (item) => ({
+   type: types.FILTER, item
+})
+
 const sortReservationsByAction = (item) => ({
    type: types.SORT_BY, item
 })
@@ -34,6 +42,8 @@ const paginationValueAction = (item) => ({
 
 export default {
    addUserReservationAction,
+   searchUserReservationsAction,
+   filterAction,
    sortReservationsByAction,
    sortReservationsOrderAction,
    selectNewElementAction,

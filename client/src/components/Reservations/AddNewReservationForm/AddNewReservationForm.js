@@ -27,8 +27,7 @@ const AddNewReservationForm = ({mutation}) => {
             room: Yup
                .string(),
             status: Yup
-               .string()
-               .required('status is required'),
+               .string(),
             reservationStartDate: Yup
                .string()
                .required('Reservation start date is required'),

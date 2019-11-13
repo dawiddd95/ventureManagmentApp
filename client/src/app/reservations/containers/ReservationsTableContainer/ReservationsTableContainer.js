@@ -15,11 +15,13 @@ const ReservationsTableContainer = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [markedReservation, setMarkedReservation] = useState('');
    const {userReservations} = useSelector(state => state.fetchedUserReservations.reservations)
-   const {sortBy, sortOrder, selected, checkSelectAll,pagination } = useSelector(
+   const {filter, searchingReservations, sortBy, sortOrder, selected, checkSelectAll, pagination } = useSelector(
       state => state.fetchedUserReservations
    )
 
-   const data = [].concat(userReservations);
+   
+   const data = !filter ? [].concat(userReservations) : [].concat(searchingReservations);
+
    const dataPerPage = parseInt(pagination, 10);
    const indexOfLastData = currentPage * dataPerPage;
    const indexOfFirstData = indexOfLastData - dataPerPage;
@@ -46,6 +48,10 @@ const ReservationsTableContainer = () => {
    const clearSelectedAmount = () => {
       dispatch(actions.resetSelectedAction([]))
       dispatch(actions.toggleSelectAllAction(!checkSelectAll))
+   }
+
+   const handleReloadReservations = () => {
+      dispatch(actions.filterAction(false))
    }
 
    const handleSortBy = (event) => {
@@ -95,6 +101,7 @@ const ReservationsTableContainer = () => {
                   <TableActions
                      sortBy={sortBy}
                      sortOrder={sortOrder}
+                     handleReloadReservations={handleReloadReservations}
                      handleSortOrder={handleSortOrder}
                      handleSortBy={handleSortBy}
                   />        
