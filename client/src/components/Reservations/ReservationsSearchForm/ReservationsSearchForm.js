@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './StyledReservationsSearchForm';
 import * as Yup from 'yup';
-import {Formik} from 'formik';
+import {Formik, ErrorMessage} from 'formik';
 import icons from '../../../assets/icons';
 
 const ReservationsSearchForm = ({handleSearchReservations}) => {
@@ -19,7 +19,6 @@ const ReservationsSearchForm = ({handleSearchReservations}) => {
             createdAtStart: '',
             createdAtEnd: '',
          }}
-
          validationSchema={Yup.object().shape({
             id: Yup
                .string(),
@@ -75,6 +74,10 @@ const ReservationsSearchForm = ({handleSearchReservations}) => {
                         <S.StyledField 
                            name='status' 
                            type='text' 
+                        />
+                        <ErrorMessage 
+                           component='p'
+                           name='status'
                         />
                      </S.Col>
                      <S.Col>

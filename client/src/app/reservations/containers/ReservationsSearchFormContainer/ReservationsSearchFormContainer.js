@@ -12,77 +12,106 @@ const ReservationsSearchFormContainer = () => {
    // TERAZ TU NAPISAC LOGIKĘ FILTROWANIA
    // I dostosowac sellectAll i usuwanie
    const handleSearchReservations = (values) => {
+      const {
+         id,
+         client,
+         room,
+         status,
+         reservationStartDate,
+         reservationEndDate,
+         reservationStartTime,
+         reservationEndTime,
+         createdAtStart,
+         createdAtEnd
+      } = values
+
       dispatch(actions.filterAction(true))
 
-      let filterResult = [];
+      let filterResult = []
       let filteringArray =  userReservations
 
-      if(values.id !== '') {
+      if(id !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.id === values.id
+            return element.id === id
          })
          filteringArray = filterResult;
       }
 
-      if(values.client !== '') {
+      if(client !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.client.toLowerCase().includes(values.client.toLowerCase())
+            return element.client.toLowerCase().includes(client.toLowerCase())
          })
          filteringArray = filterResult;
       }
 
-      if(values.room !== '') {
+      if(room !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.room.includes(values.room)
+            return element.room.includes(room)
          })
          filteringArray = filterResult;
       }
 
-      if(values.status !== '') {
+      if(status !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.status.includes(values.status)
+            return element.status.includes(status)
          })
          filteringArray = filterResult;
       }
 
-      if(values.reservationStartDate !== '') {
+      if(reservationStartDate !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.reservationStartDate >= values.reservationStartDate
+            if((reservationStartDate > reservationEndDate) && (reservationEndDate !== '')) {
+               return element.reservationStartDate <= reservationStartDate
+            } else {
+               return element.reservationStartDate >= reservationStartDate
+            }     
          })
          filteringArray = filterResult;
       }
 
-      if(values.reservationEndDate !== '') {
+      if(reservationEndDate !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.reservationStartDate <= values.reservationEndDate
+            if((reservationEndDate < reservationStartDate) && (reservationStartDate !== '')) {
+               return element.reservationStartDate >= reservationEndDate
+            } else {    
+               return element.reservationStartDate <= reservationEndDate
+            }
          })
          filteringArray = filterResult;
       }
       
-      if(values.reservationStartTime !== '') {
+      if(reservationStartTime !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.reservationStartTime >= values.reservationStartTime
+            if((reservationStartTime > reservationEndTime) && (reservationEndTime !== '')) {
+               return element.reservationStartTime <= reservationStartTime
+            } else {
+               return element.reservationStartTime >= reservationStartTime
+            }
          })
          filteringArray = filterResult;
       }
 
-      if(values.reservationEndTime !== '') {
+      if(reservationEndTime !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.reservationStartTime <= values.reservationEndTime
+            if((reservationEndTime < reservationStartTime) && (reservationStartTime !== '')) {
+               return element.reservationStartTime >= reservationEndTime
+            } else {
+               return element.reservationStartTime <= reservationEndTime
+            }
          })
          filteringArray = filterResult;
       }
 
-      if(values.createdAtStart !== '') {
+      if(createdAtStart !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.createdAt >= values.createdAtStart
+            return element.createdAt >= createdAtStart
          })
          filteringArray = filterResult;
       }
 
-      if(values.createdAtEnd !== '') {
+      if(createdAtEnd !== '') {
          filterResult = filteringArray.filter(element => {
-            return element.createdAt <= values.createdAtEnd
+            return element.createdAt <= createdAtEnd
          })
          filteringArray = filterResult;
       }
