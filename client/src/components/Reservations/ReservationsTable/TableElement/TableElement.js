@@ -27,6 +27,7 @@ const TableElement = ({reservation, markedReservation, markReservation, selected
             <S.Td>{reservation.status}</S.Td>
             <S.Td>{reservation.room}</S.Td>           
             <S.Td>{reservation.createdAt}</S.Td>
+            <S.Td>{reservation.updatedAt}</S.Td>
             <S.Td>
                <S.StyledLink to={`/user/reservations/${reservation.id}`}>
                   View

@@ -35,6 +35,7 @@ const Table = ({
                   <S.Th>Status</S.Th>
                   <S.Th>Room</S.Th>
                   <S.Th>Created At Date</S.Th>
+                  <S.Th>Updated At Date</S.Th>
                   <S.Th>Reservation Actions</S.Th>
                </tr>
             </S.Thead>

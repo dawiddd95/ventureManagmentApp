@@ -7,7 +7,6 @@ import ReservationsSearchForm from '../../../../components/Reservations/Reservat
 const ReservationsSearchFormContainer = () => {
    const dispatch = useDispatch();
    const {userReservations} = useSelector(state => state.fetchedUserReservations.reservations);
-   const {filter} = useSelector(state => state.fetchedUserReservations);
 
    // TERAZ TU NAPISAC LOGIKĘ FILTROWANIA
    // I dostosowac sellectAll i usuwanie

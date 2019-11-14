@@ -18,6 +18,7 @@ export const USER_RESERVATIONS_QUERY = gql`
          employeeNotes
          cancellationNotes
          createdAt
+         updatedAt
       }
    }
 `

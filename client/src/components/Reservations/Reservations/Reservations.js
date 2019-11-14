@@ -1,8 +1,7 @@
 import React from 'react';
 import * as S from './StyledReservations';
 
-import ReservationsActionButtons from '../ReservationsActionButtons/ReservationsActionButtons';
-import ReservationsSearchForm from '../ReservationsSearchForm/ReservationsSearchForm';
+import ReservationsActionButtonsContainer from '../../../app/reservations/containers/ReservationsActionButtonsContainer/ReservationsActionButtonsContainer';
 import ReservationsSearchFormContainer from '../../../app/reservations/containers/ReservationsSearchFormContainer/ReservationsSearchFormContainer';
 import ReservationsTableContainer from '../../../app/reservations/containers/ReservationsTableContainer/ReservationsTableContainer';
 
@@ -21,7 +20,8 @@ const Reservations = () => {
                <S.Header>
                   Reservations
                </S.Header>
-               <ReservationsActionButtons />
+               {/* Lepiej to zrobić na jeden kontener który zwróci te 3 komponenty */}
+               <ReservationsActionButtonsContainer />
                <ReservationsSearchFormContainer />  
                <ReservationsTableContainer />
             </S.ReservationsBox>
