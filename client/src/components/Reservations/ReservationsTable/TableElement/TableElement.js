@@ -20,7 +20,7 @@ const TableElement = ({reservation, markedReservation, markReservation, selected
                   />}
                />
             </S.Td>
-            <S.Td>{reservation.id}</S.Td>
+            <S.Td>{parseInt(reservation.id,10)}</S.Td>
             <S.Td>{reservation.client}</S.Td>
             <S.Td>{reservation.reservationStartDate} {reservation.reservationStartTime}</S.Td>
             <S.Td>{reservation.reservationEndDate} {reservation.reservationEndTime}</S.Td>

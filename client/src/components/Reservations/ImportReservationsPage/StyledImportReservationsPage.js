@@ -59,15 +59,20 @@ export const Header = styled.header`
 `
 
 export const WarningsWrapper = styled.div`
+   padding: 15px 20px;
+   background-color: #FFF3CD;
+   border: 2px solid #FFEEBA;
+   border-radius: 4px;
+
    display: flex;
    flex-direction: column;
 `
 
 export const Warning = styled.div`
-   margin-bottom: 10px;
+   margin: 5px 0;
    font-size: 14px;
-   font-family: Arial; 
-   color: #ffab00;
+   font-family: segoe; 
+   color: #856404;
 
    display: flex;
    align-items: center;

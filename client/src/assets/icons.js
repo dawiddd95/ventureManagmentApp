@@ -30,6 +30,9 @@ import arrowDown from './img/arrow-down.svg';
 import arrowLeft from './img/arrow-left.svg';
 import arrowRight from './img/arrow-right.svg';
 import reload from './img/reload.svg';
+import warning from './img/warning.svg';
+import box from './img/box.svg';
+import danger from './img/danger.svg';
 
 
 export default {
@@ -65,5 +68,8 @@ export default {
    arrowLeft,
    arrowRight,
    arrowDown,
-   reload
+   reload,
+   warning,
+   box,
+   danger
 }

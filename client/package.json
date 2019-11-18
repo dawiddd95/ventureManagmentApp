@@ -7,6 +7,7 @@
     "@material-ui/icons": "^4.4.3",
     "apollo-boost": "^0.4.4",
     "axios": "^0.19.0",
+    "excel-date-to-js": "^1.0.1",
     "formik": "^1.5.8",
     "graphql": "^14.5.8",
     "immer": "^3.2.0",
@@ -22,11 +23,13 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "read-excel-file": "^4.0.4",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2",
     "uuid": "^3.3.2",
+    "xlsx": "^0.15.2",
     "yup": "^0.27.0"
   },
   "scripts": {
