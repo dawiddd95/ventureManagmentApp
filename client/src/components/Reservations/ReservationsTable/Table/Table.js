@@ -13,14 +13,18 @@ const Table = ({
    markedReservation,
    markReservation,
    selected,
+   filter,
    handleSelectElement,
    handleSelectAllElements,
    handleDeleteSearchingElements
 }) => {
+
+   const length = pageUserReservations.length;
+   
    return (  
-      <S.TableWrapper>
+      <S.TableWrapper no_data={length === 0}>
          <S.Table>
-            <S.Thead>
+            <S.Thead no_data={length === 0}>
                <tr>
                   <S.Th checkbox={true}>
                      <FormControlLabel
@@ -42,21 +46,19 @@ const Table = ({
                   <S.Th>Reservation Actions</S.Th>
                </tr>
             </S.Thead>
-            {pageUserReservations.length === 0 
-               ?  <NoData />
-               :  <tbody>
-                     {pageUserReservations.map(reservation => <TableElement 
-                        key={reservation.id}
-                        reservation={reservation}
-                        markedReservation={markedReservation}
-                        markReservation={markReservation}
-                        selected={selected}
-                        handleSelectElement={handleSelectElement}
-                        handleDeleteSearchingElements={handleDeleteSearchingElements}
-                     />)}
-                  </tbody>
-            }
+            <tbody>
+               {pageUserReservations.map(reservation => <TableElement 
+                  key={reservation.id}
+                  reservation={reservation}
+                  markedReservation={markedReservation}
+                  markReservation={markReservation}
+                  selected={selected}
+                  handleSelectElement={handleSelectElement}
+                  handleDeleteSearchingElements={handleDeleteSearchingElements}
+               />)}
+            </tbody>
          </S.Table>
+         {length === 0 && <NoData filter={filter} />}
       </S.TableWrapper>
    );
 }

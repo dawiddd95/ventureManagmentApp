@@ -5,9 +5,15 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as S from './StyledTableActions';
 import icons from '../../../../assets/icons';
 
-const TableActions = ({sortBy, sortOrder, handleReloadReservations, handleSortOrder, handleSortBy}) => {
+import FadeReveal from '../../../Animations/FadeReveal/FadeReveal';
+
+const TableActions = ({sortBy, sortOrder, reload, handleReloadReservations, handleSortOrder, handleSortBy}) => {
    return (  
       <S.ButtonsWrapper>
+         {reload && <FadeReveal
+            text={'Data Reload Succeed.'}
+            success={true} 
+         />}
          <S.Button onClick={handleReloadReservations}>
             <S.Img src={icons.reload} />
             Reload Reservations

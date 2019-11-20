@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const NoData = () => {
+import * as S from './StyledNoData';
+import icons from '../../assets/icons';
+
+const NoData = ({filter}) => {
    return (  
-      <div>
-         Brak danych
-      </div>
+      <S.Wrapper>
+         <S.Img src={icons.noData} />
+         No Data {filter ? `For Search Result.` : '. Add Or Import Some Items.'}
+      </S.Wrapper>
    );
 }
  

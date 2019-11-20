@@ -4,13 +4,13 @@ import {Link} from 'react-router-dom';
 import colors from '../../../../assets/colors';
 
 export const TableWrapper = styled.div`
-   overflow-x: scroll;
+   overflow-x: ${({no_data}) => no_data ? 'hidden' : 'scroll'}
 `
 
 export const Table = styled.table`
    width: 1700px;
    border-collapse: collapse;
-   overflow-x: scroll;
+   overflow-x: ${({no_data}) => no_data ? 'hidden' : 'scroll'}
 `
 
 export const Thead = styled.thead`
