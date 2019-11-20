@@ -56,12 +56,19 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
 
       case types.TOGGLE_SELECT_ALL:
          return produce(state, draftState => {
-            draftState.checkSelectAll = !draftState.checkSelectAll
+            draftState.checkSelectAll = action.item
          })
 
       case types.PAGINATION_VALUE:
          return produce(state, draftState => {
             draftState.pagination = action.item;
+         })
+
+      case types.DELETE_SEARCHING_ELEMENTS:
+         return produce(state, draftState => {
+            draftState.searchingReservations = state.searchingReservations.filter(
+               item => !action.item.includes(item.id)
+            )
          })
 
       default:

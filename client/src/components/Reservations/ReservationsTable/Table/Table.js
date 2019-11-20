@@ -3,16 +3,19 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as S from './StyledTable';
+
+import NoData from '../../../NoData/NoData';
 import TableElement from '../TableElement/TableElement';
 
 const Table = ({
-   userReservations,
    pageUserReservations,
+   checkSelectAll,
    markedReservation,
    markReservation,
    selected,
    handleSelectElement,
    handleSelectAllElements,
+   handleDeleteSearchingElements
 }) => {
    return (  
       <S.TableWrapper>
@@ -23,7 +26,7 @@ const Table = ({
                      <FormControlLabel
                         control={<Checkbox
                            id="remember"
-                           checked={selected.length === userReservations.length ? true : false}
+                           checked={checkSelectAll}
                            onChange={() => handleSelectAllElements()}
                         />}
                      />
@@ -39,16 +42,20 @@ const Table = ({
                   <S.Th>Reservation Actions</S.Th>
                </tr>
             </S.Thead>
-            <tbody>
-               {pageUserReservations.map(reservation => <TableElement 
-                  key={reservation.id}
-                  reservation={reservation}
-                  markedReservation={markedReservation}
-                  markReservation={markReservation}
-                  selected={selected}
-                  handleSelectElement={handleSelectElement}
-               />)}
-            </tbody>
+            {pageUserReservations.length === 0 
+               ?  <NoData />
+               :  <tbody>
+                     {pageUserReservations.map(reservation => <TableElement 
+                        key={reservation.id}
+                        reservation={reservation}
+                        markedReservation={markedReservation}
+                        markReservation={markReservation}
+                        selected={selected}
+                        handleSelectElement={handleSelectElement}
+                        handleDeleteSearchingElements={handleDeleteSearchingElements}
+                     />)}
+                  </tbody>
+            }
          </S.Table>
       </S.TableWrapper>
    );

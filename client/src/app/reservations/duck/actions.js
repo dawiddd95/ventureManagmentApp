@@ -40,6 +40,11 @@ const paginationValueAction = (item) => ({
    type: types.PAGINATION_VALUE, item
 })
 
+const deleteSearchingElementsAction = (item) => ({
+   type: types.DELETE_SEARCHING_ELEMENTS, item
+})
+
+
 export default {
    addUserReservationAction,
    searchUserReservationsAction,
@@ -50,5 +55,6 @@ export default {
    unselectElementAction,
    resetSelectedAction,
    toggleSelectAllAction,
-   paginationValueAction
+   paginationValueAction,
+   deleteSearchingElementsAction
 }

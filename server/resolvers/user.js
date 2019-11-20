@@ -16,6 +16,7 @@ export default {
    Mutation: {
       createUser: {
          validationSchema: createUserValidation,
+         //  tutaj chyba można message: ({value}) => `Email ${email} is already taken`
          resolve: async (parent, {name, surname, email, password}, {models}) => (
             userService.createUser(name, surname, email, password)
          ),

@@ -9,10 +9,11 @@ export default `
       reservationEndDate: String!
       reservationEndTime: String!
       notes: String
-      status: String!
+      status: String
       employeeNotes: String
       cancellationNotes: String
-      createdAt: String!
+      createdAt: String
+      updatedAt: String
    }
 
    extend type Query {
@@ -29,9 +30,10 @@ export default `
          reservationEndDate: String!
          reservationEndTime: String!
          notes: String
-         status: String!
+         status: String
          employeeNotes: String
          cancellationNotes: String
       ): Reservation
+      deleteReservations(id: [Int!]!): Int!
    }
 `

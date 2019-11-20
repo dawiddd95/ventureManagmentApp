@@ -18,8 +18,8 @@ const ReservationsTableContainer = () => {
    const {filter, searchingReservations, sortBy, sortOrder, selected, checkSelectAll, pagination } = useSelector(
       state => state.fetchedUserReservations
    )
-
    
+
    const data = !filter ? [].concat(userReservations) : [].concat(searchingReservations);
 
    const dataPerPage = parseInt(pagination, 10);
@@ -47,11 +47,15 @@ const ReservationsTableContainer = () => {
 
    const clearSelectedAmount = () => {
       dispatch(actions.resetSelectedAction([]))
-      dispatch(actions.toggleSelectAllAction(!checkSelectAll))
+      dispatch(actions.toggleSelectAllAction(false))
    }
 
    const handleReloadReservations = () => {
       dispatch(actions.filterAction(false))
+      dispatch(actions.searchUserReservationsAction([]))
+      dispatch(actions.resetSelectedAction([]))
+      dispatch(actions.toggleSelectAllAction(false))
+      setCurrentPage(1)
    }
 
    const handleSortBy = (event) => {
@@ -72,13 +76,13 @@ const ReservationsTableContainer = () => {
       dispatch(actions.toggleSelectAllAction(!checkSelectAll))
 
       if(!checkSelectAll) {
-         userReservations.map(reservation => {
+         data.map(reservation => {
             if(!selected.includes(reservation.id)) {
                return dispatch(actions.selectNewElementAction(reservation.id))
             } 
          })
       } else {
-         userReservations.map(reservation => {
+         data.map(reservation => {
             if(selected.includes(reservation.id)) {
                return dispatch(actions.unselectElementAction(reservation.id))
             } 
@@ -89,6 +93,10 @@ const ReservationsTableContainer = () => {
    const handleSetPagination = (event) => {
       dispatch(actions.paginationValueAction(event.target.value))
       setCurrentPage(1)
+   }
+
+   const handleDeleteSearchingElements = (selectedIds) => {
+      dispatch(actions.deleteSearchingElementsAction(selectedIds))
    }
 
    currentData.sort(compare)
@@ -108,15 +116,17 @@ const ReservationsTableContainer = () => {
                   <TableToolbar
                      selected={selected} 
                      clearSelectedAmount={clearSelectedAmount}
+                     handleDeleteSearchingElements={handleDeleteSearchingElements}
                   />
                   <Table
-                     userReservations={userReservations} 
                      pageUserReservations={currentData}
+                     checkSelectAll={checkSelectAll}
                      markedReservation={markedReservation}
                      markReservation={markReservation}
                      selected={selected}
                      handleSelectElement={handleSelectElement}
                      handleSelectAllElements={handleSelectAllElements}
+                     handleDeleteSearchingElements={handleDeleteSearchingElements}
                   />
                   <Pagination 
                      dataPerPage={dataPerPage} 

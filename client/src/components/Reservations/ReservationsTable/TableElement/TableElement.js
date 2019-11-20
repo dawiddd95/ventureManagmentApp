@@ -1,9 +1,35 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import * as S from './StyledTableElement';
 
-const TableElement = ({reservation, markedReservation, markReservation, selected, handleSelectElement}) => {
+import Dialog from '../../../Dialog/Dialog';
+
+
+const TableElement = ({
+   reservation, 
+   markedReservation, 
+   markReservation, 
+   selected, 
+   handleSelectElement,
+   handleDeleteSearchingElements
+}) => {
+   const [openDialog, setOpenDialog] = React.useState(false) 
+
+   const handleSetIsOpen = () => {
+      setOpenDialog(true)
+   }
+
+   const handleOnCompleted = (selectedIds) => {
+      setOpenDialog(false)
+      handleDeleteSearchingElements(selectedIds)
+   }
+
+   const handleCloseDialog = () => {
+      setOpenDialog(false)
+   }
+
    return (  
       <>
          <S.Tr 
@@ -35,9 +61,16 @@ const TableElement = ({reservation, markedReservation, markReservation, selected
                <S.StyledLink to={`/user/reservations/${reservation.id}/edit`}>
                   Edit
                </S.StyledLink>
-               <S.DeleteButton>
+               <S.DeleteButton onClick={handleSetIsOpen}>
                   Delete
                </S.DeleteButton>
+               {openDialog && <Dialog
+                  title='Delete selected items?'
+                  text='Are you sure you want delete items with id: '
+                  selected={[reservation.id]}
+                  handleOnCompleted={handleOnCompleted}
+                  handleCloseDialog={handleCloseDialog}
+               />}
             </S.Td>
          </S.Tr>
       </>

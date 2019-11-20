@@ -13,7 +13,6 @@ import ImportErrors from '../../ImportErrors/ImportErrors';
 
 import icons from '../../../assets/icons';
 
-// 3. dodanie do bazy danych
 
 const ImportReservationsPage = () => {
    const [reservations, setReservations] = React.useState([])

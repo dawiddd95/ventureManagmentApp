@@ -20,7 +20,6 @@ const Reservations = () => {
                <S.Header>
                   Reservations
                </S.Header>
-               {/* Lepiej to zrobić na jeden kontener który zwróci te 3 komponenty */}
                <ReservationsActionButtonsContainer />
                <ReservationsSearchFormContainer />  
                <ReservationsTableContainer />
