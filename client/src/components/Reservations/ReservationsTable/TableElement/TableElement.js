@@ -55,7 +55,12 @@ const TableElement = ({
             <S.Td>{reservation.createdAt}</S.Td>
             <S.Td>{reservation.updatedAt}</S.Td>
             <S.Td>
-               <S.StyledLink to={`/user/reservations/${reservation.id}`}>
+               <S.StyledLink
+                  to={{
+                     pathname: `/user/reservations/${reservation.id}`,
+                     state: {reservation: reservation}
+                  }}
+               >
                   View
                </S.StyledLink>
                <S.StyledLink to={`/user/reservations/${reservation.id}/edit`}>
@@ -66,7 +71,7 @@ const TableElement = ({
                </S.DeleteButton>
                {openDialog && <Dialog
                   title='Delete selected items?'
-                  text='Are you sure you want delete items with id: '
+                  text='Are you sure you want delete item with id: '
                   selected={[reservation.id]}
                   handleOnCompleted={handleOnCompleted}
                   handleCloseDialog={handleCloseDialog}

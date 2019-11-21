@@ -33,7 +33,9 @@ import reload from './img/reload.svg';
 import warning from './img/warning.svg';
 import box from './img/box.svg';
 import danger from './img/danger.svg';
-
+import noData from './img/no-data.svg';
+import edit from './img/edit.svg';
+import cross from './img/cross.svg';
 
 export default {
    facebookIcon,
@@ -71,5 +73,8 @@ export default {
    reload,
    warning,
    box,
-   danger
+   danger,
+   noData,
+   edit,
+   cross
 }

@@ -14,6 +14,7 @@ const ReservationsTableContainer = () => {
    const dispatch = useDispatch();
    const [currentPage, setCurrentPage] = useState(1);
    const [markedReservation, setMarkedReservation] = useState('');
+   const [reload, setReload] = React.useState(false);
    const {userReservations} = useSelector(state => state.fetchedUserReservations.reservations)
    const {filter, searchingReservations, sortBy, sortOrder, selected, checkSelectAll, pagination } = useSelector(
       state => state.fetchedUserReservations
@@ -56,6 +57,8 @@ const ReservationsTableContainer = () => {
       dispatch(actions.resetSelectedAction([]))
       dispatch(actions.toggleSelectAllAction(false))
       setCurrentPage(1)
+      setReload(true)
+      setTimeout(() => setReload(false), 3000)
    }
 
    const handleSortBy = (event) => {
@@ -109,6 +112,7 @@ const ReservationsTableContainer = () => {
                   <TableActions
                      sortBy={sortBy}
                      sortOrder={sortOrder}
+                     reload={reload}
                      handleReloadReservations={handleReloadReservations}
                      handleSortOrder={handleSortOrder}
                      handleSortBy={handleSortBy}
@@ -124,6 +128,7 @@ const ReservationsTableContainer = () => {
                      markedReservation={markedReservation}
                      markReservation={markReservation}
                      selected={selected}
+                     filter={filter}
                      handleSelectElement={handleSelectElement}
                      handleSelectAllElements={handleSelectAllElements}
                      handleDeleteSearchingElements={handleDeleteSearchingElements}

@@ -8,8 +8,8 @@ import { CREATE_RESERVATION_MUTATION } from '../../../graphql/reservation/mutati
 import { USER_RESERVATIONS_QUERY } from '../../../graphql/reservation/query';
 
 import ReservationsExportToExcelSheet from '../ReservationsExportToExcelSheet/ReservationsExportToExcelSheet';
-import ImportSuccess from '../../ImportSuccess/ImportSuccess';
-import ImportErrors from '../../ImportErrors/ImportErrors';
+import ImportSuccess from '../../Import/ImportSuccess/ImportSuccess';
+import ImportErrors from '../../Import/ImportErrors/ImportErrors';
 
 import icons from '../../../assets/icons';
 
@@ -26,11 +26,9 @@ const ImportReservationsPage = () => {
    const addDataToDB = (reservations, errors, mutation) => {
       if(errors.length === 0) {
          reservations.map(element => mutation({variables: element}))
+         setSuccess(true)
       }
-
-      setSuccess(true)
    }
-
 
    const validateDate = (date, index, type) => {
       const regex = /^\d{4}-\d{2}-\d{2}$/
@@ -43,7 +41,6 @@ const ImportReservationsPage = () => {
          })
       }
    }
-
 
    const validateTime = (time, index, type) => {
       const regex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
@@ -172,7 +169,7 @@ const ImportReservationsPage = () => {
    }
 
 
-   const handleImportExcelData = async (mutation, e) => {
+   const handleImportExcelData = (mutation, e) => {
       const files = e.target.files, f = files[0];
       const reader = new FileReader();
 
@@ -231,6 +228,8 @@ const ImportReservationsPage = () => {
                      <S.Header>
                         Import Reservations
                      </S.Header>
+
+                     {/* Warningi do osobnego  */}
                      <S.WarningsWrapper>
                         <S.Warning>
                            <S.Img warning src={icons.warning} />
@@ -245,6 +244,9 @@ const ImportReservationsPage = () => {
                            Be sure to write reservation time as text format in your Excel file.
                         </S.Warning>
                      </S.WarningsWrapper>
+
+
+                     {/* TO JEST WPORZADKU OKEJ */}
                      <ReservationsExportToExcelSheet 
                         reservations={[]} 
                         name='Reservations_Template'
@@ -258,24 +260,29 @@ const ImportReservationsPage = () => {
                         />
                      }
                      {errors.length > 0 && <ImportErrors errors={errors} />}
-                     <S.ImportWrapper>
+
+
+                     {/* Ten import Wrapper myślę do osbnego  */}
+                     {!success && <S.ImportWrapper>
                         <S.ImportButton type='file'>
                            <S.Img box src={icons.box} />
                            Click or drag the file to this area to continue
                         </S.ImportButton>
-                        <Mutation 
-                           mutation={CREATE_RESERVATION_MUTATION} 
-                           refetchQueries={[{query: USER_RESERVATIONS_QUERY}]} 
-                        >
-                           {mutation => (
-                              <S.ImportInput  
-                                 type='file' 
-                                 accept='.xls, .xlsx' 
-                                 onChange={(event) => handleImportExcelData(mutation, event)} 
-                              />
-                           )}
-                        </Mutation>
-                     </S.ImportWrapper>
+                           <Mutation 
+                              mutation={CREATE_RESERVATION_MUTATION} 
+                              refetchQueries={[{query: USER_RESERVATIONS_QUERY}]} 
+                           >
+                              {mutation => (
+                                 <S.ImportInput  
+                                    type='file' 
+                                    accept='.xls, .xlsx' 
+                                    onChange={(event) => handleImportExcelData(mutation, event)} 
+                                 />
+                              )}
+                           </Mutation>
+                     </S.ImportWrapper>}    
+
+
                   </S.ContentWrapper>
                </S.BookingsBox>
             </S.MainContent>
