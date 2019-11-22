@@ -58,26 +58,6 @@ export const Header = styled.header`
    color: ${colors.black65};
 `
 
-export const WarningsWrapper = styled.div`
-   padding: 15px 20px;
-   background-color: #FFF3CD;
-   border: 2px solid #FFEEBA;
-   border-radius: 4px;
-
-   display: flex;
-   flex-direction: column;
-`
-
-export const Warning = styled.div`
-   margin: 5px 0;
-   font-size: 14px;
-   font-family: segoe; 
-   color: #856404;
-
-   display: flex;
-   align-items: center;
-`
-
 export const FancyButton = styled.button`
    height: 32px;
    margin-top: 30px;
@@ -110,57 +90,9 @@ export const Img = styled.img`
    height: 12px;
    margin-right: 10px;
 
-   ${({warning}) => warning && css`
-      width: 17px;
-      height: 17px;
-   `}
-
    ${({box}) => box && css`
       width: 40px;
       height: 40px;
       margin: 0 0 20px 0;
    `}
-`
-
-
-export const ImportWrapper = styled.div`
-   width: 50%;
-   height: 150px;
-   margin: 30px 0;
-   position: relative;
-   overflow: hidden;
-   border: 1px dashed ${colors.silverColor};
-   border-radius: 4px;
-   transition: 0.3s;
-   
-   :hover {
-      border: 1px dashed ${colors.redColor};
-      transition: .3s;
-   }
-`
-
-export const ImportButton = styled.button`
-   width: 100%;
-   height: 100%;
-   background-color: #fafafa;
-   font-size: 16px;
-   font-family: segoe;
-   color: ${colors.black85};
-   outline: 0;
-   border: 0;
-
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-`
-
-export const ImportInput = styled.input`
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   left: 0;
-   top: 0;
-   opacity: 0;
-   cursor: pointer;
 `

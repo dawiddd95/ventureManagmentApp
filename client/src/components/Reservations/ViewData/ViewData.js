@@ -21,7 +21,7 @@ const ViewData = ({reservation}) => {
          <S.Item>
             <S.Label>Reservation End:</S.Label>
             <S.Value>
-               {reservation.reservationStartDate} {reservation.reservationStartTime}
+               {reservation.reservationEndDate} {reservation.reservationEndTime}
             </S.Value>
          </S.Item>
          <S.Item>

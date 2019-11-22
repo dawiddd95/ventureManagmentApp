@@ -1,7 +1,6 @@
 import React from 'react';
-
 import * as S from './StyledImportSuccess';
-import icons from '../../../assets/icons';
+import icons from '../../../../assets/icons';
 
 const ImportSuccess = ({text, url, link}) => {
    return ( 

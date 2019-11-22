@@ -1,8 +1,6 @@
 import React from 'react';
-
 import * as S from './StyledImportErrors';
-
-import icons from '../../../assets/icons';
+import icons from '../../../../assets/icons';
 
 const ImportErrors = ({errors}) => {
    console.log(errors)

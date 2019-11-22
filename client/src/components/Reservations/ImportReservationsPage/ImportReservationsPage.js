@@ -1,17 +1,14 @@
 import React from 'react';
 import XLSX from 'xlsx';
 import {getJsDateFromExcel} from 'excel-date-to-js';
-import {Mutation} from 'react-apollo';
 
 import * as S from './StyledImportReservationsPage';
-import { CREATE_RESERVATION_MUTATION } from '../../../graphql/reservation/mutation';
-import { USER_RESERVATIONS_QUERY } from '../../../graphql/reservation/query';
 
 import ReservationsExportToExcelSheet from '../ReservationsExportToExcelSheet/ReservationsExportToExcelSheet';
-import ImportSuccess from '../../Import/ImportSuccess/ImportSuccess';
-import ImportErrors from '../../Import/ImportErrors/ImportErrors';
-
-import icons from '../../../assets/icons';
+import ImportWarnings from '../../Import/ImportAlerts/ImportWarnings/ImportWarnings';
+import ImportSuccess from '../../Import/ImportAlerts/ImportSuccess/ImportSuccess';
+import ImportErrors from '../../Import/ImportAlerts/ImportErrors/ImportErrors';
+import ImportButton from '../../Import/ImportButton/ImportButton';
 
 
 const ImportReservationsPage = () => {
@@ -228,25 +225,13 @@ const ImportReservationsPage = () => {
                      <S.Header>
                         Import Reservations
                      </S.Header>
-
-                     {/* Warningi do osobnego  */}
-                     <S.WarningsWrapper>
-                        <S.Warning>
-                           <S.Img warning src={icons.warning} />
-                           Default values of Updated At Date should be equal to Created At Date
-                        </S.Warning>
-                        <S.Warning>
-                           <S.Img warning src={icons.warning} />
-                           Remember to pass correct date format YEAR-MONTH-DAY in your Excel file
-                        </S.Warning>
-                        <S.Warning>
-                           <S.Img warning src={icons.warning} />
-                           Be sure to write reservation time as text format in your Excel file.
-                        </S.Warning>
-                     </S.WarningsWrapper>
-
-
-                     {/* TO JEST WPORZADKU OKEJ */}
+                     <ImportWarnings 
+                        warnings={[
+                           'Default values of Updated At Date should be equal to Created At Date',
+                           'Remember to pass correct date format YEAR-MONTH-DAY in your Excel file',
+                           'Be sure to write reservation time as text format in your Excel file.'
+                        ]}
+                     />
                      <ReservationsExportToExcelSheet 
                         reservations={[]} 
                         name='Reservations_Template'
@@ -254,35 +239,15 @@ const ImportReservationsPage = () => {
                      />
                      {(success && errors.length === 0) && 
                         <ImportSuccess 
-                           text='Import data succeed. Your data was added to database'
+                           text='Import data succeed. Your data was added to database.'
                            url='/user/reservations'
                            link='Reservations' 
                         />
                      }
                      {errors.length > 0 && <ImportErrors errors={errors} />}
-
-
-                     {/* Ten import Wrapper myślę do osbnego  */}
-                     {!success && <S.ImportWrapper>
-                        <S.ImportButton type='file'>
-                           <S.Img box src={icons.box} />
-                           Click or drag the file to this area to continue
-                        </S.ImportButton>
-                           <Mutation 
-                              mutation={CREATE_RESERVATION_MUTATION} 
-                              refetchQueries={[{query: USER_RESERVATIONS_QUERY}]} 
-                           >
-                              {mutation => (
-                                 <S.ImportInput  
-                                    type='file' 
-                                    accept='.xls, .xlsx' 
-                                    onChange={(event) => handleImportExcelData(mutation, event)} 
-                                 />
-                              )}
-                           </Mutation>
-                     </S.ImportWrapper>}    
-
-
+                     {!success && <ImportButton 
+                        handleImportExcelData={handleImportExcelData}
+                     />}    
                   </S.ContentWrapper>
                </S.BookingsBox>
             </S.MainContent>
