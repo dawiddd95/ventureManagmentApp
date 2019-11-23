@@ -3,8 +3,8 @@ import Sequelize from 'sequelize';
 import { combineResolvers } from 'graphql-resolvers'
 import { isAuthenticated } from './auth'
 
-import reservationService from '../services/reservation'
 import createReservationValidation from '../services/validations/createReservation'
+import updateReservationValidation from '../services/validations/updateReservation'
 
 const Op = Sequelize.Op;
 
@@ -18,17 +18,24 @@ export default {
    Mutation: {
       createReservation: {
          validationSchema: createReservationValidation,
-         resolve: combineResolvers(isAuthenticated, async (parent, args, { models, userId }) => (
-               reservationService.createUserReservation(args, userId)
-            )
-         )
+         resolve: combineResolvers(isAuthenticated, async (parent, args, { models, userId }) => {
+            args.userId = userId
+            return await models.Reservation.create(args)
+         })
       },
-      deleteReservations: (parent, {id}, { models, userId }) => (
+      updateReservation: {
+         validationSchema: updateReservationValidation,
+         resolve: combineResolvers(isAuthenticated, async (parent, args, { models, userId }) => {
+            args.userId = userId
+            return await models.Reservation.update(args, {where: {id: args.id} })
+         })
+      },
+      deleteReservations: combineResolvers(isAuthenticated, (parent, {id}, { models, userId }) => (
          models.Reservation.destroy({where: {
             id: {
                [Op.in]: id
             }
          }})
-      ),
+      )),
    }
 };

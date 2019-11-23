@@ -1,14 +1,15 @@
 import React from 'react';
 import {Mutation} from 'react-apollo';
 import {Redirect} from 'react-router-dom';
-import * as S from './StyledAddNewReservation';
+import * as S from './StyledAddEditReservation';
 
-import AddNewReservationForm from '../AddNewReservationForm/AddNewReservationForm';
+import AddEditReservationForm from '../AddEditReservationForm/AddEditReservationForm';
 
 import {CREATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
+import {UPDATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
 import {USER_RESERVATIONS_QUERY} from '../../../graphql/reservation/query';
 
-const AddNewReservation = () => {
+const AddEditReservation = ({isEdit, reservation}) => {
    return (  
       <S.Wrapper>
          <S.Section>
@@ -20,24 +21,42 @@ const AddNewReservation = () => {
                   <S.StyledLink to='/user/reservations'>
                   / Reservations
                   </S.StyledLink>
-                  / New Reservation
+                  {!isEdit 
+                     ?  '/ New Reservation' 
+                     :  (
+                        <>
+                           <S.StyledLink 
+                              to={{
+                                 pathname: `/user/reservations/${reservation.id}`,
+                                 state: {reservation: reservation}
+                              }}
+                           >
+                              / {reservation.id}
+                           </S.StyledLink>
+                           / Edit Reservation
+                        </>
+                     )
+                  }
                </S.BreadCrumbs>
                <S.BookingsBox>
                   <S.Header>
-                     New Reservation
+                     {!isEdit ? 'New Reservation' : 'Edit Reservation'}
                   </S.Header>
                   <Mutation 
-                     mutation={CREATE_RESERVATION_MUTATION} 
+                     mutation={!isEdit ? CREATE_RESERVATION_MUTATION : UPDATE_RESERVATION_MUTATION} 
                      refetchQueries={[{query: USER_RESERVATIONS_QUERY}]}
                   >
                      {(mutation, {loading, error, data}) => {
                         if(data) {
                            return <Redirect to='/user/reservations'/>
                         }
+                        
                         return (
                            <>
-                              <AddNewReservationForm
+                              <AddEditReservationForm
                                  mutation={mutation}
+                                 isEdit={isEdit}
+                                 reservation={reservation}
                               />
                            </>
                         )
@@ -50,4 +69,4 @@ const AddNewReservation = () => {
    );
 }
  
-export default AddNewReservation;
+export default AddEditReservation;

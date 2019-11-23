@@ -63,7 +63,12 @@ const TableElement = ({
                >
                   View
                </S.StyledLink>
-               <S.StyledLink to={`/user/reservations/${reservation.id}/edit`}>
+               <S.StyledLink 
+                  to={{
+                     pathname: `/user/reservations/${reservation.id}/edit`,
+                     state: {reservation: reservation}
+                  }}
+               >
                   Edit
                </S.StyledLink>
                <S.DeleteButton onClick={handleSetIsOpen}>

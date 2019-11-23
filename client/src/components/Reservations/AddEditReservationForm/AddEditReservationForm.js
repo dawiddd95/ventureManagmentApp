@@ -1,24 +1,24 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import * as S from './StyledAddNewReservationForm';
+import * as S from './StyledAddEditReservationForm';
 
 import icons from '../../../assets/icons';
 
-const AddNewReservationForm = ({mutation}) => {
+const AddEditReservationForm = ({mutation, isEdit, reservation}) => {
    return ( 
       <Formik
          initialValues={{
-            client: '',
-            room: '',
-            status: '',
-            reservationStartDate: '',
-            reservationStartTime: '',
-            reservationEndDate: '',
-            reservationEndTime: '',
-            notes: '',
-            employeeNotes: '',
-            cancellationNotes: ''
+            client: !isEdit ? '' : reservation.client,
+            room: !isEdit ? '' : reservation.room,
+            status: !isEdit ? '' : reservation.status,
+            reservationStartDate: !isEdit ? '' : reservation.reservationStartDate,
+            reservationStartTime: !isEdit ? '' : reservation.reservationStartTime,
+            reservationEndDate: !isEdit ? '' : reservation.reservationEndDate,
+            reservationEndTime: !isEdit ? '' : reservation.reservationEndTime,
+            notes: !isEdit ? '' : reservation.notes,
+            employeeNotes: !isEdit ? '' : reservation.employeeNotes,
+            cancellationNotes: !isEdit ? '' : reservation.cancellationNotes
          }}
          validationSchema={Yup.object().shape({
             client: Yup
@@ -48,6 +48,7 @@ const AddNewReservationForm = ({mutation}) => {
                .string()
          })}
          onSubmit={values => {
+            if(isEdit) values.id = reservation.id
             mutation({variables: values})
          }}
          render={props => (
@@ -126,7 +127,6 @@ const AddNewReservationForm = ({mutation}) => {
                         <S.StyledFieldTextarea 
                            textarea='true'
                            component='textarea'
-                           value={props.notes}
                            name='notes' 
                            type='text' 
                         />
@@ -193,4 +193,4 @@ const AddNewReservationForm = ({mutation}) => {
    );
 }
  
-export default AddNewReservationForm;
+export default AddEditReservationForm;

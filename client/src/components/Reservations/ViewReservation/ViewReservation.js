@@ -42,7 +42,10 @@ const ViewReservation = ({reservation}) => {
                   </S.Header>
                   <S.ButtonsWrapper>
                      <S.ButtonLink 
-                        to={`/user/reservations/${reservation.id}/edit`}>
+                        to={{
+                           pathname: `/user/reservations/${reservation.id}/edit`,
+                           state: {reservation: reservation}
+                        }}
                      >
                         <S.Img src={icons.edit} />
                         Edit
