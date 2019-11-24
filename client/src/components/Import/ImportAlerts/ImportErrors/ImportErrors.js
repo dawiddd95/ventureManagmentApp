@@ -3,8 +3,6 @@ import * as S from './StyledImportErrors';
 import icons from '../../../../assets/icons';
 
 const ImportErrors = ({errors}) => {
-   console.log(errors)
-
    return (  
       <S.Wrapper>
          {errors.map((error,index) => (

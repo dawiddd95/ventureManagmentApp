@@ -6,8 +6,8 @@ import icons from '../../../../assets/icons';
 const ImportWarnings = ({warnings}) => {
    return (  
       <S.WarningsWrapper>
-         {warnings.map(warning => (
-            <S.Warning>
+         {warnings.map((warning, index) => (
+            <S.Warning key={index}>
                <S.Img src={icons.warning} />
                {warning}
             </S.Warning>

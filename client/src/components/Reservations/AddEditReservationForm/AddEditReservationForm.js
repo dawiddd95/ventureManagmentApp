@@ -72,14 +72,13 @@ const AddEditReservationForm = ({mutation, isEdit, reservation}) => {
                         <S.Label>Start Reservation:</S.Label> 
                         <S.PickersWrapper> 
                            <S.StyledField 
-                              secondaryStyled='true'
+                              secondary_styled='true'
                               left='true'
                               name='reservationStartDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondaryStyled='true'
-                              dateTimeStyled='true'
+                              secondary_styled='true'
                               name='reservationStartTime' 
                               type='time' 
                            />
@@ -99,14 +98,13 @@ const AddEditReservationForm = ({mutation, isEdit, reservation}) => {
                         <S.Label>End Reservation:</S.Label> 
                         <S.PickersWrapper>
                            <S.StyledField 
-                              secondaryStyled='true'
+                              secondary_styled='true'
                               right='true'
                               name='reservationEndDate' 
                               type='date' 
                            />
                            <S.StyledField 
-                              secondaryStyled='true'
-                              dateTimeStyled='true'
+                              secondary_styled='true'
                               name='reservationEndTime' 
                               type='time' 
                            />

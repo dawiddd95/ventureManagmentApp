@@ -1,7 +1,4 @@
-import styled, {css} from 'styled-components';
-import {Link} from 'react-router-dom';
-
-import colors from '../../../../assets/colors';
+import styled from 'styled-components';
 
 export const TableWrapper = styled.div`
    overflow-x: ${({no_data}) => no_data ? 'hidden' : 'scroll'}

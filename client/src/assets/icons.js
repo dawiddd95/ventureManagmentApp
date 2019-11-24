@@ -66,7 +66,6 @@ export default {
    profile,
    save,
    arrowUp,
-   arrowDown,
    arrowLeft,
    arrowRight,
    arrowDown,

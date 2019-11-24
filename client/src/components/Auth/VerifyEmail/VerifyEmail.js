@@ -18,7 +18,7 @@ const AuthVerifyEmail = (props) => {
          setResult(res.data);
       })
       .catch(err => console.log(err))
-   }, [parsed.key])
+   }, [])
 
    return (  
       <S.Wrapper>

@@ -19,7 +19,7 @@ const AppContainer = () => {
       <Query query={ME_QUERY}>
          {({loading, error, data}) => {
             if(data) dispatch(thunkActions.fetchLoggedUserAction(data))
-            // Zrobić że dopóki jest loading to ten wielki loader z jakims napisem najlepiej   
+
             return (
                <S.Wrapper>
                   <AppNavbarContainer />

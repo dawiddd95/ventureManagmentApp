@@ -51,14 +51,14 @@ export const Label = styled.div`
 `
 
 export const StyledField = styled(Field)`
-   width: ${props => props.secondaryStyled ? '45%' : '60%'};
+   width: ${props => props.secondary_styled ? '45%' : '60%'};
    height: 40px;
-   margin: ${props => props.secondaryStyled ? '0 5px' : '0'};
+   margin: ${props => props.secondar_styled ? '0 5px' : '0'};
    padding: 0 0 0 15px;
    border: 0;
    outline: 0;
    background-color: white;
-   border: ${props => props.secondaryStyled ? 0 : `1px solid ${colors.silverColor}`};   
+   border: ${props => props.secondary_styled ? 0 : `1px solid ${colors.silverColor}`};   
    border-radius: 5px;
    font-weight: 200;
    font-size: 14px;
@@ -67,12 +67,12 @@ export const StyledField = styled(Field)`
 
    &:hover {
       transition: 0.3s;
-      border: ${props => props.secondaryStyled ? '0' : `1px solid ${colors.redColor}`};
+      border: ${props => props.secondary_styled ? '0' : `1px solid ${colors.redColor}`};
    }
 
    &:focus {
-      border: ${props => props.secondaryStyled ? '0' : `1px solid ${colors.redColor}`};
-      box-shadow:  ${props => props.secondaryStyled ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
+      border: ${props => props.secondary_styled ? '0' : `1px solid ${colors.redColor}`};
+      box-shadow:  ${props => props.secondary_styled ? '0' : '0 0 0 2px rgba(245,34,45,0.2)'};
    }
 `
 
