@@ -3,6 +3,7 @@ import {Mutation} from 'react-apollo';
 import {Redirect} from 'react-router-dom';
 import * as S from './StyledAddEditReservation';
 
+import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
 import AddEditReservationForm from '../AddEditReservationForm/AddEditReservationForm';
 
 import {CREATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
@@ -14,30 +15,21 @@ const AddEditReservation = ({isEdit, reservation}) => {
       <S.Wrapper>
          <S.Section>
             <S.MainContent>
-               <S.BreadCrumbs>
-                  <S.StyledLink to='/user/reservations'>
-                     Home
-                  </S.StyledLink>
-                  <S.StyledLink to='/user/reservations'>
-                  / Reservations
-                  </S.StyledLink>
-                  {!isEdit 
-                     ?  '/ New Reservation' 
-                     :  (
-                        <>
-                           <S.StyledLink 
-                              to={{
-                                 pathname: `/user/reservations/${reservation.id}`,
-                                 state: {reservation: reservation}
-                              }}
-                           >
-                              / {reservation.id}
-                           </S.StyledLink>
-                           / Edit Reservation
-                        </>
-                     )
-                  }
-               </S.BreadCrumbs>
+               <Breadcrumbs 
+                  links={[
+                     {name: 'Home', to: '/user/reservations'},
+                     {name: '/ Reservations', to: '/user/reservations'},
+                     isEdit && 
+                        {
+                           name: `/ ${reservation.id}`, 
+                           to: {
+                              pathname: `/user/reservations/${reservation.id}`,
+                              state: {reservation: reservation}
+                           }
+                        }
+                     ]}
+                  navElement={!isEdit ? '/ New Reservation' : '/ Edit Reservation'}
+               />
                <S.BookingsBox>
                   <S.Header>
                      {!isEdit ? 'New Reservation' : 'Edit Reservation'}

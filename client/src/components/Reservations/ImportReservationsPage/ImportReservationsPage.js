@@ -4,6 +4,7 @@ import {getJsDateFromExcel} from 'excel-date-to-js';
 
 import * as S from './StyledImportReservationsPage';
 
+import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
 import ReservationsExportToExcelSheet from '../ReservationsExportToExcelSheet/ReservationsExportToExcelSheet';
 import ImportWarnings from '../../Import/ImportAlerts/ImportWarnings/ImportWarnings';
 import ImportSuccess from '../../Import/ImportAlerts/ImportSuccess/ImportSuccess';
@@ -211,15 +212,13 @@ const ImportReservationsPage = () => {
       <S.Wrapper>
          <S.Section>
             <S.MainContent>
-               <S.BreadCrumbs>
-                  <S.StyledLink to='/user/reservations'>
-                     Home
-                  </S.StyledLink>
-                  <S.StyledLink to='/user/reservations'>
-                  / Reservations
-                  </S.StyledLink>
-                  / New Reservation
-               </S.BreadCrumbs>
+               <Breadcrumbs 
+                  links={[
+                     {name: 'Home', to: '/user/reservations'},
+                     {name: '/ Reservations', to: '/user/reservations'},
+                  ]}
+                  navElement='/ Import Reservations'
+               />
                <S.BookingsBox>
                   <S.ContentWrapper>
                      <S.Header>

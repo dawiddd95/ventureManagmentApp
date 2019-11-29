@@ -21,7 +21,7 @@ export const MainContent = styled.main`
    flex-direction: column;
 `
 
-export const ReservationsBox = styled.div`
+export const Box = styled.div`
    width: 100%;
    height: 100%;
    margin: 20px auto;

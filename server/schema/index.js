@@ -1,5 +1,6 @@
 import userSchema from './user'
 import reservationSchema from './reservation'
+import employeeSchema from './employee'
 
 const linkSchema = `
    type Query {
@@ -11,4 +12,4 @@ const linkSchema = `
    }
 `
 
-export default [linkSchema, userSchema, reservationSchema]
+export default [linkSchema, userSchema, reservationSchema, employeeSchema]

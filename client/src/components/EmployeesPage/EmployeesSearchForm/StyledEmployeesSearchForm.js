@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import {Form, Field} from 'formik';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import colors from '../../../assets/colors';
 
@@ -91,6 +92,37 @@ export const PickersWrapper = styled.div`
       transition: 0.3s;
       border: 1px solid ${colors.redColor};
    }
+`
+
+export const PrivilegesWrapper = styled.div`
+   width: 100%;
+   height: 100%;
+   margin: 40px 10px;
+   padding: 0 20px;
+   border: 1px solid${colors.silverColor};
+   border-radius: 4px;
+`
+
+export const Header = styled.div`
+   margin: -12px 0 0 20px;
+   padding: 0 5px;
+   font-size: 14px;
+   color: ${colors.black85};
+   background-color: white;
+   position: absolute;
+`
+
+export const CheckboxWrapper = styled.div`
+   margin: 20px 0; 
+   position: relative;
+
+   display: flex;
+   align-items: center;
+`
+
+export const StyledFormControlLabel = styled(FormControlLabel)`
+   height: 20px;
+   margin: 7px 0;
 `
 
 export const ButtonsWrapper = styled.div`

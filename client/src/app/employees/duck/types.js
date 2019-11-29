@@ -1,0 +1,5 @@
+const FETCH_USER_EMPLOYEES = 'FETCH_USER_EMPLOYEES';
+
+export default {
+   FETCH_USER_EMPLOYEES,
+}
