@@ -1,12 +1,22 @@
 import React from 'react';
 import * as Yup from 'yup';
-import Checkbox from '@material-ui/core/Checkbox';
 import {Formik} from 'formik';
 
 import * as S from './StyledEmployeesSearchForm';
 import icons from '../../../assets/icons';
+import { data } from '../../../assets/data/privilegesSelectData';
 
-const EmployeesSearchForm = () => {
+//import PrivilegeSelect from '../PrivilegeSelect/PrivilegeSelect';
+import MultiSelect from '../../MultiSelect/MultiSelect';
+
+
+const EmployeesSearchForm = ({handleSearchEmployees}) => {
+   const [privileges, setPrivileges] = React.useState([]);
+
+   const handleOnChange = (value) => {
+      setPrivileges(value)
+   } 
+
    return (  
       <Formik
          initialValues={{
@@ -16,13 +26,13 @@ const EmployeesSearchForm = () => {
             phone: '',
             email: '',
             active: '',
-            employeesAccess: '',
-            auditAccess: '',
-            clientsAccess: '',
-            reservationsAccess: '',
-            ordersAccess: '',
-            communicatorAccess: '',
-            profileAccess: '',
+            // employeesAccess: false,
+            // auditAccess: false,
+            // clientsAccess: false,
+            // reservationsAccess: false,
+            // ordersAccess: false,
+            // communicatorAccess: false,
+            // profileAccess: false,
             createdAt: '',
             updatedAt: ''
          }}
@@ -37,29 +47,28 @@ const EmployeesSearchForm = () => {
                .string(),
             email:  Yup
                .string(),
-            active: Yup
-               .boolean(),
-            employeesAccess: Yup
-               .boolean(),
-            auditAccess: Yup
-               .boolean(),
-            clientsAccess: Yup
-               .boolean(),
-            reservationsAccess: Yup
-               .boolean(),
-            ordersAccess: Yup
-               .boolean(),
-            communicatorAccess: Yup
-               .boolean(),
-            profileAccess: Yup
-               .boolean(),
+            // employeesAccess: Yup
+            //    .boolean(),
+            // auditAccess: Yup
+            //    .boolean(),
+            // clientsAccess: Yup
+            //    .boolean(),
+            // reservationsAccess: Yup
+            //    .boolean(),
+            // ordersAccess: Yup
+            //    .boolean(),
+            // communicatorAccess: Yup
+            //    .boolean(),
+            // profileAccess: Yup
+            //    .boolean(),
             createdAtStart: Yup
                .string(),                     
             createdAtEnd: Yup
                .string(), 
          })}
          onSubmit={values => {
-            // handleSearchReservations(values)
+            const newValues = {...values, privileges}
+            handleSearchEmployees(newValues)
          }}
          render={props => (
             <S.Wrapper>
@@ -89,14 +98,14 @@ const EmployeesSearchForm = () => {
                      <S.Col>
                         <S.Label>Phone:</S.Label> 
                         <S.StyledField 
-                           name='status' 
+                           name='phone' 
                            type='text' 
                         />
                      </S.Col>
                      <S.Col>
                         <S.Label>Email:</S.Label> 
                         <S.StyledField 
-                           name='status' 
+                           name='email' 
                            type='text' 
                         />
                      </S.Col>
@@ -118,39 +127,19 @@ const EmployeesSearchForm = () => {
                            />
                         </S.PickersWrapper>
                      </S.Col>
-                     <S.PrivilegesWrapper>
-                        <S.Header>
-                           Privileges
-                        </S.Header>
-                        <S.CheckboxWrapper>
-                           <S.StyledFormControlLabel
-                              control={
-                                 <Checkbox
-                                    //checked={checked}
-                                    //onChange={handleOnChange}
-                                    id='employees'
-                                 />
-                              }
-                              label={<S.Label htmlFor='employees'>Have Acess To Employees</S.Label>}
-                           />
-                           <S.StyledFormControlLabel
-                              control={
-                                 <Checkbox
-                                    //checked={checked}
-                                    //onChange={handleOnChange}
-                                    id='employees'
-                                 />
-                              }
-                              label={<S.Label htmlFor='employees'>Have Acess To Employees</S.Label>}
-                           />
-                        </S.CheckboxWrapper>
-                     </S.PrivilegesWrapper>
+                     <S.Col select>
+                        <S.Label>Access To:</S.Label> 
+                        <MultiSelect 
+                           data={data}
+                           handleOnChange={handleOnChange}
+                        />
+                     </S.Col>
                      <S.ButtonsWrapper>
                         <S.Button type='submit'>
                            <S.Img src={icons.search} />
                            Search
                         </S.Button> 
-                        <S.Button type='reset' fancy>
+                        <S.Button type='reset' fancy >
                            <S.Img src={icons.reset} />
                            Reset
                         </S.Button> 
