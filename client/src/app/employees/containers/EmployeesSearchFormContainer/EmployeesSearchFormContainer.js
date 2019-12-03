@@ -11,8 +11,6 @@ const EmployeesSearchFormContainer = () => {
    const {userEmployees} = useSelector(state => state.fetchedUserEmployees.employees);
 
    const handleSearchEmployees = (values) => {
-      // 1. Ogarnąć helper
-      // 2. Stworzyć dispatche w duck dla helpera
       searchEmployees(values, dispatch, userEmployees)
    }
 

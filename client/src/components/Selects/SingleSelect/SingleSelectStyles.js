@@ -1,6 +1,6 @@
-import colors from '../../assets/colors';
+import colors from '../../../assets/colors';
 
-export const multiSelectStyles = {
+export const singleSelectStyles = {
    control: styles => ({ 
       ...styles, 
       backgroundColor: 'white', 

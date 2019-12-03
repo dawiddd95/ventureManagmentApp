@@ -4,17 +4,20 @@ import {Formik} from 'formik';
 
 import * as S from './StyledEmployeesSearchForm';
 import icons from '../../../assets/icons';
-import { data } from '../../../assets/data/privilegesSelectData';
+import { privilegesData, activeData } from '../../../assets/data/selectData';
 
 //import PrivilegeSelect from '../PrivilegeSelect/PrivilegeSelect';
-import MultiSelect from '../../MultiSelect/MultiSelect';
+import MultiSelect from '../../Selects/MultiSelect/MultiSelect';
+import SingleSelect from '../../Selects/SingleSelect/SingleSelect';
 
 
 const EmployeesSearchForm = ({handleSearchEmployees}) => {
    const [privileges, setPrivileges] = React.useState([]);
+   const [active, setActive] = React.useState('');
 
-   const handleOnChange = (value) => {
-      setPrivileges(value)
+   const handleOnChange = (value, isMulti) => {
+      if(isMulti) setPrivileges(value)
+      else if(!isMulti) setActive(value)
    } 
 
    return (  
@@ -33,8 +36,8 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
             // ordersAccess: false,
             // communicatorAccess: false,
             // profileAccess: false,
-            createdAt: '',
-            updatedAt: ''
+            createdAtStart: '',                 
+            createdAtEnd: ''
          }}
          validationSchema={Yup.object().shape({
             id: Yup
@@ -67,8 +70,9 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
                .string(), 
          })}
          onSubmit={values => {
-            const newValues = {...values, privileges}
-            handleSearchEmployees(newValues)
+            const formValues = {...values, active}
+            const newFormValues = {...formValues, privileges}
+            handleSearchEmployees(newFormValues)
          }}
          render={props => (
             <S.Wrapper>
@@ -130,7 +134,14 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
                      <S.Col select>
                         <S.Label>Access To:</S.Label> 
                         <MultiSelect 
-                           data={data}
+                           data={privilegesData}
+                           handleOnChange={handleOnChange}
+                        />
+                     </S.Col>
+                     <S.Col>
+                        <S.Label>Active:</S.Label> 
+                        <SingleSelect
+                           data={activeData}
                            handleOnChange={handleOnChange}
                         />
                      </S.Col>

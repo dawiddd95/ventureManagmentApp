@@ -1,4 +1,4 @@
-export const data = [
+export const privilegesData = [
    {value: 'employeesAccess', label: 'Employees'},
    {value: 'auditAccess', label: 'Audit Logs',},
    {value: 'clientsAccess', label: 'Clients'},
@@ -7,3 +7,8 @@ export const data = [
    {value: 'communicatorAccess', label: 'Communicator'},
    {value: 'profileAccess', label: 'Profile'},
 ];
+
+export const activeData = [
+   {value: true, label: 'Yes'},
+   {value: false, label: 'No'}
+]

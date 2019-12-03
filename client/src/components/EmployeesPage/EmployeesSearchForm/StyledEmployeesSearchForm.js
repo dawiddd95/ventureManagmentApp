@@ -126,7 +126,7 @@ export const ButtonsWrapper = styled.div`
 
 export const Button = styled.button`
    height: 32px;
-   margin-right: 10px;
+   margin: 20px 10px 0 0;
    padding: ${props => props.fancy ? '0 20px' : '0 15px'};
    background-color: ${props => props.fancy ? 'white' : colors.redColor};
    border: 0;
