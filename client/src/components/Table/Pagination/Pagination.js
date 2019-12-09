@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './StyledPagination';
 
-import icons from '../../../../assets/icons';
+import icons from '../../../assets/icons';
 
 
 const Pagination = ({

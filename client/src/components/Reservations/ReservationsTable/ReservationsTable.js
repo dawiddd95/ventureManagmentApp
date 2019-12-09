@@ -2,18 +2,18 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-import * as S from './StyledTable';
+import * as S from './StyledReservationsTable';
 
-import NoData from '../../../NoData/NoData';
-import TableElement from '../TableElement/TableElement';
+import ReservationsTableElement from '../ReservationsTableElement/ReservationsTableElement';
+import NoData from '../../NoData/NoData';
 
-const Table = ({
+const ReservationsTable = ({
    pageUserReservations,
    checkSelectAll,
    markedReservation,
-   markReservation,
    selected,
    filter,
+   handleMarkReservation,
    handleSelectElement,
    handleSelectAllElements,
    handleDeleteSearchingElements
@@ -35,7 +35,7 @@ const Table = ({
                         />}
                      />
                   </S.Th>
-                  <S.Th>Reservation ID</S.Th>
+                  <S.Th>Employee ID</S.Th>
                   <S.Th>Client</S.Th>
                   <S.Th>Start Reservation</S.Th>
                   <S.Th>End Reservation</S.Th>
@@ -47,12 +47,12 @@ const Table = ({
                </tr>
             </S.Thead>
             <tbody>
-               {pageUserReservations.map(reservation => <TableElement 
+               {pageUserReservations.map(reservation => <ReservationsTableElement
                   key={reservation.id}
                   reservation={reservation}
                   markedReservation={markedReservation}
-                  markReservation={markReservation}
                   selected={selected}
+                  handleMarkReservation={handleMarkReservation}
                   handleSelectElement={handleSelectElement}
                   handleDeleteSearchingElements={handleDeleteSearchingElements}
                />)}
@@ -63,4 +63,4 @@ const Table = ({
    );
 }
  
-export default Table;
+export default ReservationsTable;

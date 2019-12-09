@@ -24,9 +24,7 @@ const ReservationsExportToExcelSheet = ({reservations, name, text}) => {
          <ExcelSheet data={reservations} name={name}>
             <ExcelColumn label='Client' value='client' />
             <ExcelColumn label='Reservation Start Date' value='reservationStartDate' />
-            <ExcelColumn label='Reservation Start Time' value='reservationStartTime' />
             <ExcelColumn label='Reservation End Date' value='reservationEndDate' />
-            <ExcelColumn label='Reservation End Time' value='reservationEndTime' />
             <ExcelColumn label='Status' value='status' />
             <ExcelColumn label='Room' value='room' />
             <ExcelColumn label='Created At' value='createdAt' />

@@ -1,27 +1,28 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import * as S from './StyledReservationsTableContainer';
+import * as S from './StyledEmployeesTableContainer';
 import actions from '../../duck/actions';
 
 import TableActions from '../../../../components/Table/TableActions/TableActions';
 import TableToolbar from '../../../../components/Table/TableToolbar/TableToolbar';
-import ReservationsTable from '../../../../components/Reservations/ReservationsTable/ReservationsTable';
+import EmployeesTable from '../../../../components/EmployeesPage/EmployeesTable/EmployeesTable';
 import Pagination from '../../../../components/Table/Pagination/Pagination';
 
 
-const ReservationsTableContainer = () => {   
+const EmployeesTableContainer = () => {   
    const dispatch = useDispatch();
    const [currentPage, setCurrentPage] = useState(1);
-   const [markedReservation, setMarkedReservation] = useState('');
+   const [markedEmployee, setMarkedEmployee] = useState('');
    const [reload, setReload] = React.useState(false);
-   const {userReservations} = useSelector(state => state.fetchedUserReservations.reservations)
-   const {filter, searchingReservations, sortBy, sortOrder, selected, checkSelectAll, pagination } = useSelector(
-      state => state.fetchedUserReservations
+   const {userEmployees} = useSelector(state => state.fetchedUserEmployees.employees)
+   const {filter, searchingEmployees, sortBy, sortOrder, selected, checkSelectAll, pagination } = useSelector(
+      state => state.fetchedUserEmployees
    )
    
+   
 
-   const data = !filter ? [].concat(userReservations) : [].concat(searchingReservations);
+   const data = !filter ? [].concat(userEmployees) : [].concat(searchingEmployees);
 
    const dataPerPage = parseInt(pagination, 10);
    const indexOfLastData = currentPage * dataPerPage;
@@ -41,9 +42,9 @@ const ReservationsTableContainer = () => {
       return comparison
    }
 
-   const handleMarkReservation = (id) => {
-      if(markedReservation === id) setMarkedReservation('')
-      else setMarkedReservation(id)
+   const handleMarkEmployee = (id) => {
+      if(markedEmployee === id) setMarkedEmployee('')
+      else setMarkedEmployee(id)
    }
 
    const clearSelectedAmount = () => {
@@ -51,9 +52,9 @@ const ReservationsTableContainer = () => {
       dispatch(actions.toggleSelectAllAction(false))
    }
 
-   const handleReloadReservations = () => {
+   const handleReloadEmployees = () => {
       dispatch(actions.filterAction(false))
-      dispatch(actions.searchUserReservationsAction([]))
+      dispatch(actions.searchUserEmployeesAction([]))
       dispatch(actions.resetSelectedAction([]))
       dispatch(actions.toggleSelectAllAction(false))
       setCurrentPage(1)
@@ -62,12 +63,12 @@ const ReservationsTableContainer = () => {
    }
 
    const handleSortBy = (event) => {
-      dispatch(actions.sortReservationsByAction(event.target.value))
+      dispatch(actions.sortEmployeesByAction(event.target.value))
    }
 
    const handleSortOrder = (order) => {
-      if(order === 'asc') dispatch(actions.sortReservationsOrderAction('desc'))
-      else dispatch(actions.sortReservationsOrderAction('asc'))
+      if(order === 'asc') dispatch(actions.sortEmployeesOrderAction('desc'))
+      else dispatch(actions.sortEmployeesOrderAction('asc'))
    }
 
    const handleSelectElement = (id) => {
@@ -79,15 +80,15 @@ const ReservationsTableContainer = () => {
       dispatch(actions.toggleSelectAllAction(!checkSelectAll))
 
       if(!checkSelectAll) {
-         data.map(reservation => {
-            if(!selected.includes(reservation.id)) {
-               return dispatch(actions.selectNewElementAction(reservation.id))
+         data.map(employee => {
+            if(!selected.includes(employee.id)) {
+               return dispatch(actions.selectNewElementAction(employee.id))
             } 
          })
       } else {
-         data.map(reservation => {
-            if(selected.includes(reservation.id)) {
-               return dispatch(actions.unselectElementAction(reservation.id))
+         data.map(employee => {
+            if(selected.includes(employee.id)) {
+               return dispatch(actions.unselectElementAction(employee.id))
             } 
          })
       }
@@ -106,15 +107,15 @@ const ReservationsTableContainer = () => {
 
    return (
       <S.Wrapper>
-         {!userReservations 
+         {!userEmployees
             ?  <div>LOADING</div>
             :  <> 
                   <TableActions
-                     textButton='Reload Reservations'
+                     textButton='Reload Employees'
                      sortBy={sortBy}
                      sortOrder={sortOrder}
                      reload={reload}
-                     handleReloadData={handleReloadReservations}
+                     handleReloadData={handleReloadEmployees}
                      handleSortOrder={handleSortOrder}
                      handleSortBy={handleSortBy}
                   />        
@@ -123,13 +124,13 @@ const ReservationsTableContainer = () => {
                      clearSelectedAmount={clearSelectedAmount}
                      handleDeleteSearchingElements={handleDeleteSearchingElements}
                   />
-                  <ReservationsTable
-                     pageUserReservations={currentData}
+                  <EmployeesTable
+                     pageUserEmployees={currentData}
                      checkSelectAll={checkSelectAll}
-                     markedReservation={markedReservation}
+                     markedEmployee={markedEmployee}
                      selected={selected}
                      filter={filter}
-                     handleMarkReservation={handleMarkReservation}
+                     handleMarkEmployee={handleMarkEmployee}
                      handleSelectElement={handleSelectElement}
                      handleSelectAllElements={handleSelectAllElements}
                      handleDeleteSearchingElements={handleDeleteSearchingElements}
@@ -148,4 +149,4 @@ const ReservationsTableContainer = () => {
    )
 }
  
-export default ReservationsTableContainer;
+export default EmployeesTableContainer;

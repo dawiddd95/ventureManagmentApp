@@ -3,8 +3,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 
 import * as S from './StyledTableToolbar';
-import icons from '../../../../assets/icons';
-import Dialog from '../../../Dialog/Dialog';
+import icons from '../../../assets/icons';
+import Dialog from '../../Dialog/Dialog';
 
 
 const TableToolbar = ({selected, clearSelectedAmount, handleDeleteSearchingElements}) => {

@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import * as S from './StyledViewReservation';
 import icons from '../../../assets/icons';
 
+import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
 import Dialog from '../../Dialog/Dialog';
 import ViewData from '../ViewData/ViewData';
 
@@ -27,15 +28,13 @@ const ViewReservation = ({reservation}) => {
       <>
          <S.Wrapper>
             <S.MainContent>
-               <S.BreadCrumbs>
-                  <S.StyledLink to='/user/reservations'>
-                     Home
-                  </S.StyledLink >
-                  <S.StyledLink to='/user/reservations'>
-                     / Reservations
-                  </S.StyledLink>
-                  / {reservation.id}
-               </S.BreadCrumbs>
+               <Breadcrumbs 
+                  links={[
+                     {name: 'Home', to: '/user/reservations'},
+                     {name: '/ Reservations', to: '/user/reservations'},
+                  ]}
+                  navElement={`/ ${reservation.id}`}
+               />
                <S.ReservationsBox>
                   <S.Header>
                      View Reservation

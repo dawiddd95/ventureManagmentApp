@@ -1,8 +1,6 @@
-import actions from '../app/reservations/duck/actions';
+import actions from '../app/employees/duck/actions';
 
 export const searchEmployees = (values, dispatch, userEmployees) => {
-   // sprawdzenie czy jest przywilej
-   // mapowanie po tablicy privileges i odrazu findOne() jesli zwroci x > -1 to filtruj wedlug tego, jesli nie znajdzie 
    const {
       id,
       name,
@@ -14,12 +12,6 @@ export const searchEmployees = (values, dispatch, userEmployees) => {
       privileges,
       active
    } = values
-
-   const privilegesArray = privileges.map(element => {
-      if(element.value.indexOf(element.value) !== -1) return element.value
-   })
-
-   console.log(privilegesArray)
 
    let filterResult = []
    let filteringArray = userEmployees
@@ -74,20 +66,31 @@ export const searchEmployees = (values, dispatch, userEmployees) => {
    }
 
    if(privileges.length !== 0) {
-      filterResult = filteringArray.filter(element => {
-         privilegesArray.map(privilege => {
-            return element[privilege] === true
-         })
+      const privilegesArray = privileges.map(element => {
+         if(element.value.indexOf(element.value) !== -1) return element.value
       })
+
+      const employees = filteringArray.map(employee => {   
+         const isValid = privilegesArray.every(privilege => {
+            return employee[privilege] === true
+         })
+
+         if(isValid) return employee
+      })
+
+      filterResult = employees.filter(element => {
+         return typeof element !== 'undefined'
+      })
+      filteringArray = filterResult;
    }
 
    if(active !== null) {
       filterResult = filteringArray.filter(element => {
-         return element.active.value === active.value
+         return element.active === active.value
       })
+      filteringArray = filterResult;
    }
 
-   // Stworzyć dispatche
    dispatch(actions.filterAction(true))
    dispatch(actions.searchUserEmployeesAction(filterResult))
    dispatch(actions.toggleSelectAllAction(false))

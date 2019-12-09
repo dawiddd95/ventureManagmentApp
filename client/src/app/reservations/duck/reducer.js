@@ -24,47 +24,47 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
             draftState.searchingReservations = action.item
          })
 
-      case types.FILTER: 
+      case types.RESERVATIONS_FILTER: 
          return produce(state, draftState => {
             draftState.filter = action.item
          })
 
-      case types.SORT_BY:
+      case types.RESERVATIONS_SORT_BY:
          return produce(state, draftState => {
             draftState.sortBy = action.item;
          })
          
-      case types.SORT_ORDER:
+      case types.RESERVATIONS_SORT_ORDER:
          return produce(state, draftState => {
             draftState.sortOrder = action.item;
          })
 
-      case types.SELECT_ELEMENT: 
+      case types.RESERVATIONS_SELECT_ELEMENT: 
          return produce(state, draftState => {
             draftState.selected = draftState.selected.concat(action.item);
          })
 
-      case types.UNSELECT_ELEMENT:
+      case types.RESERVATIONS_UNSELECT_ELEMENT:
          return produce(state, draftState => {
             draftState.selected = draftState.selected.filter(item => item !== action.item)
          })
 
-      case types.RESET_SELECTED:
+      case types.RESERVATIONS_RESET_SELECTED:
          return produce(state, draftState => {
             draftState.selected = action.item
          })
 
-      case types.TOGGLE_SELECT_ALL:
+      case types.RESERVATIONS_TOGGLE_SELECT_ALL:
          return produce(state, draftState => {
             draftState.checkSelectAll = action.item
          })
 
-      case types.PAGINATION_VALUE:
+      case types.RESERVATIONS_PAGINATION_VALUE:
          return produce(state, draftState => {
             draftState.pagination = action.item;
          })
 
-      case types.DELETE_SEARCHING_ELEMENTS:
+      case types.RESERVATIONS_DELETE_SEARCHING_ELEMENTS:
          return produce(state, draftState => {
             draftState.searchingReservations = state.searchingReservations.filter(
                item => !action.item.includes(item.id)

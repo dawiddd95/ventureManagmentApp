@@ -4,6 +4,7 @@ import * as S from './StyledEmployees';
 import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
 import EmployeesActionButtonsContainer from '../../../app/employees/containers/EmployeesActionButtonsContainer/EmployeesActionButtonsContainer';
 import EmployeesSearchFormContainer from '../../../app/employees/containers/EmployeesSearchFormContainer/EmployeesSearchFormContainer';
+import EmployeesTableContainer from '../../../app/employees/containers/EmployeesTableContainer/EmployeesTableContainer';
 
 // Tak jak w Reservations jest S.Wrapper przepisujemy, S.MainContent Przepisujemy, S._Box i Header w nim przepisujemy, reszata w S._Box z klockow
 // Breadcrumbs z klockow,  
@@ -30,7 +31,7 @@ const Employees = () => {
                </S.Header>
                <EmployeesActionButtonsContainer />
                <EmployeesSearchFormContainer/>
-               {/* <EmployeessTableContainer /> */} 
+               <EmployeesTableContainer />
             </S.Box>
          </S.MainContent>
       </S.Wrapper>
