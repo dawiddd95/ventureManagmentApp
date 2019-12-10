@@ -6,14 +6,13 @@ import * as S from './StyledEmployeesSearchForm';
 import icons from '../../../assets/icons';
 import { privilegesData, activeData } from '../../../assets/data/selectData';
 
-//import PrivilegeSelect from '../PrivilegeSelect/PrivilegeSelect';
 import MultiSelect from '../../Selects/MultiSelect/MultiSelect';
 import SingleSelect from '../../Selects/SingleSelect/SingleSelect';
 
 
 const EmployeesSearchForm = ({handleSearchEmployees}) => {
-   const [privileges, setPrivileges] = React.useState([]);
-   const [active, setActive] = React.useState('');
+   const [privileges, setPrivileges] = React.useState(null);
+   const [active, setActive] = React.useState(null);
 
    const handleOnChange = (value, isMulti) => {
       if(isMulti) setPrivileges(value)
@@ -29,13 +28,6 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
             phone: '',
             email: '',
             active: '',
-            // employeesAccess: false,
-            // auditAccess: false,
-            // clientsAccess: false,
-            // reservationsAccess: false,
-            // ordersAccess: false,
-            // communicatorAccess: false,
-            // profileAccess: false,
             createdAtStart: '',                 
             createdAtEnd: ''
          }}
@@ -50,20 +42,6 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
                .string(),
             email:  Yup
                .string(),
-            // employeesAccess: Yup
-            //    .boolean(),
-            // auditAccess: Yup
-            //    .boolean(),
-            // clientsAccess: Yup
-            //    .boolean(),
-            // reservationsAccess: Yup
-            //    .boolean(),
-            // ordersAccess: Yup
-            //    .boolean(),
-            // communicatorAccess: Yup
-            //    .boolean(),
-            // profileAccess: Yup
-            //    .boolean(),
             createdAtStart: Yup
                .string(),                     
             createdAtEnd: Yup
@@ -134,6 +112,7 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
                      <S.Col select>
                         <S.Label>Access To:</S.Label> 
                         <MultiSelect 
+                           second_style={false}
                            data={privilegesData}
                            handleOnChange={handleOnChange}
                         />

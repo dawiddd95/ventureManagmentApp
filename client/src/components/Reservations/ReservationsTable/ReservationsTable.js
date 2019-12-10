@@ -35,7 +35,7 @@ const ReservationsTable = ({
                         />}
                      />
                   </S.Th>
-                  <S.Th>Employee ID</S.Th>
+                  <S.Th>Reservation ID</S.Th>
                   <S.Th>Client</S.Th>
                   <S.Th>Start Reservation</S.Th>
                   <S.Th>End Reservation</S.Th>

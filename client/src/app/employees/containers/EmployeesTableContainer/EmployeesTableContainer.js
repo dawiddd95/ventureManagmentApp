@@ -111,6 +111,15 @@ const EmployeesTableContainer = () => {
             ?  <div>LOADING</div>
             :  <> 
                   <TableActions
+                     selectOptions={[
+                        {value: 'id', label: 'Employee ID'},
+                        {value: 'name', label: 'Name'},
+                        {value: 'surname', label: 'Surname'},
+                        {value: 'phone', label: 'Phone'},
+                        {value: 'email', label: 'Email'},
+                        {value: 'createdAt', label: 'Created At Date'},
+                        {value: 'updatedAt', label: 'Updated At Date'},
+                     ]}
                      textButton='Reload Employees'
                      sortBy={sortBy}
                      sortOrder={sortOrder}

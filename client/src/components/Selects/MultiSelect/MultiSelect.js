@@ -7,9 +7,9 @@ import colors from '../../../assets/colors';
 import * as S from './StyledMultiSelect';
 import { multiSelectStyles } from './MultiSelectStyles';
 
-const MultiSelect = ({data, handleOnChange}) => {
+const MultiSelect = ({second_style, data, handleOnChange}) => {
    return (  
-		<S.Wrapper>
+		<S.Wrapper second_style={second_style}>
 			<Select
 				defaultValue={[]}
 				isMulti

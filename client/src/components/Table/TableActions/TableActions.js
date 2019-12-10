@@ -7,7 +7,16 @@ import icons from '../../../assets/icons';
 
 import FadeReveal from '../../Animations/FadeReveal/FadeReveal';
 
-const TableActions = ({textButton, sortBy, sortOrder, reload, handleReloadData, handleSortOrder, handleSortBy}) => {
+const TableActions = ({
+   selectOptions,
+   textButton, 
+   sortBy, 
+   sortOrder, 
+   reload, 
+   handleReloadData, 
+   handleSortOrder, 
+   handleSortBy
+}) => {
    return (  
       <S.ButtonsWrapper>
          {reload && <FadeReveal
@@ -30,15 +39,9 @@ const TableActions = ({textButton, sortBy, sortOrder, reload, handleReloadData, 
          <S.SelectWrapper>
             <S.Label htmlFor='sortBySelect'>SORT BY: </S.Label>
             <S.Select value={sortBy} onChange={handleSortBy} id='sortBySelect'>
-               <option value='id'>Reservation ID</option>
-               <option value='client'>Client</option>
-               <option value='room'>Room</option>
-               <option value='status'>Status</option>
-               <option value='reservationStartDate'>Start Reservation Date</option>
-               <option value='reservationStartTime'>Start Reservation Time</option>
-               <option value='reservationEndDate'>End Reservation Date</option>
-               <option value='reservationEndTime'>End Reservation Time</option>
-               <option value='createdAt'>Created At Date</option>
+               {selectOptions.map((option, index) => (
+                  <option key={index} value={option.value}>{option.label}</option>
+               ))}
             </S.Select>
          </S.SelectWrapper>
       </S.ButtonsWrapper>

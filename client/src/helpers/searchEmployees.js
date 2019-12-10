@@ -65,7 +65,7 @@ export const searchEmployees = (values, dispatch, userEmployees) => {
       filteringArray = filterResult;
    }
 
-   if(privileges.length !== 0) {
+   if(privileges !== null) {
       const privilegesArray = privileges.map(element => {
          if(element.value.indexOf(element.value) !== -1) return element.value
       })

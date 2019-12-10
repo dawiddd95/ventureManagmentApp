@@ -4,6 +4,8 @@ import gql from 'graphql-tag';
 export const USER_EMPLOYEES_QUERY = gql`
    {
       userEmployees {
+         id
+         userId
          name
          surname
          phone

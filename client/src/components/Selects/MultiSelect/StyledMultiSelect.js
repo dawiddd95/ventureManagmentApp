@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-   width: 75%;
+   width: ${({second_style}) => second_style ? '62%' : '75%'};
    height: 100%;
 `
