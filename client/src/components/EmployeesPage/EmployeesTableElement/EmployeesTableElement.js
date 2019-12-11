@@ -3,9 +3,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as S from './StyledEmployeesTableElement';
-
-import Dialog from '../../Dialog/Dialog';
-
+import DialogDeleteEmployees from '../Dialog/Dialog';
 
 const EmployeesTableElement = ({
    employee,
@@ -74,7 +72,7 @@ const EmployeesTableElement = ({
                <S.DeleteButton onClick={handleSetIsOpen}>
                   Delete
                </S.DeleteButton>
-               {openDialog && <Dialog
+               {openDialog && <DialogDeleteEmployees
                   title='Delete selected items?'
                   text='Are you sure you want delete item with id: '
                   selected={[employee.id]}

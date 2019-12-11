@@ -5,7 +5,7 @@ import * as S from './StyledEmployeesTableContainer';
 import actions from '../../duck/actions';
 
 import TableActions from '../../../../components/Table/TableActions/TableActions';
-import TableToolbar from '../../../../components/Table/TableToolbar/TableToolbar';
+import TableToolbar from '../../../../components/EmployeesPage/TableToolbar/TableToolbar';
 import EmployeesTable from '../../../../components/EmployeesPage/EmployeesTable/EmployeesTable';
 import Pagination from '../../../../components/Table/Pagination/Pagination';
 

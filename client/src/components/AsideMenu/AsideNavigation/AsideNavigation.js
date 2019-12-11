@@ -15,7 +15,6 @@ const AsideNavigation = () => {
             <NavigationItem icon={icons.auditIcon} text='Audit Logs' link='/user/audit-logs'/>  
             <NavigationItem icon={icons.clientsIcon} text='Clients' link='/user/clients'/>  
             <NavigationItem icon={icons.reservedIcon} text='Reservations' link='/user/reservations'/>  
-            <NavigationItem icon={icons.ordersIcon} text='Orders' link='/user/orders'/>  
             <NavigationItem icon={icons.chatIcon} text='Communicator' link='/user/communicator'/>   
          </S.Navigation>
       </S.Wrapper>

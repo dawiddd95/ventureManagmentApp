@@ -36,6 +36,7 @@ import danger from './img/danger.svg';
 import noData from './img/no-data.svg';
 import edit from './img/edit.svg';
 import cross from './img/cross.svg';
+import noActive from './img/noActive.svg';
 
 export default {
    facebookIcon,
@@ -75,5 +76,6 @@ export default {
    danger,
    noData,
    edit,
-   cross
+   cross,
+   noActive
 }

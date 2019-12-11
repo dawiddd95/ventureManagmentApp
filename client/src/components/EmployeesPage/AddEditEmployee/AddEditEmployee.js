@@ -6,8 +6,7 @@ import * as S from './StyledAddEditEmployee';
 import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
 import AddEditEmployeeForm from '../AddEditEmployeeForm/AddEditEmployeeForm';
 
-import { CREATE_EMPLOYEE_MUTATION } from '../../../graphql/employee/mutation';
-import {UPDATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
+import { CREATE_EMPLOYEE_MUTATION, UPDATE_EMPLOYEE_MUTATION } from '../../../graphql/employee/mutation';
 import { USER_EMPLOYEES_QUERY } from '../../../graphql/employee/query';
 
 
@@ -35,7 +34,7 @@ const AddEditEmployee = ({isEdit, employee}) => {
                      {!isEdit ? 'New Employee' : 'Edit Employee'}
                   </S.Header>
                   <Mutation 
-                     mutation={!isEdit ? CREATE_EMPLOYEE_MUTATION : UPDATE_RESERVATION_MUTATION} 
+                     mutation={!isEdit ? CREATE_EMPLOYEE_MUTATION : UPDATE_EMPLOYEE_MUTATION} 
                      refetchQueries={[{query: USER_EMPLOYEES_QUERY}]}
                   >
                      {(mutation, {loading, error, data}) => {

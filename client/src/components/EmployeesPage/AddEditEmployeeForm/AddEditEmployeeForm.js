@@ -75,11 +75,13 @@ const AddEditEmployeeForm = ({mutation,  isEdit, employee}) => {
                .required(),
          })}
          onSubmit={values => {
+            if(privileges !== null) {
+               privileges.map(privilege => {
+                  return values[privilege.value] = true
+               })
+            }
             const formValues = {...values, active: activeSwitch}
-            privileges.map(privilege => {
-               return values[privilege.value] = true
-            })
-            
+
             if(isEdit) values.id = employee.id
             mutation({variables: formValues})
          }}
