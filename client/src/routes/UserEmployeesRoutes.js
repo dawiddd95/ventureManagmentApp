@@ -19,13 +19,13 @@ const UserEmployeesRoutes = () => {
          <Route exact path='/user/employees/:id' render={
             (props) => <ViewEmployee {...props} employee={props.location.state.employee}/>
          } />
-         {/* <Route exact path='/user/reservations/:id/edit' render={
-            (props) => <AddEditReservation 
+         <Route exact path='/user/employees/:id/edit' render={
+            (props) => <AddEditEmployee
                {...props} 
                isEdit={true} 
-               reservation={props.location.state.reservation} 
+               employee={props.location.state.employee} 
             />
-         } /> */}
+         } />
          <Route component={ErrorPage} />
       </Switch>
    );

@@ -7,11 +7,11 @@ import colors from '../../../assets/colors';
 import * as S from './StyledMultiSelect';
 import { multiSelectStyles } from './MultiSelectStyles';
 
-const MultiSelect = ({second_style, data, handleOnChange}) => {
+const MultiSelect = ({second_style, data, defaultValues, handleOnChange}) => {
    return (  
 		<S.Wrapper second_style={second_style}>
 			<Select
-				defaultValue={[]}
+				defaultValue={defaultValues}
 				isMulti
 				components={makeAnimated}
 				name='access'

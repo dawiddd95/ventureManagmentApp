@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './StyledViewData';
-import icons from '../../../assets/icons';
 
 const ViewData = ({employee}) => {
    const privileges = [
@@ -11,8 +10,6 @@ const ViewData = ({employee}) => {
       employee.communicatorAccess,
       employee.reservationsAccess
    ]
-
-   console.log(privileges)
 
    return (  
       <S.Wrapper>

@@ -76,20 +76,7 @@ export const UPDATE_EMPLOYEE_MUTATION = gql`
          ordersAccess: $ordersAccess,
          communicatorAccess: $communicatorAccess,
          profileAccess: $profileAccess,
-      ) {
-         name
-         surname
-         phone
-         email
-         active
-         employeesAccess
-         auditAccess
-         clientsAccess
-         reservationsAccess
-         ordersAccess
-         communicatorAccess
-         profileAccess
-      }
+      ) 
    }
 `
 

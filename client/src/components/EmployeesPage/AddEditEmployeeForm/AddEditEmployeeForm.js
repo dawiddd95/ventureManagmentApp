@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Formik} from 'formik';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -11,8 +11,18 @@ import { privilegesData } from '../../../assets/data/selectData';
 import MultiSelect from '../../Selects/MultiSelect/MultiSelect';
 
 const AddEditEmployeeForm = ({mutation,  isEdit, employee}) => {
-   const [privileges, setPrivileges] = React.useState(null);
-   const [activeSwitch, setActiveSwitch] = React.useState(false)
+   const [privileges, setPrivileges] = React.useState(null)
+   const [activeSwitch, setActiveSwitch] = React.useState(isEdit ? employee.active : false)
+
+   const userPrivileges = isEdit && privilegesData.filter(privilege => {
+      if(employee[privilege.value] === true) {
+         return privilege
+      }
+   }) 
+
+   useEffect(() => {
+      isEdit && setPrivileges(userPrivileges) 
+   }, [])
 
    const handleOnChangeSwitch = () => {
       setActiveSwitch(!activeSwitch)
@@ -75,14 +85,22 @@ const AddEditEmployeeForm = ({mutation,  isEdit, employee}) => {
                .required(),
          })}
          onSubmit={values => {
+            values.employeesAccess = false
+            values.auditAccess = false
+            values.clientsAccess = false
+            values.reservationsAccess = false
+            values.ordersAccess = false
+            values.communicatorAccess = false
+            values.profileAccess = false
+
             if(privileges !== null) {
-               privileges.map(privilege => {
-                  return values[privilege.value] = true
-               })
+               privileges.map(privilege => values[privilege.value] = true)
             }
-            const formValues = {...values, active: activeSwitch}
 
             if(isEdit) values.id = employee.id
+            
+            const formValues = {...values, active: activeSwitch}
+
             mutation({variables: formValues})
          }}
          render={props => (
@@ -143,11 +161,14 @@ const AddEditEmployeeForm = ({mutation,  isEdit, employee}) => {
                   <S.FieldWrapper>
                      <S.Col select_style>
                         <S.Label>Privileges:</S.Label> 
-                        <MultiSelect
-                           second_style={true}
-                           data={privilegesData}
-                           handleOnChange={handleOnChangeSelect}
-                        />
+                        {(!isEdit || (isEdit && privileges !== null)) 
+                           && <MultiSelect
+                              second_style={true}
+                              data={privilegesData}
+                              defaultValues={isEdit ? privileges : []}
+                              handleOnChange={handleOnChangeSelect}
+                           />
+                        }
                      </S.Col>
                   </S.FieldWrapper> 
                   <S.FieldWrapper>

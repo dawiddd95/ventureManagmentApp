@@ -9,6 +9,7 @@ import ViewData from '../ViewData/ViewData';
 
 
 const ViewEmployee = ({employee}) => {
+   console.log(employee.id)
    const [openDialog, setOpenDialog] = React.useState(false) 
    const [completed, setCompleted] = React.useState(false)
 

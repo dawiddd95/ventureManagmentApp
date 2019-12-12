@@ -22,7 +22,7 @@ const AddEditEmployee = ({isEdit, employee}) => {
                      isEdit && {
                         name: `/ ${employee.id}`, 
                         to: {
-                           pathname: `/user/reservations/${employee.id}`,
+                           pathname: `/user/employees/${employee.id}`,
                            state: {employee: employee}
                         }
                      }
