@@ -10,7 +10,8 @@ import {CREATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation
 import {UPDATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
 import {USER_RESERVATIONS_QUERY} from '../../../graphql/reservation/query';
 
-const AddEditReservation = ({isEdit, reservation}) => {
+const AddEditReservation = ({isEdit, data}) => {
+   const reservation = data !== undefined && data.getUserReservation;
    return (  
       <S.Wrapper>
          <S.Section>

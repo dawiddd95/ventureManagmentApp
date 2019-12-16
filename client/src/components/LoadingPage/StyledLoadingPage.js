@@ -32,7 +32,3 @@ export const Box = styled.div`
    justify-content: center;
    align-items: center;
 `
-
-export const P = styled.p`
-   margin: 20px 0 0 0;
-`

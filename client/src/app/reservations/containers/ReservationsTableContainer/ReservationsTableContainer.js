@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import * as S from './StyledReservationsTableContainer';
 import actions from '../../duck/actions';
 
+import LoadingDataSpinner from '../../../../components/Animations/LoadingDataSpinner/LoadingDataSpinner';
 import TableActions from '../../../../components/Table/TableActions/TableActions';
 import TableToolbar from '../../../../components/Table/TableToolbar/TableToolbar';
 import ReservationsTable from '../../../../components/Reservations/ReservationsTable/ReservationsTable';
@@ -107,7 +108,7 @@ const ReservationsTableContainer = () => {
    return (
       <S.Wrapper>
          {!userReservations 
-            ?  <div>LOADING</div>
+            ?  <LoadingDataSpinner isSmall={true} />
             :  <> 
                   <TableActions
                      selectOptions={[
