@@ -37,5 +37,21 @@ export default `
          communicatorAccess: Boolean!
          profileAccess: Boolean!
       ): Employee!
+      updateEmployee(
+         id: Int!
+         name: String!
+         surname: String!
+         phone: String
+         email: String
+         active: Boolean!
+         employeesAccess: Boolean!
+         auditAccess: Boolean!
+         clientsAccess: Boolean!
+         reservationsAccess: Boolean!
+         ordersAccess: Boolean!
+         communicatorAccess: Boolean!
+         profileAccess: Boolean!
+      ): [Int!]
+      deleteEmployees(id: [Int!]!): Int!
    }
 `

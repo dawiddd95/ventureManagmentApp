@@ -13,6 +13,9 @@ export default {
       userReservations: combineResolvers(isAuthenticated, async (parent, args, { models, userId }) => (
          models.Reservation.findAll({where: {userId}})
       )),
+      getUserReservation: combineResolvers(isAuthenticated, async (parent, {id}, { models, userId }) => (
+         models.Reservation.findOne({where: {userId, id}})
+      )),
    },
 
    Mutation: {

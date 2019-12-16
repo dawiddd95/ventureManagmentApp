@@ -4,8 +4,9 @@ import {Switch, Route} from 'react-router-dom';
 import ReservationsContainer from '../app/reservations/containers/ReservationsContainer/ReservationsContainer';
 import AddEditReservation from '../components/Reservations/AddEditReservation/AddEditReservation';
 import ImportReservationsPage from '../components/Reservations/ImportReservationsPage/ImportReservationsPage';
-import ViewReservation from '../components/Reservations/ViewReservation/ViewReservation';
+import ViewReservationContainer from '../app/reservations/containers/ViewReservationContainer/ViewReservationContainer';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
+
 
 
 const UserReservationsRoutes = () => {
@@ -16,9 +17,7 @@ const UserReservationsRoutes = () => {
             (props) => <AddEditReservation {...props} isEdit={false} />
          } />
          <Route exact path='/user/reservations/import' component={ImportReservationsPage} />
-         <Route exact path='/user/reservations/:id' render={
-            (props) => <ViewReservation {...props} reservation={props.location.state.reservation}/>
-         } />
+         <Route exact path='/user/reservations/:id' component={ViewReservationContainer} />
          <Route exact path='/user/reservations/:id/edit' render={
             (props) => <AddEditReservation 
                {...props} 

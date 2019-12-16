@@ -17,8 +17,8 @@ export default `
    }
 
    extend type Query {
-      allReservations: [Reservation!]
       userReservations: [Reservation!]
+      getUserReservation(id: Int!): Reservation 
    }
    
    extend type Mutation {

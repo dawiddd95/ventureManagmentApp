@@ -10,9 +10,9 @@ export const spinnerLoader = keyframes`
 `
 
 export const Spinner = styled.div`
-   width: ${props => props.smallSpinner ? '20px' : '100px'};
-   height: ${props => props.smallSpinner ? '20px' : '100px'};
-   margin: ${props => props.smallSpinner ? '2px 0 0 10px' : '10vh auto 0 auto'};
+   width: ${props => props.smallSpinner ? '20px' : '150px'};
+   height: ${props => props.smallSpinner ? '20px' : '150px'};
+   margin: ${props => props.smallSpinner ? '2px 0 0 10px' : '0 auto'};
    font-size: 2px;
    border-radius: 50%;
    border-top: 1.1em solid rgba(255, 255, 255, 0.2);

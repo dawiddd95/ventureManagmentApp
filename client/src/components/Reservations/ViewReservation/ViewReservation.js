@@ -8,7 +8,9 @@ import Dialog from '../../Dialog/Dialog';
 import ViewData from '../ViewData/ViewData';
 
 
-const ViewReservation = ({reservation}) => {
+const ViewReservation = ({data}) => {
+   const reservation = data.getUserReservation;
+
    const [openDialog, setOpenDialog] = React.useState(false) 
    const [completed, setCompleted] = React.useState(false)
 
