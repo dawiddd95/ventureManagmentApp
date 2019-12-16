@@ -14,7 +14,7 @@ const MultiSelect = ({second_style, data, defaultValues, handleOnChange}) => {
 				defaultValue={defaultValues}
 				isMulti
 				components={makeAnimated}
-				name='access'
+				name='multiSelect'
 				onChange={(value) => handleOnChange(value, true)}
 				options={data}
 				theme={theme => ({

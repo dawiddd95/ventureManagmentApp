@@ -4,6 +4,7 @@ export const multiSelectStyles = {
    control: styles => ({ 
       ...styles, 
       backgroundColor: 'white', 
+      boxShadow: 'none',
       ':hover': {	
          transition: '0.3s',
          border: `1px solid ${colors.redColor}`,

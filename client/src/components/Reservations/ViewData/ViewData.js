@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './StyledViewData';
+import ViewStatus from '../ViewStatus/ViewStatus';
 
 const ViewData = ({reservation}) => {
    return (  
@@ -28,7 +29,7 @@ const ViewData = ({reservation}) => {
             <S.Label>Status:</S.Label>
             <S.Value>
                {reservation.status 
-                  ? reservation.status 
+                  ? <ViewStatus status={reservation.status} />
                   : <S.NoData>No Data</S.NoData>
                }
             </S.Value>

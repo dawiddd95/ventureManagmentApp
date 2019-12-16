@@ -4,14 +4,26 @@ import * as Yup from 'yup';
 import * as S from './StyledAddEditReservationForm';
 
 import icons from '../../../assets/icons';
+import { statusData } from '../../../assets/data/selectData';
+
+import SingleSelect from '../../Selects/SingleSelect/SingleSelect';
+
 
 const AddEditReservationForm = ({mutation, isEdit, reservation}) => {
+   const [statusValue, setStatusValue] = React.useState(!isEdit 
+      ? statusData[0] 
+      : {value: reservation.status, label: reservation.status}
+   );
+
+   const handleOnChange = (value) => {
+      setStatusValue(value)
+   }
+
    return ( 
       <Formik
          initialValues={{
             client: !isEdit ? '' : reservation.client,
             room: !isEdit ? '' : reservation.room,
-            status: !isEdit ? '' : reservation.status,
             reservationStartDate: !isEdit ? '' : reservation.reservationStartDate,
             reservationStartTime: !isEdit ? '' : reservation.reservationStartTime,
             reservationEndDate: !isEdit ? '' : reservation.reservationEndDate,
@@ -48,6 +60,7 @@ const AddEditReservationForm = ({mutation, isEdit, reservation}) => {
                .string()
          })}
          onSubmit={values => {
+            values.status = statusValue.value
             if(isEdit) values.id = reservation.id
             mutation({variables: values})
          }}
@@ -153,16 +166,16 @@ const AddEditReservationForm = ({mutation, isEdit, reservation}) => {
                   <S.FieldWrapper>
                      <S.Col>
                         <S.Label>Status:</S.Label> 
-                        <S.StyledField 
-                           name='status' 
-                           type='text' 
-                        />
+                        <S.ActiveSelectWrapper>
+                           <SingleSelect
+                              data={statusData}
+                              defaultValue={statusValue}
+                              isClearable={false}
+                              handleOnChange={handleOnChange}
+                           />
+                        </S.ActiveSelectWrapper>
                      </S.Col>
-                     <S.StyledErrorMessage 
-                        name='status' 
-                        component='p' 
-                     />
-                  </S.FieldWrapper> 
+                  </S.FieldWrapper>
                   <S.FieldWrapper>
                      <S.Col>
                         <S.Label>Cancellation Notes:</S.Label> 

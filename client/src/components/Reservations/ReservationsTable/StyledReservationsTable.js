@@ -5,7 +5,7 @@ export const TableWrapper = styled.div`
 `
 
 export const Table = styled.table`
-   width: 1700px;
+   width: ${({no_data}) => no_data ? '100%' : '1700px'};
    border-collapse: collapse;
    overflow-x: ${({no_data}) => no_data ? 'hidden' : 'scroll'}
 `
@@ -16,7 +16,7 @@ export const Thead = styled.thead`
 `
 
 export const Th = styled.th`
-   width: ${props => props.checkbox ? '50px' : '100px'};
+   width: auto;
    height: 50px;
    margin: 0; 
    font-weight: 600;

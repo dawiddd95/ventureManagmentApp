@@ -119,10 +119,14 @@ const EmployeesSearchForm = ({handleSearchEmployees}) => {
                      </S.Col>
                      <S.Col>
                         <S.Label>Active:</S.Label> 
-                        <SingleSelect
-                           data={activeData}
-                           handleOnChange={handleOnChange}
-                        />
+                        <S.ActiveSelectWrapper>
+                           <SingleSelect
+                              data={activeData}
+                              defaultValue=''
+                              isClearable={true}
+                              handleOnChange={handleOnChange}
+                           />
+                        </S.ActiveSelectWrapper>
                      </S.Col>
                      <S.ButtonsWrapper>
                         <S.Button type='submit'>

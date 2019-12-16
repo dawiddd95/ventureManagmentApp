@@ -7,24 +7,24 @@ import colors from '../../../assets/colors';
 import * as S from './StyledSingleSelect';
 import { singleSelectStyles } from './SingleSelectStyles';
 
-const SingleSelect = ({data, handleOnChange}) => {
+const SingleSelect = ({data, defaultValue, isClearable, handleOnChange}) => {
    return (  
       <S.Wrapper>
          <Select
-            defaultValue=''
-            isClearable={true}
-            name='active'
+            defaultValue={defaultValue}
+            isClearable={isClearable}
+            name='singleSelect'
             options={data}
             components={makeAnimated}
             onChange={(value) => handleOnChange(value, false)}
-            styles={singleSelectStyles}
             theme={theme => ({
-					...theme,
+               ...theme,
 					colors: {
-					  ...theme.colors,
+                 ...theme.colors,
 					  primary: colors.redColorDisabled,
 					},
-				})}
+            })}
+            styles={singleSelectStyles}
          />
       </S.Wrapper>
    );

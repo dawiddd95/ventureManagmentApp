@@ -93,6 +93,11 @@ export const PickersWrapper = styled.div`
    }
 `
 
+export const ActiveSelectWrapper = styled.div`
+   width: calc(60% + 16.5px);
+
+`
+
 export const StyledFieldTextarea = styled(StyledField)`
    min-width: 60%;
    width: 60%;

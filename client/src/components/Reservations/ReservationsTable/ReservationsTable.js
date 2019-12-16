@@ -23,10 +23,10 @@ const ReservationsTable = ({
    
    return (  
       <S.TableWrapper no_data={length === 0}>
-         <S.Table>
+         <S.Table no_data={length === 0}>
             <S.Thead no_data={length === 0}>
                <tr>
-                  <S.Th checkbox={true}>
+                  <S.Th short_style={true}>
                      <FormControlLabel
                         control={<Checkbox
                            id="remember"
@@ -39,7 +39,7 @@ const ReservationsTable = ({
                   <S.Th>Client</S.Th>
                   <S.Th>Start Reservation</S.Th>
                   <S.Th>End Reservation</S.Th>
-                  <S.Th>Status</S.Th>
+                  <S.Th short_style={true}>Status</S.Th>
                   <S.Th>Room</S.Th>
                   <S.Th>Created At Date</S.Th>
                   <S.Th>Updated At Date</S.Th>

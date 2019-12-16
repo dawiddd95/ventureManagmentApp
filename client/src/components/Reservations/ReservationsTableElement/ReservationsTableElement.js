@@ -50,7 +50,13 @@ const ReservationsTableElement = ({
             <S.Td>{reservation.client}</S.Td>
             <S.Td>{reservation.reservationStartDate} {reservation.reservationStartTime}</S.Td>
             <S.Td>{reservation.reservationEndDate} {reservation.reservationEndTime}</S.Td>
-            <S.Td>{reservation.status}</S.Td>
+            <S.Td>
+               <S.StatusWrapper >
+                  <S.Status status_style={reservation.status}>
+                     {reservation.status}
+                  </S.Status>
+               </S.StatusWrapper>
+            </S.Td>
             <S.Td>{reservation.room}</S.Td>           
             <S.Td>{reservation.createdAt}</S.Td>
             <S.Td>{reservation.updatedAt}</S.Td>

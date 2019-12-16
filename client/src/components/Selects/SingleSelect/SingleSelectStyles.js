@@ -4,6 +4,7 @@ export const singleSelectStyles = {
    control: styles => ({ 
       ...styles, 
       backgroundColor: 'white', 
+      boxShadow: 'none',
       ':hover': {	
          transition: '0.3s',
          border: `1px solid ${colors.redColor}`,
@@ -23,23 +24,4 @@ export const singleSelectStyles = {
          ':hover': { backgroundColor: '#FFF1F0' }
       }
    },
-   multiValue: styles => {
-      return {
-         ...styles,
-         backgroundColor: '#fafafa',
-         padding: '2px 5px',
-         border: `1px solid ${colors.silverColor}`,
-         borderRadius: '4px', 
-      };
-   },
-   multiValueRemove: styles => ({
-      ...styles,
-      color: colors.black85,
-      margin: '0 0 0 7px',
-      cursor: 'pointer',
-      ':hover': {
-         backgroundColor: colors.hoverRedColor,
-         color: 'white',
-      },
-   }),
 }

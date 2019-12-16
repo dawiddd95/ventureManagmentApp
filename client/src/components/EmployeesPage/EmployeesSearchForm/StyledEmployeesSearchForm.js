@@ -49,7 +49,7 @@ export const Label = styled.div`
 
 export const StyledField = styled(Field)`
    width: ${props => props.secondarystyled ? '40%' : '72%'};
-   height:  ${props => props.secondarystyled ? '95%' : '100%'};
+   height:  ${props => props.secondarystyled ? '38px' : '40px'};
    margin: ${props => props.secondarystyled ? '0 5px' : '0'};
    padding: ${props => props.secondarystyled ? '0 0 0 40px' : '0 0 0 15px'};
    border: 0;
@@ -116,6 +116,12 @@ export const PrivilegesSelects = styled.div`
 
    display: flex;
    flex-wrap: wrap;
+`
+
+export const ActiveSelectWrapper = styled.div`
+   width: 75%;
+   height: 100%;
+   border: 0;
 `
 
 export const ButtonsWrapper = styled.div`

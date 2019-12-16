@@ -11,3 +11,10 @@ export const activeData = [
    {value: true, label: 'Yes'},
    {value: false, label: 'No'}
 ]
+
+export const statusData = [
+   {value: 'Booked', label: 'Booked'},
+   {value: 'In Progress', label: 'In Progress'},
+   {value: 'Cancelled', label: 'Cancelled'},
+   {value: 'Completed', label: 'Completed'}
+]
