@@ -4,11 +4,12 @@ import {Redirect} from 'react-router-dom';
 import * as S from './StyledAddEditReservation';
 
 import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
-import AddEditReservationForm from '../AddEditReservationForm/AddEditReservationForm';
+import Form from './Form/Form';
 
 import {CREATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
 import {UPDATE_RESERVATION_MUTATION} from '../../../graphql/reservation/mutation';
 import {USER_RESERVATIONS_QUERY} from '../../../graphql/reservation/query';
+
 
 const AddEditReservation = ({isEdit, data}) => {
    const reservation = data !== undefined && data.getUserReservation;
@@ -23,10 +24,7 @@ const AddEditReservation = ({isEdit, data}) => {
                      isEdit && 
                         {
                            name: `/ ${reservation.id}`, 
-                           to: {
-                              pathname: `/user/reservations/${reservation.id}`,
-                              state: {reservation: reservation}
-                           }
+                           to:  `/user/reservations/${reservation.id}`
                         }
                      ]}
                   navElement={!isEdit ? '/ New Reservation' : '/ Edit Reservation'}
@@ -46,7 +44,7 @@ const AddEditReservation = ({isEdit, data}) => {
                         
                         return (
                            <>
-                              <AddEditReservationForm
+                              <Form
                                  mutation={mutation}
                                  isEdit={isEdit}
                                  reservation={reservation}

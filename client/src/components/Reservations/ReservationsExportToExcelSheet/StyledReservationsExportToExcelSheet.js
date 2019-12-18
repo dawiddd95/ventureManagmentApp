@@ -4,7 +4,7 @@ import colors from '../../../assets/colors';
 
 export const FancyButton = styled.button`
    height: 34px;
-   margin: ${({template}) => template ? '30px 0 0 0' : '0'};
+   margin: ${({template_style}) => template_style ? '30px 0 0 0' : '0'};
    padding: 0 15px;
    font-weight: 400;
    font-size: 14px;

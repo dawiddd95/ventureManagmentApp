@@ -5,11 +5,11 @@ import * as S from './StyledFadeReveal';
 import icons from '../../../assets/icons';
 
 
-const FadeReveal = ({text, success, showModal}) => {
+const FadeReveal = ({primaryStyle, text, success, showModal}) => {
   	return (  
 		<S.Wrapper>
          <Fade left>
-            <S.AnimationWrapper>
+            <S.AnimationWrapper primary_style={primaryStyle}>
 					<S.Img src={success ? icons.correctIcon : icons.errorIcon} />
 					<S.Text>
 						{text}

@@ -11,7 +11,7 @@ export const AnimationWrapper = styled.div`
    width: 100%;
    height: 100%;
    min-height: 30px;
-   margin: -60px 0 0 40px;
+   margin: ${({primary_style}) => primary_style ? '30px 0 0 40px' : '-60px 0 0 40px'};
    padding: 16px 24px;
    background-color: white;
    border-radius: 4px;

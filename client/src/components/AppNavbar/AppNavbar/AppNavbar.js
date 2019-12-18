@@ -11,9 +11,9 @@ const AppNavbar = ({avatar, visible, handleChangeMenuVisibility}) => {
    return (  
       <S.Wrapper>
          <S.MenuIcon 
+            visible_style={visible}
             src={visible ? icons.close : icons.menu}
             onClick={() => handleChangeMenuVisibility()} 
-            visible={visible}
          />
          <S.Title>
             Venture Managment App

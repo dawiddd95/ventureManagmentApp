@@ -13,7 +13,7 @@ const ReservationsExportToExcelSheet = ({reservations, name, text}) => {
    return (  
       <ExcelFile 
          element={
-            <S.FancyButton template={name !== 'Reservations'}>
+            <S.FancyButton template_style={name !== 'Reservations'}>
                <S.Img src={icons.exportToExcel} />
                {text}
             </S.FancyButton>
@@ -25,6 +25,8 @@ const ReservationsExportToExcelSheet = ({reservations, name, text}) => {
             <ExcelColumn label='Client' value='client' />
             <ExcelColumn label='Reservation Start Date' value='reservationStartDate' />
             <ExcelColumn label='Reservation End Date' value='reservationEndDate' />
+            <ExcelColumn label='Reservation Start Time' value='reservationStartTime' />
+            <ExcelColumn label='Reservation End Time' value='reservationEndTime' />
             <ExcelColumn label='Status' value='status' />
             <ExcelColumn label='Room' value='room' />
             <ExcelColumn label='Created At' value='createdAt' />

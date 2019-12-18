@@ -6,10 +6,10 @@ import * as S from './StyledImportReservationsPage';
 
 import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
 import ReservationsExportToExcelSheet from '../ReservationsExportToExcelSheet/ReservationsExportToExcelSheet';
-import ImportWarnings from '../../Import/ImportAlerts/ImportWarnings/ImportWarnings';
-import ImportSuccess from '../../Import/ImportAlerts/ImportSuccess/ImportSuccess';
-import ImportErrors from '../../Import/ImportAlerts/ImportErrors/ImportErrors';
-import ImportButton from '../../Import/ImportButton/ImportButton';
+import ImportWarnings from '../../ImportAlerts/ImportWarnings/ImportWarnings';
+import ImportSuccess from '../../ImportAlerts/ImportSuccess/ImportSuccess';
+import ImportErrors from '../../ImportAlerts/ImportErrors/ImportErrors';
+import ImportButton from './ImportButton/ImportButton';
 
 
 const ImportReservationsPage = () => {
@@ -182,8 +182,8 @@ const ImportReservationsPage = () => {
             const reservation = {
                client: dataParse[i][0],
                reservationStartDate: dataParse[i][1],
-               reservationStartTime: dataParse[i][2],
-               reservationEndDate: dataParse[i][3],
+               reservationEndDate: dataParse[i][2],
+               reservationStartTime: dataParse[i][3],
                reservationEndTime: dataParse[i][4],
                status: dataParse[i][5],
                room: dataParse[i][6],

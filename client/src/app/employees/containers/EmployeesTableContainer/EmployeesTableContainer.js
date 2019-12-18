@@ -4,10 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import * as S from './StyledEmployeesTableContainer';
 import actions from '../../duck/actions';
 
-import TableActions from '../../../../components/Table/TableActions/TableActions';
-import TableToolbar from '../../../../components/EmployeesPage/TableToolbar/TableToolbar';
+import TableActions from '../../../../components/TableActions/TableActions';
+import TableToolbar from '../../../../components/TableToolbar/TableToolbar';
 import EmployeesTable from '../../../../components/EmployeesPage/EmployeesTable/EmployeesTable';
-import Pagination from '../../../../components/Table/Pagination/Pagination';
+import Pagination from '../../../../components/Pagination/Pagination';
 
 
 const EmployeesTableContainer = () => {   

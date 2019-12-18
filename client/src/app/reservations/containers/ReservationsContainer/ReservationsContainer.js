@@ -5,7 +5,7 @@ import {Query} from 'react-apollo';
 import {USER_RESERVATIONS_QUERY} from '../../../../graphql/reservation/query';
 import thunkActions from '../../duck/thunks';
 
-import Reservations from '../../../../components/Reservations/Reservations/Reservations';
+import Reservations from '../../../../components/Reservations/Reservations';
 
 
 const ReservationsContainer = () => {

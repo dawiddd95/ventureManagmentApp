@@ -4,7 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as S from './StyledReservationsTable';
 
-import ReservationsTableElement from '../ReservationsTableElement/ReservationsTableElement';
+import TableElement from './TableElement/TableElement';
 import NoData from '../../NoData/NoData';
 
 const ReservationsTable = ({
@@ -47,7 +47,7 @@ const ReservationsTable = ({
                </tr>
             </S.Thead>
             <tbody>
-               {pageUserReservations.map(reservation => <ReservationsTableElement
+               {pageUserReservations.map(reservation => <TableElement
                   key={reservation.id}
                   reservation={reservation}
                   markedReservation={markedReservation}

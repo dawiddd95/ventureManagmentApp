@@ -3,7 +3,7 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import * as S from './StyledEmployeeLoginPanelForm';
 
-import LoadingSpinner from '../../../Animations/LoadingSpinner/LoadingSpinner';
+import WaitingSmallSpinner from '../../../Animations/WaitingSmallSpinner/WaitingSmallSpinner';
 
 const EmployeeLoginPanelForm = ({err, state, handleOnInput, handleOnSubmit}) => {
    return (  
@@ -53,7 +53,7 @@ const EmployeeLoginPanelForm = ({err, state, handleOnInput, handleOnSubmit}) => 
                   </S.FieldWrapper>
                   <S.Button type='submit' disabled={state.isLoading}>
                      Log in
-                     {state.isLoading ? <LoadingSpinner small /> : null}
+                     {state.isLoading ? <WaitingSmallSpinner /> : null}
                   </S.Button>
                </S.StyledForm>
             </S.Wrapper>

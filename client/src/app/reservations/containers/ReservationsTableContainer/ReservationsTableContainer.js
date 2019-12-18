@@ -5,10 +5,10 @@ import * as S from './StyledReservationsTableContainer';
 import actions from '../../duck/actions';
 
 import LoadingDataSpinner from '../../../../components/Animations/LoadingDataSpinner/LoadingDataSpinner';
-import TableActions from '../../../../components/Table/TableActions/TableActions';
-import TableToolbar from '../../../../components/Table/TableToolbar/TableToolbar';
+import TableActions from '../../../../components/TableActions/TableActions';
+import TableToolbar from '../../../../components/TableToolbar/TableToolbar';
 import ReservationsTable from '../../../../components/Reservations/ReservationsTable/ReservationsTable';
-import Pagination from '../../../../components/Table/Pagination/Pagination';
+import Pagination from '../../../../components/Pagination/Pagination';
 
 
 const ReservationsTableContainer = () => {   
@@ -21,7 +21,6 @@ const ReservationsTableContainer = () => {
       state => state.fetchedUserReservations
    )
    
-
    const data = !filter ? [].concat(userReservations) : [].concat(searchingReservations);
 
    const dataPerPage = parseInt(pagination, 10);

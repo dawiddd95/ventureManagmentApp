@@ -13,7 +13,6 @@ export const Section = styled.div`
    width: 100%;
    height: 100%;
    font-family: segoe;
-
    display: flex;
 `
 
@@ -21,7 +20,6 @@ export const MainContent = styled.main`
    width: 100%;
    height: 100%;
    margin: 0 23px;
-
    display: flex;
    flex-direction: column;
 `
@@ -73,10 +71,8 @@ export const FancyButton = styled.button`
    transition: .3s;
    cursor: pointer;
    outline: 0;
-
    display: flex;
    align-items: center;
-
    :hover {
       background-color: white;
       border: 1px solid ${colors.redColor};
@@ -89,7 +85,6 @@ export const Img = styled.img`
    width: 12px;
    height: 12px;
    margin-right: 10px;
-
    ${({box}) => box && css`
       width: 40px;
       height: 40px;
