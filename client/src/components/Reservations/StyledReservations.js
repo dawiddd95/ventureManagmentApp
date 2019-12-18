@@ -36,3 +36,8 @@ export const Header = styled.header`
    font-family: Nunito;
    color: ${colors.black65};
 `
+
+export const TableWrapper = styled.div`
+   width: 96%;
+   margin: 0 auto 20px auto;
+`

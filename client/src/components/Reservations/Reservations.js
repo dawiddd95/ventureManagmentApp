@@ -7,6 +7,11 @@ import ReservationsSearchFormContainer from '../../app/reservations/containers/R
 import ReservationsTableContainer from '../../app/reservations/containers/ReservationsTableContainer/ReservationsTableContainer';
 
 
+import TableActionsContainer from '../../app/reservations/containers/TableActionsContainer/TableActionsContainer';
+import TableToolbarContainer from '../../app/reservations/containers/TableToolbarContainer/TableToolbarContainer';
+import TablePaginationContainer from '../../app/reservations/containers/TablePaginationContainer/TablePaginationContainer';
+
+
 const Reservations = () => {
    return(
       <S.Wrapper>
@@ -23,7 +28,14 @@ const Reservations = () => {
                </S.Header>
                <ReservationsActionButtonsContainer />
                <ReservationsSearchFormContainer />  
-               <ReservationsTableContainer />
+               <S.TableWrapper>  
+                  <ReservationsTableContainer />
+
+                  <TableActionsContainer />
+                  <TableToolbarContainer />
+                  {/* ReservationsTableContainer tutaj bedzie */}
+                  <TablePaginationContainer />
+               </S.TableWrapper>
             </S.ReservationsBox>
          </S.MainContent>
       </S.Wrapper>

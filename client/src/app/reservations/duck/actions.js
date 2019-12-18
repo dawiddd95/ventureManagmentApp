@@ -40,6 +40,10 @@ const paginationValueAction = (item) => ({
    type: types.RESERVATIONS_PAGINATION_VALUE, item
 })
 
+const currentPageAction = (item) => ({
+   type: types.RESERVATIONS_CURRENT_PAGE, item
+})
+
 const deleteSearchingElementsAction = (item) => ({
    type: types.RESERVATIONS_DELETE_SEARCHING_ELEMENTS, item
 })
@@ -56,5 +60,6 @@ export default {
    resetSelectedAction,
    toggleSelectAllAction,
    paginationValueAction,
+   currentPageAction,
    deleteSearchingElementsAction
 }

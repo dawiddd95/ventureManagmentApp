@@ -9,7 +9,8 @@ const INITIAL_STATE = {
    sortOrder: 'asc',
    selected: [],
    checkSelectAll: false,
-   pagination: '5',
+   pagination: 5,
+   currentPage: 1
 }
 
 const fetchedUserReservations = (state = INITIAL_STATE, action) => {
@@ -62,6 +63,11 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
       case types.RESERVATIONS_PAGINATION_VALUE:
          return produce(state, draftState => {
             draftState.pagination = action.item;
+         })
+
+      case types.RESERVATIONS_CURRENT_PAGE:
+         return produce(state, draftState => {
+            draftState.currentPage = action.item;
          })
 
       case types.RESERVATIONS_DELETE_SEARCHING_ELEMENTS:
