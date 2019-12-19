@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../assets/colors';
+import colors from '../../../assets/colors';
 
 
 export const ButtonsWrapper = styled.div`
@@ -47,7 +47,7 @@ export const Img = styled.img`
 
 export const StyledLabel = styled.label`
    font-size: 14px;
-   color: ${({active}) => active ? '#F50057' : colors.black65};
+   color: ${({active_style}) => active_style ? '#F50057' : colors.black65};
 `
 
 export const SelectWrapper = styled.div`

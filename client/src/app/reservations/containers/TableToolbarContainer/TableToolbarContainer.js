@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import actions from '../../duck/actions';
 
-import TableToolbar from '../../../../components/TableToolbar/TableToolbar';
+import TableToolbar from '../../../../components/Table/TableToolbar/TableToolbar';
 
 
 const TableToolbarContainer = () => {

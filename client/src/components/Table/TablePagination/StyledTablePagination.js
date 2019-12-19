@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import colors from '../../assets/colors';
+import colors from '../../../assets/colors';
 
 
 export const Wrapper = styled.div`
@@ -39,9 +39,9 @@ export const Button = styled.button`
    height: 35px;
    margin-right: 10px;
    margin-bottom: 20px;
-   border: ${({active}) => active ? `1px solid ${colors.redColor}` : `1px solid ${colors.silverColor}`};
+   border: ${({active_style}) => active_style ? `1px solid ${colors.redColor}` : `1px solid ${colors.silverColor}`};
    border-radius: 4px;
-   color: ${({active}) => active ? colors.redColor : colors.black65};
+   color: ${({active_style}) => active_style ? colors.redColor : colors.black65};
    background-color: white;
    cursor: ${({disabled}) => disabled ? 'not-allowed' : 'pointer'};
    outline: 0;

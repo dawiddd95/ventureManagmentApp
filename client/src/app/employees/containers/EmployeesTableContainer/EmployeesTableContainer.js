@@ -4,10 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import * as S from './StyledEmployeesTableContainer';
 import actions from '../../duck/actions';
 
-import TableActions from '../../../../components/TableActions/TableActions';
-import TableToolbar from '../../../../components/TableToolbar/TableToolbar';
-import EmployeesTable from '../../../../components/EmployeesPage/EmployeesTable/EmployeesTable';
-import Pagination from '../../../../components/Pagination/Pagination';
+// import TableActions from '../../../../components/TableActions/TableActions';
+// import TableToolbar from '../../../../components/TableToolbar/TableToolbar';
+// import EmployeesTable from '../../../../components/EmployeesPage/EmployeesTable/EmployeesTable';
+// import Pagination from '../../../../components/Pagination/Pagination';
 
 
 const EmployeesTableContainer = () => {   
@@ -110,7 +110,7 @@ const EmployeesTableContainer = () => {
          {!userEmployees
             ?  <div>LOADING</div>
             :  <> 
-                  <TableActions
+                  {/* <TableActions
                      selectOptions={[
                         {value: 'id', label: 'Employee ID'},
                         {value: 'name', label: 'Name'},
@@ -151,7 +151,7 @@ const EmployeesTableContainer = () => {
                      paginationValue={pagination}
                      paginate={paginate}
                      handleSetPagination={handleSetPagination}
-                  />
+                  /> */}
                </> 
          }
       </S.Wrapper>

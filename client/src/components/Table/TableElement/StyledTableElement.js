@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router-dom';
 
-import colors from '../../../../assets/colors';
+import colors from '../../../assets/colors';
 
 export const Tr = styled.tr`
    background-color: white;

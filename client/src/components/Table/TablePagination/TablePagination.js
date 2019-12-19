@@ -1,10 +1,10 @@
 import React from 'react';
-import * as S from './StyledPagination';
+import * as S from './StyledTablePagination';
 
-import icons from '../../assets/icons';
+import icons from '../../../assets/icons';
 
 
-const Pagination = ({
+const TablePagination = ({
    dataPerPage, 
    totalDataAmount, 
    currentPage, 
@@ -38,7 +38,7 @@ const Pagination = ({
          {pageNumbers.map(number => (
             <S.Button 
                key={number}
-               active={currentPage === number ? true : false}
+               active_style={currentPage === number ? true : false}
                onClick={() => paginate(number)}
             >
                {number}
@@ -54,4 +54,4 @@ const Pagination = ({
    );
 }
  
-export default Pagination;
+export default TablePagination;

@@ -3,9 +3,9 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as S from './StyledTableActions';
-import icons from '../../assets/icons';
+import icons from '../../../assets/icons';
 
-import FadeReveal from '../Animations/FadeReveal/FadeReveal';
+import FadeReveal from '../../Animations/FadeReveal/FadeReveal';
 
 const TableActions = ({
    selectOptions,
@@ -35,7 +35,7 @@ const TableActions = ({
                   onChange={() => handleSortOrder(sortOrder)} 
                />
             }
-            label={<S.StyledLabel active={sortOrder === 'desc'}>Sort Descending</S.StyledLabel>}
+            label={<S.StyledLabel active_style={sortOrder === 'desc'}>Sort Descending</S.StyledLabel>}
          />
          <S.SelectWrapper>
             <S.Label htmlFor='sortBySelect'>SORT BY: </S.Label>

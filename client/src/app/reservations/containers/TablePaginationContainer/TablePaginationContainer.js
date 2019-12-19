@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import actions from '../../duck/actions';
 
-import Pagination from '../../../../components/Pagination/Pagination';
+import TablePagination from '../../../../components/Table/TablePagination/TablePagination';
 
 
 const TablePaginationContainer = () => {
@@ -29,7 +29,7 @@ const TablePaginationContainer = () => {
 
    return (  
       <>
-         <Pagination 
+         <TablePagination
             dataPerPage={pagination}
             totalDataAmount={data.length}
             currentPage={currentPage}

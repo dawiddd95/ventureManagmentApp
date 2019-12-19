@@ -3,15 +3,12 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import actions from '../../duck/actions';
 
-import LoadingDataSpinner from '../../../../components/Animations/LoadingDataSpinner/LoadingDataSpinner';
-import ReservationsTable from '../../../../components/Reservations/ReservationsTable/ReservationsTable';
-import Pagination from '../../../../components/Pagination/Pagination';
+import TableTemplate from '../../../../components/Table/TableTemplate/TableTemplate';
 
 
-const ReservationsTableContainer = () => {   
-   const dispatch = useDispatch();
-   const [currentPage, setCurrentPage] = useState(1);
-   const [markedReservation, setMarkedReservation] = useState('');
+const TableTemplateContainer = () => {
+   const dispatch = useDispatch()
+   const [markedReservation, setMarkedReservation] = useState('')
    const {userReservations} = useSelector(state => state.fetchedUserReservations.reservations)
    const {
       filter, 
@@ -20,17 +17,14 @@ const ReservationsTableContainer = () => {
       sortOrder, 
       selected, 
       checkSelectAll, 
+      currentPage,
       pagination 
    } = useSelector(state => state.fetchedUserReservations)
-   
+
    const data = !filter ? [].concat(userReservations) : [].concat(searchingReservations);
-
-   const dataPerPage = parseInt(pagination, 10);  // 
-   const indexOfLastData = currentPage * dataPerPage;
-   const indexOfFirstData = indexOfLastData - dataPerPage;
+   const indexOfLastData = currentPage * pagination;
+   const indexOfFirstData = indexOfLastData - pagination;
    const currentData = data.slice(indexOfFirstData, indexOfLastData);
-
-   
 
    const compare = (a, b) => {
       const elementA = typeof a[sortBy] === 'string' ? a[sortBy].trim() : a[sortBy];
@@ -43,11 +37,12 @@ const ReservationsTableContainer = () => {
       return comparison
    }
 
+   currentData.sort(compare)
+
    const handleMarkReservation = (id) => {
       if(markedReservation === id) setMarkedReservation('')
       else setMarkedReservation(id)
    }
-
 
    const handleSelectElement = (id) => {
       if(selected.indexOf(id) === -1) dispatch(actions.selectNewElementAction(id))
@@ -72,34 +67,25 @@ const ReservationsTableContainer = () => {
       }
    }
 
-   
-
-   const handleDeleteSearchingElements = (selectedIds) => {
+   const handleDeleteFromSearchingElements = (selectedIds) => {
       dispatch(actions.deleteSearchingElementsAction(selectedIds))
    }
 
-   currentData.sort(compare)
-
-   return (
+   return ( 
       <>
-         {!userReservations 
-            ?  <LoadingDataSpinner isSmall={true} />
-            :  <> 
-                  <ReservationsTable
-                     pageUserReservations={currentData}
-                     checkSelectAll={checkSelectAll}
-                     markedReservation={markedReservation}
-                     selected={selected}
-                     filter={filter}
-                     handleMarkReservation={handleMarkReservation}
-                     handleSelectElement={handleSelectElement}
-                     handleSelectAllElements={handleSelectAllElements}
-                     handleDeleteSearchingElements={handleDeleteSearchingElements}
-                  />
-               </> 
-         }
+         <TableTemplate
+            currentData={currentData}
+            checkSelectAll={checkSelectAll}
+            markedRow={markedReservation}
+            selected={selected}
+            filter={filter}
+            handleMarkRow={handleMarkReservation}
+            handleSelectElement={handleSelectElement}
+            handleSelectAllElements={handleSelectAllElements}
+            handleDeleteFromSearchingElements={handleDeleteFromSearchingElements}
+         />
       </>
-   )
+   );
 }
  
-export default ReservationsTableContainer;
+export default TableTemplateContainer;

@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import actions from '../../duck/actions';
 import { tableSortByData } from '../../../../assets/data/selectData';
 
-import TableActions from '../../../../components/TableActions/TableActions';
+import TableActions from '../../../../components/Table/TableActions/TableActions';
 
 
 const TableActionsContainer = () => {

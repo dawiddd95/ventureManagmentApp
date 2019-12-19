@@ -4,16 +4,16 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as S from './StyledTableElement';
 
-import Dialog from '../../../Dialog/Dialog';
+import Dialog from '../../Dialog/Dialog';
 
 
 const TableElement = ({
-   reservation, 
-   markedReservation, 
+   tableElement, 
+   markedRow, 
    selected,
-   handleMarkReservation, 
+   handleMarkRow, 
    handleSelectElement,
-   handleDeleteSearchingElements
+   handleDeleteFromSearchingElements
 }) => {
    const [openDialog, setOpenDialog] = React.useState(false) 
 
@@ -23,7 +23,7 @@ const TableElement = ({
 
    const handleOnCompleted = (selectedIds) => {
       setOpenDialog(false)
-      handleDeleteSearchingElements(selectedIds)
+      handleDeleteFromSearchingElements(selectedIds)
    }
 
    const handleCloseDialog = () => {
@@ -33,38 +33,38 @@ const TableElement = ({
    return (  
       <>
          <S.Tr 
-            active_style={selected.includes(reservation.id) ? true : false}
-            marked_style={markedReservation === reservation.id ? true : false}
-            onClick={() => handleMarkReservation(reservation.id)}
+            active_style={selected.includes(tableElement.id) ? true : false}
+            marked_style={markedRow === tableElement.id ? true : false}
+            onClick={() => handleMarkRow(tableElement.id)}
          >
             <S.Td checkbox={true}>
                <FormControlLabel
                   control={<Checkbox
                      id="element"
-                     checked={selected.includes(reservation.id) ? true : false}
-                     onChange={() => handleSelectElement(reservation.id)}
+                     checked={selected.includes(tableElement.id) ? true : false}
+                     onChange={() => handleSelectElement(tableElement.id)}
                   />}
                />
             </S.Td>
-            <S.Td>{parseInt(reservation.id,10)}</S.Td>
-            <S.Td>{reservation.client}</S.Td>
-            <S.Td>{reservation.reservationStartDate} {reservation.reservationStartTime}</S.Td>
-            <S.Td>{reservation.reservationEndDate} {reservation.reservationEndTime}</S.Td>
+            <S.Td>{parseInt(tableElement.id,10)}</S.Td>
+            <S.Td>{tableElement.client}</S.Td>
+            <S.Td>{tableElement.reservationStartDate} {tableElement.reservationStartTime}</S.Td>
+            <S.Td>{tableElement.reservationEndDate} {tableElement.reservationEndTime}</S.Td>
             <S.Td>
                <S.StatusWrapper >
-                  <S.Status status_style={reservation.status}>
-                     {reservation.status}
+                  <S.Status status_style={tableElement.status}>
+                     {tableElement.status}
                   </S.Status>
                </S.StatusWrapper>
             </S.Td>
-            <S.Td>{reservation.room}</S.Td>           
-            <S.Td>{reservation.createdAt}</S.Td>
-            <S.Td>{reservation.updatedAt}</S.Td>
+            <S.Td>{tableElement.room}</S.Td>           
+            <S.Td>{tableElement.createdAt}</S.Td>
+            <S.Td>{tableElement.updatedAt}</S.Td>
             <S.Td>
-               <S.StyledLink to={`/user/reservations/${reservation.id}`}>
+               <S.StyledLink to={`/user/reservations/${tableElement.id}`}>
                   View
                </S.StyledLink>
-               <S.StyledLink to={`/user/reservations/${reservation.id}/edit`}>
+               <S.StyledLink to={`/user/reservations/${tableElement.id}/edit`}>
                   Edit
                </S.StyledLink>
                <S.DeleteButton onClick={handleSetIsOpen}>
@@ -73,7 +73,7 @@ const TableElement = ({
                {openDialog && <Dialog
                   title='Delete selected items?'
                   text='Are you sure you want delete item with id: '
-                  selected={[reservation.id]}
+                  selected={[tableElement.id]}
                   handleOnCompleted={handleOnCompleted}
                   handleCloseDialog={handleCloseDialog}
                />}
