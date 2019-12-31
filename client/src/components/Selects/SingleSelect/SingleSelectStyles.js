@@ -4,6 +4,7 @@ export const singleSelectStyles = {
    control: styles => ({ 
       ...styles, 
       backgroundColor: 'white', 
+      fontSize: '14px',
       boxShadow: 'none',
       ':hover': {	
          transition: '0.3s',
@@ -24,4 +25,10 @@ export const singleSelectStyles = {
          ':hover': { backgroundColor: '#FFF1F0' }
       }
    },
+   placeholder: styles => {
+      return {
+         ...styles,
+         color: 'white'
+      }
+   }
 }

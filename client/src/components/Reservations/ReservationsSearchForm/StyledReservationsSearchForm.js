@@ -77,6 +77,12 @@ export const StyledField = styled(Field)`
    `}
 `
 
+export const ActiveSelectWrapper = styled.div`
+   width: 75%;
+   height: 100%;
+   border: 0;
+`
+
 export const PickersWrapper = styled.div`
    width: 75%;
    height: 100%;

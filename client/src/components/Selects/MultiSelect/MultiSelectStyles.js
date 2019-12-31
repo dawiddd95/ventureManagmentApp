@@ -43,4 +43,10 @@ export const multiSelectStyles = {
          color: 'white',
       },
    }),
+   placeholder: styles => {
+      return {
+         ...styles,
+         color: 'white'
+      }
+   }
 }

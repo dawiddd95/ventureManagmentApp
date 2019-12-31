@@ -37,6 +37,7 @@ import noData from './img/no-data.svg';
 import edit from './img/edit.svg';
 import cross from './img/cross.svg';
 import noActive from './img/noActive.svg';
+import fetchError from './img/fetchError.svg';
 
 export default {
    facebookIcon,
@@ -77,5 +78,6 @@ export default {
    noData,
    edit,
    cross,
-   noActive
+   noActive,
+   fetchError
 }

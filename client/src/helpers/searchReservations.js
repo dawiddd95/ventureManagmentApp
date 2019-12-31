@@ -67,27 +67,27 @@ export const searchReservations = (values, dispatch, userReservations) => {
       filteringArray = filterResult;
    }
    
-   // if(reservationStartTime !== '') {
-   //    filterResult = filteringArray.filter(element => {
-   //       if((reservationStartTime > reservationEndTime) && (reservationEndTime !== '')) {
-   //          return element.reservationStartTime <= reservationStartTime
-   //       } else {
-   //          return element.reservationStartTime >= reservationStartTime
-   //       }
-   //    })
-   //    filteringArray = filterResult;
-   // }
+   if(reservationStartTime !== '') {
+      filterResult = filteringArray.filter(element => {
+         if((reservationStartTime > reservationEndTime) && (reservationEndTime !== '')) {
+            return element.reservationStartTime <= reservationStartTime
+         } else {
+            return element.reservationStartTime >= reservationStartTime
+         }
+      })
+      filteringArray = filterResult;
+   }
 
-   // if(reservationEndTime !== '') {
-   //    filterResult = filteringArray.filter(element => {
-   //       if((reservationEndTime < reservationStartTime) && (reservationStartTime !== '')) {
-   //          return element.reservationStartTime >= reservationEndTime
-   //       } else {
-   //          return element.reservationStartTime <= reservationEndTime
-   //       }
-   //    })
-   //    filteringArray = filterResult;
-   // }
+   if(reservationEndTime !== '') {
+      filterResult = filteringArray.filter(element => {
+         if((reservationEndTime < reservationStartTime) && (reservationStartTime !== '')) {
+            return element.reservationStartTime >= reservationEndTime
+         } else {
+            return element.reservationStartTime <= reservationEndTime
+         }
+      })
+      filteringArray = filterResult;
+   }
 
    if(createdAtStart !== '') {
       filterResult = filteringArray.filter(element => {
@@ -103,8 +103,8 @@ export const searchReservations = (values, dispatch, userReservations) => {
       filteringArray = filterResult;
    }
 
-   dispatch(actions.filterAction(true))
-   dispatch(actions.searchUserReservationsAction(filterResult))
+   dispatch(actions.currentPageAction(1))
    dispatch(actions.toggleSelectAllAction(false))
    dispatch(actions.resetSelectedAction([]))
+   dispatch(actions.searchUserReservationsAction(filterResult))
 }

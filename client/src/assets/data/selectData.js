@@ -18,3 +18,16 @@ export const statusData = [
    {value: 'Cancelled', label: 'Cancelled'},
    {value: 'Completed', label: 'Completed'}
 ]
+
+export const tableSortByData = [
+   {value: 'id', label: 'Reservation ID'},
+   {value: 'client', label: 'Client'},
+   {value: 'room', label: 'Room'},
+   {value: 'status', label: 'Status'},
+   {value: 'reservationStartDate', label: 'Start Reservation Date'},
+   {value: 'reservationStartTime', label: 'Start Reservation Time'},
+   {value: 'reservationEndDate', label: 'End Reservation Date'},
+   {value: 'reservationEndTime', label: 'End Reservation Time'},
+   {value: 'createdAt', label: 'Created At Date'},
+   {value: 'updatedAt', label: 'Updated At Date'}
+]

@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './StyledEmployees';
 
 import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs';
-import EmployeesActionButtonsContainer from '../../../app/employees/containers/EmployeesActionButtonsContainer/EmployeesActionButtonsContainer';
+//import EmployeesActionButtonsContainer from '../../../app/employees/containers/EmployeesActionButtonsContainer/EmployeesActionButtonsContainer';
 import EmployeesSearchFormContainer from '../../../app/employees/containers/EmployeesSearchFormContainer/EmployeesSearchFormContainer';
 import EmployeesTableContainer from '../../../app/employees/containers/EmployeesTableContainer/EmployeesTableContainer';
 
@@ -29,7 +29,7 @@ const Employees = () => {
                <S.Header>
                   Employees
                </S.Header>
-               <EmployeesActionButtonsContainer />
+               {/* <EmployeesActionButtonsContainer /> */}
                <EmployeesSearchFormContainer/>
                <EmployeesTableContainer />
             </S.Box>

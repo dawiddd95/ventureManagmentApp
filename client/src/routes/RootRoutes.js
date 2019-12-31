@@ -2,10 +2,11 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 import AuthRoutes from './AuthRoutes';
-import AppContainer from '../app/user/containers/AppContainer/AppContainer';
+import AppContainer from '../containers/AppContainer/AppContainer';
 import ProtectAgainstLogout from '../components/ProtectRoutes/ProtectAgainstLogout/ProtectAgainstLogout';
 import ProtectAgainstLogin from '../components/ProtectRoutes/ProtectAgainstLogin/ProtectAgainstLogin';
-import ErrorPage from '../components/ErrorPage/ErrorPage';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
+
 
 const RootRoutes = () => {
    return (  

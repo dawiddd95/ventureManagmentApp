@@ -2,9 +2,7 @@ import types from './types';
 import produce from 'immer';
 
 const INITIAL_STATE = {
-   reservations: {},
-   searchingReservations: [],
-   filter: false,
+   reservations: [],
    sortBy: 'id',
    sortOrder: 'asc',
    selected: [],
@@ -17,17 +15,17 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
    switch(action.type) {
       case types.FETCH_USER_RESERVATIONS: 
          return produce(state, draftState => {
-            draftState.reservations = {...action.item};
+            draftState.reservations = draftState.reservations.concat(action.item)
          })
 
       case types.SEARCH_USER_RESERVATIONS:
          return produce(state, draftState => {
-            draftState.searchingReservations = action.item
+            draftState.reservations = action.item
          })
 
-      case types.RESERVATIONS_FILTER: 
+      case types.RESERVATIONS_CLEAR:
          return produce(state, draftState => {
-            draftState.filter = action.item
+            draftState.reservations = []
          })
 
       case types.RESERVATIONS_SORT_BY:
@@ -68,13 +66,6 @@ const fetchedUserReservations = (state = INITIAL_STATE, action) => {
       case types.RESERVATIONS_CURRENT_PAGE:
          return produce(state, draftState => {
             draftState.currentPage = action.item;
-         })
-
-      case types.RESERVATIONS_DELETE_SEARCHING_ELEMENTS:
-         return produce(state, draftState => {
-            draftState.searchingReservations = state.searchingReservations.filter(
-               item => !action.item.includes(item.id)
-            )
          })
 
       default:

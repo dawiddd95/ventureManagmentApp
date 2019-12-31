@@ -8,8 +8,8 @@ const searchUserReservationsAction = (item) => ({
    type: types.SEARCH_USER_RESERVATIONS, item
 })
 
-const filterAction = (item) => ({
-   type: types.RESERVATIONS_FILTER, item
+const clearReservationsAction = (item) => ({
+   type: types.RESERVATIONS_CLEAR, item
 })
 
 const sortReservationsByAction = (item) => ({
@@ -44,15 +44,11 @@ const currentPageAction = (item) => ({
    type: types.RESERVATIONS_CURRENT_PAGE, item
 })
 
-const deleteSearchingElementsAction = (item) => ({
-   type: types.RESERVATIONS_DELETE_SEARCHING_ELEMENTS, item
-})
-
 
 export default {
    addUserReservationAction,
    searchUserReservationsAction,
-   filterAction,
+   clearReservationsAction,
    sortReservationsByAction,
    sortReservationsOrderAction,
    selectNewElementAction,
@@ -61,5 +57,4 @@ export default {
    toggleSelectAllAction,
    paginationValueAction,
    currentPageAction,
-   deleteSearchingElementsAction
 }

@@ -4,20 +4,7 @@ import * as S from './StyledTablePagination';
 import icons from '../../../assets/icons';
 
 
-const TablePagination = ({
-   dataPerPage, 
-   totalDataAmount, 
-   currentPage, 
-   paginationValue, 
-   paginate, 
-   handleSetPagination
-}) => {
-   const pageNumbers = [];
-
-   for (let i = 1; i <= Math.ceil(totalDataAmount / dataPerPage); i++) {
-      pageNumbers.push(i);
-   }
-
+const TablePagination = ({pageNumbers, currentPage, paginationValue, paginate, handleSetPagination}) => {
    return (  
       <S.Wrapper>
          <S.Select value={paginationValue} onChange={handleSetPagination}>

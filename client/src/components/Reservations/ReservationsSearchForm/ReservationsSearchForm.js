@@ -2,9 +2,21 @@ import React from 'react';
 import * as S from './StyledReservationsSearchForm';
 import * as Yup from 'yup';
 import {Formik, ErrorMessage} from 'formik';
+
 import icons from '../../../assets/icons';
+import { statusData } from '../../../assets/data/selectData';
+
+import SingleSelect from '../../Selects/SingleSelect/SingleSelect';
+
 
 const ReservationsSearchForm = ({handleSearchReservations}) => {
+   // To do konetenera
+   const [status, setStatus] = React.useState(null);
+
+   const handleOnChange = (value) => {
+      setStatus(value)
+   } 
+
    return ( 
       <Formik
          initialValues={{
@@ -26,8 +38,6 @@ const ReservationsSearchForm = ({handleSearchReservations}) => {
                .string(),
             room: Yup
                .string(),
-            status: Yup
-               .string(),
             reservationStartDate: Yup
                .string(), 
             reservationStartTime: Yup
@@ -41,7 +51,9 @@ const ReservationsSearchForm = ({handleSearchReservations}) => {
             createdAtEnd: Yup
                .string(), 
          })}
+         // Tutaj powinno wywolac mutacje
          onSubmit={values => {
+            const formValues = {...values, status}
             handleSearchReservations(values)
          }}
          render={props => (
@@ -71,14 +83,14 @@ const ReservationsSearchForm = ({handleSearchReservations}) => {
                      </S.Col>
                      <S.Col>
                         <S.Label>Status:</S.Label> 
-                        <S.StyledField 
-                           name='status' 
-                           type='text' 
-                        />
-                        <ErrorMessage 
-                           component='p'
-                           name='status'
-                        />
+                        <S.ActiveSelectWrapper>
+                           <SingleSelect
+                              data={statusData}
+                              defaultValue=''
+                              isClearable={true}
+                              handleOnChange={handleOnChange}
+                           />
+                        </S.ActiveSelectWrapper>
                      </S.Col>
                      <S.Col>
                         <S.Label>Start Reserv. From:</S.Label> 

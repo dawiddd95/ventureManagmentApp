@@ -7,7 +7,6 @@ import { USER_RESERVATIONS_QUERY } from '../../graphql/reservation/query';
 
 
 const Dialog = ({title, text, selected, handleOnCompleted, handleCloseDialog}) => {
-   const selectedIds = selected.map(item => item)
    return (  
       <S.Wrapper>
          <S.Dialog>
@@ -23,7 +22,7 @@ const Dialog = ({title, text, selected, handleOnCompleted, handleCloseDialog}) =
                   mutation={DELETE_RESERVATIONS_MUTATION}
                   variables={{id: selected}}
                   refetchQueries={[{query: USER_RESERVATIONS_QUERY}]}   
-                  onCompleted={() => handleOnCompleted(selectedIds)}
+                  onCompleted={handleOnCompleted}
                >
                   {mutation => (
                      <S.Button onClick={mutation}>

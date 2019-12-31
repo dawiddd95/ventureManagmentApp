@@ -49,7 +49,7 @@ export const Span = styled.span`
 
 export const StyledLink = styled(Link)`
    width: 70%;
-   margin: 10px auto 0 auto;
+   margin: 20px auto 0 auto;
    padding: 10px;
    text-align: center;
    border: 1px solid red;
