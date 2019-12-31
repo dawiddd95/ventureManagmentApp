@@ -38,7 +38,7 @@ export const searchReservations = (values, dispatch, userReservations) => {
       filteringArray = filterResult;
    }
 
-   if(status !== '') {
+   if(status !== undefined) {
       filterResult = filteringArray.filter(element => {
          return element.status.includes(status)
       })

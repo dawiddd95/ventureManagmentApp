@@ -13,9 +13,9 @@ const TableActions = ({
    sortBy, 
    sortOrder, 
    reload, 
-   handleReloadData, 
    handleSortOrder, 
-   handleSortBy
+   handleSortBy,
+   handleOnClick
 }) => {
    return (  
       <S.ButtonsWrapper>
@@ -24,7 +24,7 @@ const TableActions = ({
             text={'Data Reload Succeed.'}
             success={true} 
          />}
-         <S.Button onClick={handleReloadData}>
+         <S.Button onClick={handleOnClick}>
             <S.Img src={icons.reload} />
             {textButton}
          </S.Button>

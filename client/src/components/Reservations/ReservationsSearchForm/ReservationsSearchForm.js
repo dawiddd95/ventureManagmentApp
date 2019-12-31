@@ -1,4 +1,5 @@
 import React from 'react';
+import { useApolloClient } from "@apollo/react-hooks";
 import * as S from './StyledReservationsSearchForm';
 import * as Yup from 'yup';
 import {Formik, ErrorMessage} from 'formik';
@@ -9,14 +10,7 @@ import { statusData } from '../../../assets/data/selectData';
 import SingleSelect from '../../Selects/SingleSelect/SingleSelect';
 
 
-const ReservationsSearchForm = ({handleSearchReservations}) => {
-   // To do konetenera
-   const [status, setStatus] = React.useState(null);
-
-   const handleOnChange = (value) => {
-      setStatus(value)
-   } 
-
+const ReservationsSearchForm = ({status, handleSearchReservations, handleOnChange}) => {
    return ( 
       <Formik
          initialValues={{
@@ -51,10 +45,9 @@ const ReservationsSearchForm = ({handleSearchReservations}) => {
             createdAtEnd: Yup
                .string(), 
          })}
-         // Tutaj powinno wywolac mutacje
          onSubmit={values => {
-            const formValues = {...values, status}
-            handleSearchReservations(values)
+            if(status !== null) handleSearchReservations({...values, status: status.value})
+            else handleSearchReservations(values)
          }}
          render={props => (
             <S.Wrapper>
