@@ -1,27 +1,27 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 
-import actions from '../../app/reservations/duck/actions'
+import actions from '../../app/employees/duck/actions'
 import { useSortPageElements } from '../../hooks/useSortPageElements'
 import { useTableBody } from '../../hooks/useTableBody'
 import { TableHeadersContext } from '../../context'
-import { reservationsTableHeaders } from '../../assets/data/tableHeaders'
+import { employeesTableHeaders } from '../../assets/data/tableHeaders'
 
-import TableBody from '../../components/Reservations/TableBody/TableBody'
+import TableBody from '../../components/Employees/TableBody/TableBody'
 
 
-const ReservationsTableBodyContainer = () => {
+const EmployeesTableBodyContainer = () => {
    const {
-      reservations, 
+      employees, 
       sortBy, 
       sortOrder, 
       selected, 
       checkSelectAll, 
       currentPage, 
       pagination
-   } = useSelector(state => state.fetchedUserReservations) 
+   } = useSelector(state => state.fetchedUserEmployees) 
 
-   const currentData = useSortPageElements(reservations, sortBy, sortOrder, currentPage, pagination)
+   const currentData = useSortPageElements(employees, sortBy, sortOrder, currentPage, pagination)
 
    const [
       selectedElements,
@@ -32,9 +32,10 @@ const ReservationsTableBodyContainer = () => {
       handleSelectAllElements,
    ] = useTableBody(actions, currentData, selected, checkSelectAll)
 
+
    return ( 
       <>
-         <TableHeadersContext.Provider value={reservationsTableHeaders}>
+         <TableHeadersContext.Provider value={employeesTableHeaders}>
             <TableBody
                currentData={currentData} 
                checkSelectAll={isSelectedAllElements} 
@@ -49,4 +50,4 @@ const ReservationsTableBodyContainer = () => {
    );
 }
  
-export default ReservationsTableBodyContainer;
+export default EmployeesTableBodyContainer;

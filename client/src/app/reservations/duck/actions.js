@@ -12,11 +12,11 @@ const clearReservationsAction = (item) => ({
    type: types.RESERVATIONS_CLEAR, item
 })
 
-const sortReservationsByAction = (item) => ({
+const sortElementsByAction = (item) => ({
    type: types.RESERVATIONS_SORT_BY, item
 })
 
-const sortReservationsOrderAction = (item) => ({
+const sortElementsOrderAction = (item) => ({
    type: types.RESERVATIONS_SORT_ORDER, item
 })
 
@@ -49,8 +49,8 @@ export default {
    addUserReservationAction,
    searchUserReservationsAction,
    clearReservationsAction,
-   sortReservationsByAction,
-   sortReservationsOrderAction,
+   sortElementsByAction,
+   sortElementsOrderAction,
    selectNewElementAction,
    unselectElementAction,
    resetSelectedAction,

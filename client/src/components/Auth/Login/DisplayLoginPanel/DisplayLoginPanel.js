@@ -1,5 +1,4 @@
 import React from 'react';
-
 import * as S from './StyledDisplayLoginPanel';
 
 import ManagerLoginFormContainer from '../../../../containers/ManagerLoginFormContainer/ManagerLoginFormContainer';

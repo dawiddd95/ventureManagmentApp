@@ -3,7 +3,7 @@ import React from 'react';
 import * as S from './StyledTableBody';
 import { TableHeadersContext } from '../../../context';
 
-import TableHeaders from '../TableHeaders/TableHeaders';
+import TableHeaders from '../../Table/TableHeaders/TableHeaders';
 import TableRow from '../TableRow/TableRow';
 import NoData from '../../NoData/NoData';
 

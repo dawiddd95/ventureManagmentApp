@@ -91,8 +91,8 @@ export const searchEmployees = (values, dispatch, userEmployees) => {
       filteringArray = filterResult;
    }
 
-   dispatch(actions.filterAction(true))
-   dispatch(actions.searchUserEmployeesAction(filterResult))
+   dispatch(actions.currentPageAction(1))
    dispatch(actions.toggleSelectAllAction(false))
    dispatch(actions.resetSelectedAction([]))
+   dispatch(actions.searchUserEmployeesAction(filterResult))
 }

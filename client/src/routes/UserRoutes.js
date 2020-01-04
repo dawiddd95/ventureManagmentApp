@@ -10,7 +10,7 @@ const UserRoutes = () => {
    return (  
       <Switch>
          <Route path='/user/reservations' component={UserReservationsRoutes} />    
-         {/* <Route path='/user/employees' component={UserEmployeesRoutes} /> */}
+         <Route path='/user/employees' component={UserEmployeesRoutes} />
          {/* <Route path='/user/profile' component={Routy profile} /> */}
          {/*<Route path='/user/audit-logs' component={Test} />
          <Route path='/user/clients' component={Test} />

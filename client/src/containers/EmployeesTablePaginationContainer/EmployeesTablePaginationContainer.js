@@ -1,17 +1,17 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-import actions from '../../app/reservations/duck/actions';
+import actions from '../../app/employees/duck/actions';
 import { useTablePagination } from '../../hooks/useTablePagination';
 
 import TablePagination from '../../components/Table/TablePagination/TablePagination';
 
 
-const ReservationsTablePaginationContainer = () => {
-   const {reservations, pagination, currentPage} = useSelector(state => state.fetchedUserReservations)   
+const EmployeesTablePaginationContainer = () => {
+   const {employees, pagination, currentPage} = useSelector(state => state.fetchedUserEmployees)   
 
    const [data, pageNumbers, paginate, handleSetPagination] = 
-      useTablePagination(actions, reservations, pagination)
+      useTablePagination(actions, employees, pagination)
 
    return (  
       <>
@@ -26,4 +26,4 @@ const ReservationsTablePaginationContainer = () => {
    );
 }
  
-export default ReservationsTablePaginationContainer;
+export default EmployeesTablePaginationContainer;

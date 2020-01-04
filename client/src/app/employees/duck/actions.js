@@ -8,15 +8,15 @@ const searchUserEmployeesAction = (item) => ({
    type: types.SEARCH_USER_EMPLOYEES, item
 })
 
-const filterAction = (item) => ({
-   type: types.EMPLOYEES_FILTER, item
+const clearEmployeesAction = (item) => ({
+   type: types.EMPLOYEES_CLEAR, item
 })
 
-const sortEmployeesByAction = (item) => ({
+const sortElementsByAction = (item) => ({
    type: types.EMPLOYEES_SORT_BY, item
 })
 
-const sortEmployeesOrderAction = (item) => ({
+const sortElementsOrderAction = (item) => ({
    type: types.EMPLOYEES_SORT_ORDER, item
 })
 
@@ -40,21 +40,21 @@ const paginationValueAction = (item) => ({
    type: types.EMPLOYEES_PAGINATION_VALUE, item
 })
 
-const deleteSearchingElementsAction = (item) => ({
-   type: types.EMPLOYEES_DELETE_SEARCHING_ELEMENTS, item
+const currentPageAction = (item) => ({
+   type: types.EMPLOYEES_CURRENT_PAGE, item
 })
 
 
 export default {
    addUserEmployeeAction,
    searchUserEmployeesAction,
-   filterAction,
-   sortEmployeesByAction,
-   sortEmployeesOrderAction,
+   clearEmployeesAction,
+   sortElementsByAction,
+   sortElementsOrderAction,
    selectNewElementAction,
    unselectElementAction,
    resetSelectedAction,
    toggleSelectAllAction,
    paginationValueAction,
-   deleteSearchingElementsAction
+   currentPageAction
 }

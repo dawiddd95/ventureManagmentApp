@@ -2,31 +2,30 @@ import types from './types';
 import produce from 'immer';
 
 const INITIAL_STATE = {
-   employees: {},
-   searchingEmployees: [],
-   filter: false,
+   employees: [],
    sortBy: 'id',
    sortOrder: 'asc',
    selected: [],
    checkSelectAll: false,
-   pagination: '5',
+   pagination: 5,
+   currentPage: 1
 }
 
 const fetchedUserEmployees = (state = INITIAL_STATE, action) => {
    switch(action.type) {
       case types.FETCH_USER_EMPLOYEES:
          return produce(state, draftState => {
-            draftState.employees = {...action.item};
+            draftState.employees = draftState.employees.concat(action.item)
          })
 
       case types.SEARCH_USER_EMPLOYEES:
          return produce(state, draftState => {
-            draftState.searchingEmployees = action.item
+            draftState.employees = action.item
          })
 
-      case types.EMPLOYEES_FILTER: 
+      case types.EMPLOYEES_CLEAR:
          return produce(state, draftState => {
-            draftState.filter = action.item
+            draftState.employees = []
          })
 
       case types.EMPLOYEES_SORT_BY:
@@ -64,13 +63,11 @@ const fetchedUserEmployees = (state = INITIAL_STATE, action) => {
             draftState.pagination = action.item;
          })
 
-      case types.EMPLOYEES_DELETE_SEARCHING_ELEMENTS:
+      case types.EMPLOYEES_CURRENT_PAGE:
          return produce(state, draftState => {
-            draftState.searchingEmployees = state.searchingEmployees.filter(
-               item => !action.item.includes(item.id)
-            )
+            draftState.currentPage = action.item;
          })
-
+         
       default:
          return state;
    }

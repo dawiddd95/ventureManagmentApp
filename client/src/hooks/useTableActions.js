@@ -15,14 +15,12 @@ export const useTableActions = (actions) => {
    }
 
    const handleSortOrder = (order) => {
-      // Tutaj też zmaineić Reservations na Elements
-      if(order === 'asc') dispatch(actions.sortReservationsOrderAction('desc'))
-      else dispatch(actions.sortReservationsOrderAction('asc'))
+      if(order === 'asc') dispatch(actions.sortElementsOrderAction('desc'))
+      else dispatch(actions.sortElementsOrderAction('asc'))
    }
 
    const handleSortBy = (event) => {
-      // Tu dac sortElementsByAction
-      dispatch(actions.sortReservationsByAction(event.target.value))
+      dispatch(actions.sortElementsByAction(event.target.value))
    }
 
    return [reload, handleReloadData, handleSortOrder, handleSortBy]

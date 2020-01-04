@@ -19,7 +19,7 @@ export const statusData = [
    {value: 'Completed', label: 'Completed'}
 ]
 
-export const tableSortByData = [
+export const reservationsTableSortBy = [
    {value: 'id', label: 'Reservation ID'},
    {value: 'client', label: 'Client'},
    {value: 'room', label: 'Room'},
@@ -30,4 +30,14 @@ export const tableSortByData = [
    {value: 'reservationEndTime', label: 'End Reservation Time'},
    {value: 'createdAt', label: 'Created At Date'},
    {value: 'updatedAt', label: 'Updated At Date'}
+]
+
+export const employeesTableSortBy = [
+   {value: 'id', label: 'Employee ID'},
+   {value: 'name', label: 'Name'},
+   {value: 'surname', label: 'Surname'},
+   {value: 'phone', label: 'Phone'},
+   {value: 'email', label: 'Email'},
+   {value: 'createdAt', label: 'Created At Date'},
+   {value: 'updatedAt', label: 'Updated At Date'},
 ]

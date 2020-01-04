@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../assets/colors';
+import colors from '../../assets/colors';
 
 
 export const Wrapper = styled.div`
@@ -21,7 +21,7 @@ export const MainContent = styled.main`
    flex-direction: column;
 `
 
-export const Box = styled.div`
+export const EmployeesBox = styled.div`
    width: 100%;
    height: 100%;
    margin: 20px auto;
@@ -35,4 +35,16 @@ export const Header = styled.header`
    font-size: 28px;
    font-family: Nunito;
    color: ${colors.black65};
+`
+
+export const ButtonsWrapper = styled.div`
+   width: 96%;
+   margin-left: 20px;
+
+   display: flex;
+`
+
+export const TableWrapper = styled.div`
+   width: 96%;
+   margin: 0 auto 20px auto;
 `

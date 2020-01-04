@@ -1,20 +1,19 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { useLazyQuery } from '@apollo/react-hooks'
-import { USER_RESERVATIONS_QUERY } from '../../graphql/reservation/query'
+import { USER_EMPLOYEES_QUERY } from '../../graphql/employee/query'
 
-import actions from '../../app/reservations/duck/actions'
-import thunkActions from '../../app/reservations/duck/thunks'
-import { reservationsTableSortBy } from '../../assets/data/selectData'
+import actions from '../../app/employees/duck/actions'
+import thunkActions from '../../app/employees/duck/thunks'
+import { employeesTableSortBy } from '../../assets/data/selectData'
 import { useTableActions } from '../../hooks/useTableActions'
 
 import TableActions from '../../components/Table/TableActions/TableActions'
 
-
-const ReservationsTableActionsContainer = () => {
+const EmployeesTableActionContainer = () => {
    const dispatch = useDispatch()
-   const {sortBy, sortOrder} = useSelector(state => state.fetchedUserReservations)
-   const [runQuery, {error, data}] = useLazyQuery(USER_RESERVATIONS_QUERY)
+   const {sortBy, sortOrder} = useSelector(state => state.fetchedUserEmployees)
+   const [runQuery, {error, data}] = useLazyQuery(USER_EMPLOYEES_QUERY)
    const [reload, handleReloadData, handleSortOrder, handleSortBy] = useTableActions(actions)
    const [submit, setSubmit] = React.useState(true)
    
@@ -25,17 +24,16 @@ const ReservationsTableActionsContainer = () => {
    }
 
    if(data && submit) {
-      dispatch(actions.clearReservationsAction())
-      dispatch(thunkActions.fetchLoggedUserReservations(data.userReservations))
+      dispatch(actions.clearEmployeesAction())
+      dispatch(thunkActions.fetchLoggedUserEmployees(data.userEmployees))
       setSubmit(false)
    }
-
 
    return (  
       <>
          <TableActions
-            selectOptions={reservationsTableSortBy}
-            textButton='Reload Reservations'
+            selectOptions={employeesTableSortBy}
+            textButton='Reload Employees'
             sortBy={sortBy}
             sortOrder={sortOrder}
             reload={reload}
@@ -47,4 +45,4 @@ const ReservationsTableActionsContainer = () => {
    );
 }
  
-export default ReservationsTableActionsContainer;
+export default EmployeesTableActionContainer;

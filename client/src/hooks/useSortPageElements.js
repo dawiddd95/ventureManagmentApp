@@ -1,6 +1,6 @@
-export const useSortPageElements = (reservations, sortBy, sortOrder, currentPage, pagination) => {
+export const useSortPageElements = (tableElements, sortBy, sortOrder, currentPage, pagination) => {
    
-   const data = [].concat(reservations);
+   const data = [].concat(tableElements);
    const indexOfLastData = currentPage * pagination;
    const indexOfFirstData = indexOfLastData - pagination;
    const currentData = data.slice(indexOfFirstData, indexOfLastData);

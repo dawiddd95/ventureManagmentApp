@@ -9,3 +9,15 @@ export const reservationsTableHeaders = [
    'Updated At Date',
    'Reservation Actions',
 ]
+
+export const employeesTableHeaders = [
+   'Employee ID',
+   'Name',
+   'Surname',
+   'Active',
+   'Phone',
+   'Email',
+   'Created At Date',
+   'Updated At Date',
+   'Employee Actions',
+]

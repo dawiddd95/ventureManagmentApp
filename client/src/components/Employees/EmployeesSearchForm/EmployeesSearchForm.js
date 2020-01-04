@@ -10,15 +10,7 @@ import MultiSelect from '../../Selects/MultiSelect/MultiSelect';
 import SingleSelect from '../../Selects/SingleSelect/SingleSelect';
 
 
-const EmployeesSearchForm = ({handleSearchEmployees}) => {
-   const [privileges, setPrivileges] = React.useState(null);
-   const [active, setActive] = React.useState(null);
-
-   const handleOnChange = (value, isMulti) => {
-      if(isMulti) setPrivileges(value)
-      else if(!isMulti) setActive(value)
-   } 
-
+const EmployeesSearchForm = ({ privileges, active, handleSearchEmployees, handleOnChange }) => {
    return (  
       <Formik
          initialValues={{
